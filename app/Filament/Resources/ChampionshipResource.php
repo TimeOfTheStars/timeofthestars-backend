@@ -2,45 +2,96 @@
 
 namespace App\Filament\Resources;
 
-use App\Models\Championship;
 use App\Filament\Resources\ChampionshipResource\Pages;
+use App\Models\Championship;
 use Filament\Forms;
-use Filament\Tables;
+use Filament\Forms\Form;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Filament\Tables\Columns\TextColumn;
 
 class ChampionshipResource extends Resource
 {
     protected static ?string $model = Championship::class;
-    protected static ?string $navigationLabel = 'Чемпионаты';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Forms\Form $form): Forms\Form
+    protected static ?string $navigationIcon = 'heroicon-o-trophy';
+    protected static ?string $navigationLabel = 'Чемпионаты';
+    protected static ?string $pluralLabel = 'Чемпионаты';
+    protected static ?string $modelLabel = 'Чемпионат';
+
+    public static function form(Form $form): Form
     {
         return $form->schema([
-            Forms\Components\TextInput::make('name')->required()->label('Название'),
-            Forms\Components\DatePicker::make('start_date')->label('Дата начала'),
-            Forms\Components\DatePicker::make('end_date')->label('Дата окончания'),
-            Forms\Components\TextInput::make('location')->label('Место'),
-            Forms\Components\Select::make('team_ids')
-                ->label('Участники')
+            TextInput::make('name')
+                ->label('Название')
+                ->required()
+                ->maxLength(255),
+
+            DatePicker::make('start_date')
+                ->label('Дата начала'),
+
+            DatePicker::make('end_date')
+                ->label('Дата окончания'),
+
+            TextInput::make('location')
+                ->label('Локация')
+                ->maxLength(255),
+
+            Select::make('teams')
+                ->label('Команды')
                 ->multiple()
-                ->options(\App\Models\Team::pluck('name','id')->toArray()),
-            Forms\Components\Select::make('game_ids')
-                ->label('Матчи')
+                ->relationship('teams', 'name')
+                ->preload()
+                ->searchable(),
+
+//            Select::make('games')
+//                ->label('Игры')
+//                ->multiple()
+//                ->relationship('games', fn ($query) => $query->with(['teamA', 'teamB']))
+//                ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->teamA?->name} vs {$record->teamB?->name} ({$record->date})")
+//                ->preload()
+//                ->searchable(),
+            Select::make('games')
+                ->label('Игры')
                 ->multiple()
-                ->options(\App\Models\Game::pluck('id','id')->toArray()),
+                ->relationship('games', 'id')
+                ->preload(),
+
+
         ]);
     }
 
-    public static function table(Tables\Table $table): Tables\Table
+    public static function table(Table $table): Table
     {
-        return $table->columns([
-            Tables\Columns\TextColumn::make('name')->label('Название')->searchable(),
-            Tables\Columns\TextColumn::make('start_date')->date()->label('Начало'),
-            Tables\Columns\TextColumn::make('end_date')->date()->label('Конец'),
-        ])->actions([Tables\Actions\EditAction::make()])->bulkActions([Tables\Actions\DeleteBulkAction::make()]);
+        return $table
+            ->columns([
+                TextColumn::make('id')->sortable(),
+                TextColumn::make('name')->label('Название')->searchable()->sortable(),
+                TextColumn::make('start_date')->label('Начало')->date(),
+                TextColumn::make('end_date')->label('Конец')->date(),
+                TextColumn::make('location')->label('Локация')->searchable(),
+                TextColumn::make('teams_count')->counts('teams')->label('Команд'),
+                TextColumn::make('games_count')->counts('games')->label('Игр'),
+            ])
+            ->filters([])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            // Можно добавить RelationManager для команд или игр
+        ];
     }
 
     public static function getPages(): array

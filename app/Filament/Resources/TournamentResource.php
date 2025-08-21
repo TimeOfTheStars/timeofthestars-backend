@@ -2,57 +2,94 @@
 
 namespace App\Filament\Resources;
 
-use App\Models\Tournament;
-use App\Filament\Resources\TournamentResource\Pages;
 use Filament\Forms;
-use Filament\Tables;
+use Filament\Forms\Form;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Filament\Tables\Columns\TextColumn;
+use App\Models\Tournament;
 
 class TournamentResource extends Resource
 {
     protected static ?string $model = Tournament::class;
+    protected static ?string $navigationIcon = 'heroicon-o-trophy';
     protected static ?string $navigationLabel = 'Турниры';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $pluralLabel = 'Турниры';
+    protected static ?string $modelLabel = 'Турнир';
 
-    public static function form(Forms\Form $form): Forms\Form
+    public static function form(Form $form): Form
     {
-        return $form->schema([
-            Forms\Components\TextInput::make('name')->required()->label('Название'),
-            Forms\Components\DatePicker::make('start_date')->label('Дата начала'),
-            Forms\Components\DatePicker::make('end_date')->label('Дата окончания'),
-            Forms\Components\TextInput::make('location')->label('Место'),
-            Forms\Components\Select::make('team_ids')
-                ->label('Участники (команды)')
-                ->multiple()
-                ->options(\App\Models\Team::pluck('name','id')->toArray()),
-            Forms\Components\Select::make('game_ids')
-                ->label('Матчи')
-                ->multiple()
-                ->options(\App\Models\Game::pluck('id','id')->toArray()), // можно форматировать по дате/командам
-        ]);
+        return $form
+            ->schema([
+                TextInput::make('name')
+                    ->label('Название турнира')
+                    ->required()
+                    ->maxLength(255),
+
+                DatePicker::make('start_date')
+                    ->label('Дата начала')
+                    ->native(false),
+
+                DatePicker::make('end_date')
+                    ->label('Дата окончания')
+                    ->native(false)
+                    ->after('start_date'),
+
+                TextInput::make('location')
+                    ->label('Место проведения')
+                    ->maxLength(255),
+
+                Select::make('teams')
+                    ->label('Команды')
+                    ->multiple()
+                    ->relationship('teams', 'name')
+                    ->preload(),
+
+                Select::make('games')
+                    ->label('Игры')
+                    ->multiple()
+                    ->relationship('games', 'id')
+                    ->preload(),
+            ]);
     }
 
-    public static function table(Tables\Table $table): Tables\Table
+    public static function table(Table $table): Table
     {
-        return $table->columns([
-            Tables\Columns\TextColumn::make('name')->searchable()->label('Название'),
-            Tables\Columns\TextColumn::make('start_date')->date()->label('Начало'),
-            Tables\Columns\TextColumn::make('end_date')->date()->label('Конец'),
-        ])->actions([
-            Tables\Actions\EditAction::make(),
-        ])->bulkActions([
-            Tables\Actions\DeleteBulkAction::make(),
-        ]);
+        return $table
+            ->columns([
+                TextColumn::make('id')->sortable(),
+                TextColumn::make('name')->label('Название')->searchable(),
+                TextColumn::make('start_date')->label('Начало')->date(),
+                TextColumn::make('end_date')->label('Окончание')->date(),
+                TextColumn::make('location')->label('Локация')->searchable(),
+                TextColumn::make('teams.name')->label('Команды')->badge()->limit(3),
+                TextColumn::make('games.title')->label('Игры')->badge()->limit(3),
+            ])
+            ->filters([
+                Tables\Filters\Filter::make('active')
+                    ->label('Активные')
+                    ->query(fn ($query) => $query->where('start_date', '<=', now())
+                        ->where('end_date', '>=', now())),
+            ])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]);
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTournaments::route('/'),
-            'create' => Pages\CreateTournament::route('/create'),
-            'edit' => Pages\EditTournament::route('/{record}/edit'),
+            'index' => TournamentResource\Pages\ListTournaments::route('/'),
+            'create' => TournamentResource\Pages\CreateTournament::route('/create'),
+            'edit' => TournamentResource\Pages\EditTournament::route('/{record}/edit'),
         ];
     }
 }
