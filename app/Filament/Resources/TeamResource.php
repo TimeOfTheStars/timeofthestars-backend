@@ -5,52 +5,78 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\TeamResource\Pages;
 use App\Models\Team;
 use Filament\Forms;
-use Filament\Tables;
+use Filament\Forms\Form;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-//use Filament\Resources\Form as ResourceForm;
-//use Filament\Resources\Table as ResourceTable;
-
+use Filament\Tables;
+use Filament\Tables\Table;
+use Filament\Tables\Columns\TextColumn;
 
 class TeamResource extends Resource
 {
     protected static ?string $model = Team::class;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
     protected static ?string $navigationLabel = 'Команды';
+    protected static ?string $pluralLabel = 'Команды';
+    protected static ?string $modelLabel = 'Команда';
 
-    public static function form(Forms\Form $form): Forms\Form
+    public static function form(Form $form): Form
     {
-        return $form->schema([
-            Forms\Components\TextInput::make('name')->required()->unique(ignoreRecord: true)->label('Название'),
-            Forms\Components\TextInput::make('city')->label('Город'),
-            Forms\Components\TextInput::make('players_count')->label('Кол-во игроков')->numeric(),
-            Forms\Components\TextInput::make('wins')->label('Победы')->numeric(),
-            Forms\Components\TextInput::make('losses')->label('Поражения')->numeric(),
-        ]);
+        return $form
+            ->schema([
+                TextInput::make('name')
+                    ->label('Название')
+                    ->required()
+                    ->unique(ignoreRecord: true)
+                    ->maxLength(255),
+
+                TextInput::make('city')
+                    ->label('Город')
+                    ->maxLength(255),
+
+                TextInput::make('players_count')
+                    ->label('Кол-во игроков')
+                    ->numeric()
+                    ->default(0),
+
+                TextInput::make('wins')
+                    ->label('Победы')
+                    ->numeric()
+                    ->default(0),
+
+                TextInput::make('losses')
+                    ->label('Поражения')
+                    ->numeric()
+                    ->default(0),
+            ]);
     }
 
-    public static function table(Tables\Table $table): Tables\Table
+    public static function table(Table $table): Table
     {
-        return $table->columns([
-            Tables\Columns\TextColumn::make('id')->label('ID')->sortable(),
-            Tables\Columns\TextColumn::make('name')->searchable()->sortable()->label('Название'),
-            Tables\Columns\TextColumn::make('city')->label('Город'),
-            Tables\Columns\TextColumn::make('players_count')->label('Игроки')->sortable(),
-            Tables\Columns\TextColumn::make('wins')->label('Победы'),
-            Tables\Columns\TextColumn::make('losses')->label('Поражения'),
-            Tables\Columns\TextColumn::make('created_at')->dateTime()->label('Создано'),
-        ])->filters([])->actions([
-            Tables\Actions\EditAction::make(),
-        ])->bulkActions([
-            Tables\Actions\DeleteBulkAction::make(),
-        ]);
+        return $table
+            ->columns([
+                TextColumn::make('id')->sortable(),
+                TextColumn::make('name')->label('Название')->searchable()->sortable(),
+                TextColumn::make('city')->label('Город')->searchable(),
+                TextColumn::make('players_count')->label('Игроков')->sortable(),
+                TextColumn::make('wins')->label('Победы')->sortable(),
+                TextColumn::make('losses')->label('Поражения')->sortable(),
+            ])
+            ->filters([])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]);
     }
 
     public static function getRelations(): array
     {
-        return [];
-//        return [
-//            RelationManagers\PlayersRelationManager::class,
-//        ];
+        return [
+            // сюда можно добавить RelationManagers для championshipPlayers / tournamentPlayers
+        ];
     }
 
     public static function getPages(): array

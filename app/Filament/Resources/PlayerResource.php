@@ -2,53 +2,84 @@
 
 namespace App\Filament\Resources;
 
-use App\Models\Player;
 use App\Filament\Resources\PlayerResource\Pages;
+use App\Models\Player;
 use Filament\Forms;
-use Filament\Tables;
+use Filament\Forms\Form;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Filament\Tables\Columns\TextColumn;
 
 class PlayerResource extends Resource
 {
     protected static ?string $model = Player::class;
-    protected static ?string $navigationLabel = 'Игроки';
     protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $navigationLabel = 'Игроки';
+    protected static ?string $pluralLabel = 'Игроки';
+    protected static ?string $modelLabel = 'Игрок';
 
-    public static function form(Forms\Form $form): Forms\Form
+    public static function form(Form $form): Form
     {
-        return $form->schema([
-            Forms\Components\TextInput::make('full_name')->required()->label('ФИО'),
-            Forms\Components\DatePicker::make('birth_date')->label('Дата рождения'),
-            Forms\Components\TextInput::make('position')->label('Амплуа'),
-            Forms\Components\TextInput::make('grip')->label('Хват'),
-            Forms\Components\Select::make('team_id')
-                ->relationship('team', 'name')
-                ->searchable()
-                ->label('Команда'),
-            Forms\Components\TextInput::make('matches')->numeric()->label('Матчи'),
-            Forms\Components\TextInput::make('goals')->numeric()->label('Голы'),
-            Forms\Components\TextInput::make('assists')->numeric()->label('Передачи'),
-            Forms\Components\TextInput::make('penalties')->numeric()->label('Штрафы'),
-            Forms\Components\TextInput::make('number')->numeric()->label('Номер'),
-        ]);
+        return $form
+            ->schema([
+                TextInput::make('full_name')
+                    ->label('ФИО')
+                    ->required()
+                    ->maxLength(255),
+
+                DatePicker::make('birth_date')
+                    ->label('Дата рождения')
+                    ->native(false),
+
+                Select::make('position')
+                    ->label('Амплуа')
+                    ->options([
+                        'goalkeeper' => 'Вратарь',
+                        'defender' => 'Защитник',
+                        'midfielder' => 'Полузащитник',
+                        'forward' => 'Нападающий',
+                    ])
+                    ->searchable(),
+
+                Select::make('grip')
+                    ->label('Хват')
+                    ->options([
+                        'left' => 'Левый',
+                        'right' => 'Правый',
+                    ])
+                    ->searchable(),
+            ]);
     }
 
-    public static function table(Tables\Table $table): Tables\Table
+    public static function table(Table $table): Table
     {
-        return $table->columns([
-            Tables\Columns\TextColumn::make('id')->label('ID')->sortable(),
-            Tables\Columns\TextColumn::make('full_name')->searchable()->label('ФИО'),
-            Tables\Columns\TextColumn::make('team.name')->label('Команда'),
-            Tables\Columns\TextColumn::make('goals')->label('Голы'),
-            Tables\Columns\TextColumn::make('assists')->label('Передачи'),
-            Tables\Columns\TextColumn::make('matches')->label('Матчи'),
-        ])->actions([
-            Tables\Actions\EditAction::make(),
-        ])->bulkActions([
-            Tables\Actions\DeleteBulkAction::make(),
-        ]);
+        return $table
+            ->columns([
+                TextColumn::make('id')->sortable(),
+                TextColumn::make('full_name')->label('ФИО')->searchable()->sortable(),
+                TextColumn::make('birth_date')->label('Дата рождения')->date(),
+                TextColumn::make('position')->label('Амплуа')->sortable(),
+                TextColumn::make('grip')->label('Хват'),
+            ])
+            ->filters([])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            // сюда позже добавим RelationManager для championships / tournaments
+        ];
     }
 
     public static function getPages(): array
