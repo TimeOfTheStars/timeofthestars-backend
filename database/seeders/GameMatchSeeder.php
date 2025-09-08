@@ -15,93 +15,135 @@ class GameMatchSeeder extends Seeder
         $pereslavl = Team::where('name', 'ХК Переславль')->first()->id;
         $zubr = Team::where('name', 'ХК Зубр')->first()->id;
         $vympelV = Team::where('name', 'ХК Вымпел-V')->first()->id;
+        $vympelK = Team::where('name', 'ХК Вымпел-К')->first()->id;
         $yaroslavich = Team::where('name', 'ХК Ярославич')->first()->id;
         $torpedo = Team::where('name', 'ХК Торпедо')->first()->id;
-
-        //$vympel = Team::where('name', 'ХК Вымпел-К')->first()->id;
-        //$iskra = Team::where('name', 'ХК Искра')->first()->id;
-        //$lokomotiv = Team::where('name', 'ХК Локомотив СЖД')->first()->id;
+        $bgv = Team::where('name', 'ХК БГВ')->first()->id;
 
         $matches = [
             [
-                'team_a_id' => $torpedo,
-                'team_b_id' => $zubr,
-                'date' => '2024-09-04',
-                'time' => '20:00:00',
-                'location' => 'СК "Торпедо"',
-                'score' => '3:8'
-            ],
-            [
                 'team_a_id' => $yaroslavich,
-                'team_b_id' => $pereslavl,
-                'date' => '2024-09-06',
+                'team_b_id' => $zubr,
+                'date' => '2024-09-09',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
-                'score' => '3:8'
+                'score' => '-'
             ],
             [
-                'team_a_id' => $vympelV,
-                'team_b_id' => $yaroslavich,
+                'team_a_id' => $torpedo,
+                'team_b_id' => $vympelV,
                 'date' => '2024-09-10',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
-                'score' => '11:4'
-            ],
-            [
-                'team_a_id' => $vympelV,
-                'team_b_id' => $zubr,
-                'date' => '2024-09-11',
-                'time' => '20:00:00',
-                'location' => 'СК "Торпедо"',
-                'score' => '5:5'
+                'score' => '-'
             ],
             [
                 'team_a_id' => $pereslavl,
-                'team_b_id' => $torpedo,
-                'date' => '2024-09-13',
+                'team_b_id' => $bgv,
+                'date' => '2024-09-12',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
-                'score' => '9:3'
+                'score' => '-'
             ],
-            [
-                'team_a_id' => $pereslavl,
-                'team_b_id' => $zubr,
-                'date' => '2024-09-20',
-                'time' => '20:00:00',
-                'location' => 'СК "Торпедо"',
-                'score' => '6:3'
-            ],
-            [
-                'team_a_id' => $vympelV,
-                'team_b_id' => $torpedo,
-                'date' => '2024-09-22',
-                'time' => '20:00:00',
-                'location' => 'СК "Торпедо"',
-                'score' => '2:2'
-            ],
+//----------------------------------------------------------------
             [
                 'team_a_id' => $yaroslavich,
+                'team_b_id' => $torpedo,
+                'date' => '2024-09-16',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score' => '-'
+            ],
+            [
+                'team_a_id' => $vympelV,
+                'team_b_id' => $bgv,
+                'date' => '2024-09-17',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score' => '-'
+            ],
+            [
+                'team_a_id' => $pereslavl,
                 'team_b_id' => $zubr,
+                'date' => '2024-09-19',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score' => '-'
+            ],
+            //----------------------------------------------------------------
+            [
+                'team_a_id' => $zubr,
+                'team_b_id' => $vympelV,
+                'date' => '2024-09-23',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score' => '-'
+            ],
+            [
+                'team_a_id' => $torpedo,
+                'team_b_id' => $bgv,
                 'date' => '2024-09-24',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
-                'score' => '2:4'
-            ],
-            [
-                'team_a_id' => $vympelV,
-                'team_b_id' => $pereslavl,
-                'date' => '2024-09-27',
-                'time' => '20:00:00',
-                'location' => 'СК "Торпедо"',
-                'score' => '1:3'
+                'score' => '-'
             ],
             [
                 'team_a_id' => $yaroslavich,
-                'team_b_id' => $torpedo,
+                'team_b_id' => $pereslavl,
+                'date' => '2024-09-26',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score' => '-'
+            ],
+            //----------------------------------------------------------------
+            [
+                'team_a_id' => $vympelK,
+                'team_b_id' => $yaroslavich,
+                'date' => '2024-09-30',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score' => '-'
+            ],
+            [
+                'team_a_id' => $zubr,
+                'team_b_id' => $bgv,
                 'date' => '2024-10-01',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
-                'score' => '7:8'
+                'score' => '-'
+            ],
+            [
+                'team_a_id' => $pereslavl,
+                'team_b_id' => $torpedo,
+                'date' => '2024-10-03',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score' => '-'
+            ],
+            //----------------------------------------------------------------
+            [
+                'team_a_id' => $yaroslavich,
+                'team_b_id' => $bgv,
+                'date' => '2024-10-07',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score' => '-'
+            ],
+            [
+                'team_a_id' => $pereslavl,
+                'team_b_id' => $vympelV,
+                'date' => '2024-10-08',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score' => '-'
+            ],
+            [
+                'team_a_id' => $zubr,
+                'team_b_id' => $torpedo,
+                'date' => '2024-10-10',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score' => '-'
             ],
         ];
 

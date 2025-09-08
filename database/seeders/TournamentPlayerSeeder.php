@@ -16,904 +16,749 @@ class TournamentPlayerSeeder extends Seeder
      */
     public function run(): void
     {
-        $tovarischesky = Tournament::where('name', 'Товарищеский турнир')->first()->id;
+        $predsezon = Tournament::where('name', 'Предсезонный турнир')->first()->id;
 
         $pereslavl = Team::where('name', 'ХК Переславль')->first()->id;
         $zubr = Team::where('name', 'ХК Зубр')->first()->id;
         $vympelV = Team::where('name', 'ХК Вымпел-V')->first()->id;
         $yaroslavich = Team::where('name', 'ХК Ярославич')->first()->id;
         $torpedo = Team::where('name', 'ХК Торпедо')->first()->id;
+        $bgv = Team::where('name', 'ХК БГВ')->first()->id;
 
         $pereslavlPlayers = [
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Прокопенко Ярослав Алексеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Безменов Егор')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Авагян Ашот Гнелович')->first()->id,
+                'player_id' => Player::where('full_name', 'Шиляев Даниил')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Уханов Сергей Дмитриевич')->first()->id,
-                'number' => null,
-            ],
-            //----------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Щербаков Тимур Павлович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Шевцов Владимир Владимирович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Паськов Александр Владимирович')->first()->id,
+                'player_id' => Player::where('full_name', 'Киселев Никита')->first()->id,
                 'number' => null,
             ],
             //----------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Савенков Павел Денисович')->first()->id,
+                'player_id' => Player::where('full_name', 'Королев Александр')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Морин Илья Алексеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Комаров Максим')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Ардашев Дмитрий Алексеевич')->first()->id,
-                'number' => null,
-            ],
-            //----------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Королев Александр Владимирович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Плаонов Павел Андреевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Ларионов Павел Сергеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Морин Илья')->first()->id,
                 'number' => null,
             ],
             //----------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Макшеев Олег Андреевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Выдряков Роман')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Жуков Никита Юрьевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Козлов Михаил')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Борисов Степан Алексеевич')->first()->id,
-                'number' => null,
-            ],
-            //----------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Выдряков Вячеслав Иванович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Смирнов Михаил Сергеевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Безменов Егор Юрьевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Мельников Андрей')->first()->id,
                 'number' => null,
             ],
             //----------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Султанов Кирилл Сергеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Гречухин Александр')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Комаров Максим Алексеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Гусев Матвей')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Ленков Максим Сергеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Ларионов Павел ст.')->first()->id,
                 'number' => null,
             ],
             //----------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Хасамутдинов Роман')->first()->id,
+                'player_id' => Player::where('full_name', 'Ларионов Павел мл.')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
+                'team_id' => $pereslavl,
+                'player_id' => Player::where('full_name', 'Смирнов Максим')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $pereslavl,
+                'player_id' => Player::where('full_name', 'Прокопенко Ярослав')->first()->id,
+                'number' => null,
+            ],
+            //----------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $pereslavl,
+                'player_id' => Player::where('full_name', 'Авагин Ашот')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
                 'player_id' => Player::where('full_name', 'Гуров Александр')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Тимофеев Дмитрий')->first()->id,
-                'number' => null,
-            ],
-            //----------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Мельников Андрей')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Гречихин Александр')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
                 'player_id' => Player::where('full_name', 'Савельев Никита')->first()->id,
                 'number' => null,
             ],
+            //----------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Шинев Даниил')->first()->id,
+                'player_id' => Player::where('full_name', 'Выдряков Вячеслав')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $pereslavl,
+                'player_id' => Player::where('full_name', 'Жуков Никита')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $pereslavl,
+                'player_id' => Player::where('full_name', 'Кузнецов Дмитрий')->first()->id,
+                'number' => null,
+            ],
+            //----------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $pereslavl,
+                'player_id' => Player::where('full_name', 'Хисамутдинов Роман')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $pereslavl,
+                'player_id' => Player::where('full_name', 'Цепков Максим')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $pereslavl,
+                'player_id' => Player::where('full_name', 'Мокшашев Александр')->first()->id,
+                'number' => null,
+            ],
+            //----------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $pereslavl,
+                'player_id' => Player::where('full_name', 'Банников Матвей')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $pereslavl,
+                'player_id' => Player::where('full_name', 'Киселев Владислав')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $pereslavl,
+                'player_id' => Player::where('full_name', 'Сударев Кирилл')->first()->id,
                 'number' => null,
             ],
         ];
 
         $zubrPlayers = [
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Бархаткин Артем Александрович')->first()->id,
+                'player_id' => Player::where('full_name', 'Бархаткин Артем')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Щербаков Максим Александрович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Стручинский Виктор Олегович')->first()->id,
+                'player_id' => Player::where('full_name', 'Щербаков Максим')->first()->id,
                 'number' => null,
             ],
             //---------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Ухарский Андрей Вячеславович')->first()->id,
+                'player_id' => Player::where('full_name', 'Пасынков Александр')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Павлов Леонид Алексеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Никулин Семен')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Сорокин Артём Тимурович')->first()->id,
-                'number' => null,
-            ],
-            //---------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Ухарский Андрей Вячеславович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Павлов Леонид Алексеевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Сорокин Артём Тимурович')->first()->id,
+                'player_id' => Player::where('full_name', 'Павлов Леонид')->first()->id,
                 'number' => null,
             ],
             //---------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Ершов Иван Александрович')->first()->id,
+                'player_id' => Player::where('full_name', 'Собенин Даниил')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Ахметов Тимур Сулейманович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Сон Александ Валерьевич')->first()->id,
-                'number' => null,
-            ],
-            //---------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Шикунов Григорий Викторович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Ардашев Кирилл Александрович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Никулин Семён Витальевич')->first()->id,
-                'number' => null,
-            ],
-            //---------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Канавин Евгений Олегович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Данилов Иван Валерьевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Бондырев Игорь Евгеньевич')->first()->id,
-                'number' => null,
-            ],
-            //---------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Кошелев Александр Игоревич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Пасечник Никита Дмитриевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $zubr,
                 'player_id' => Player::where('full_name', 'Кривенко Даниил')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $zubr,
+                'player_id' => Player::where('full_name', 'Кошелев Александр')->first()->id,
+                'number' => null,
+            ],
+            //---------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $zubr,
+                'player_id' => Player::where('full_name', 'Сон Александр')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $zubr,
+                'player_id' => Player::where('full_name', 'Ардашев Дмитрий')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $zubr,
+                'player_id' => Player::where('full_name', 'Ардашев Кирилл')->first()->id,
+                'number' => null,
+            ],
+            //---------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $zubr,
+                'player_id' => Player::where('full_name', 'Сорокин Артем')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $zubr,
+                'player_id' => Player::where('full_name', 'Ершов Иван')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $zubr,
+                'player_id' => Player::where('full_name', 'Данилов Иван')->first()->id,
+                'number' => null,
+            ],
+            //---------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $zubr,
+                'player_id' => Player::where('full_name', 'Бондырев Игорь')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $zubr,
+                'player_id' => Player::where('full_name', 'Кривенко Артем')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $zubr,
+                'player_id' => Player::where('full_name', 'Веселовский Роман')->first()->id,
+                'number' => null,
+            ],
+            //---------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $zubr,
+                'player_id' => Player::where('full_name', 'Ахметов Тимур')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $zubr,
+                'player_id' => Player::where('full_name', 'Стручинский Виктор')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $zubr,
+                'player_id' => Player::where('full_name', 'Ухарский Андрей')->first()->id,
                 'number' => null,
             ],
         ];
 
         $vympelvPlayers = [
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Борисов Иван Александрович')->first()->id,
+                'player_id' => Player::where('full_name', 'Шарпанов Виктор')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Рачев Кирилл Леонидович')->first()->id,
+                'player_id' => Player::where('full_name', 'Бардин Даниил')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Богунов Кирилл Сергеевич')->first()->id,
-                'number' => null,
-            ],
-            //-----------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Бычков Егор Григорьевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Фролов Матвей Михайлович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Лобатый Владислав Дмитриевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Кокарев Александр')->first()->id,
                 'number' => null,
             ],
             //-----------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Лямин Семен Сергеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Пульников Илья')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Сокруто Даниил Алексеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Грибков Илья')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Смирнов Даниил Андреевич')->first()->id,
-                'number' => null,
-            ],
-            //-----------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Белоусов Алексей Владимирович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Трунов Сергей Егорович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Орлов Дмитрий Александрович')->first()->id,
+                'player_id' => Player::where('full_name', 'Фролов Матвей')->first()->id,
                 'number' => null,
             ],
             //-----------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Бирюков Арсений Алексеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Петров Илья')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Александров Алексей Алексеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Лебедев Александр')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Ладысов Сергей')->first()->id,
-                'number' => null,
-            ],
-            //-----------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Бондарев Арсений Сергеевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Кораблев Матвей Михайлович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Федяев Елисей Александрович')->first()->id,
+                'player_id' => Player::where('full_name', 'Лысых Илья')->first()->id,
                 'number' => null,
             ],
             //-----------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Рощин Кирилл Дмитриевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Лямин Семен')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Веселов Артур')->first()->id,
+                'player_id' => Player::where('full_name', 'Белоусов Анатолий')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Волков Владислав Артемович')->first()->id,
-                'number' => null,
-            ],
-            //-----------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Зарубин Денис Олегович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Леонов Даниил Алексеевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Мартынов Никита Сергеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Бычков Егор')->first()->id,
                 'number' => null,
             ],
             //-----------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Грибков Илья Сергеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Волохов Александр')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Пылаев Никита Павлович')->first()->id,
+                'player_id' => Player::where('full_name', 'Игнатьев Кирилл')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Комаров Дмитрий Павлович')->first()->id,
-                'number' => null,
-            ],
-            //-----------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Ионов Александр Сергеевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Колояр Илья')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Игнатьев Кирилл Максимович')->first()->id,
+                'player_id' => Player::where('full_name', 'Сатимбаев Мерген')->first()->id,
                 'number' => null,
             ],
             //-----------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Шайтанов Александ Андреевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Смирнов Даниил')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Зеленский Егор Сергеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Тельцов Иван')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Филипов Максим Алексеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Тимофеев Дмитрий')->first()->id,
+                'number' => null,
+            ],
+            //-----------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $vympelV,
+                'player_id' => Player::where('full_name', 'Уткин Дмитрий')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $vympelV,
+                'player_id' => Player::where('full_name', 'Шайтанов Александр')->first()->id,
                 'number' => null,
             ],
         ];
 
         $yaroslavichPlayers = [
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Аксенов Григорий Сергеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Созонов Юрий')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Андреюк Иван Александрович')->first()->id,
+                'player_id' => Player::where('full_name', 'Тихонов Ярослав')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Вельс Григорий Александрович')->first()->id,
-                'number' => null,
-            ],
-            //--------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Гавриленко Кирилл Григорьевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Золотарев Артем Андреевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Зубов Матвей Юрьевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Шведов Константин')->first()->id,
                 'number' => null,
             ],
             //--------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Коротков Никита Алексеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Паутов Александр')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Котко Матвей Николаевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Сарычев Никита')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Кузнецов Степан Андреевич')->first()->id,
-                'number' => null,
-            ],
-            //--------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Клёмин Владимир Сергеевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Лукьянов Никита Сергеевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Любутов Кирилл Владимирович')->first()->id,
+                'player_id' => Player::where('full_name', 'Яшенин Савелий')->first()->id,
                 'number' => null,
             ],
             //--------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Максимычев Александр Сергеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Кузьмин Владимир')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Идиатуллин Александр Вадимович')->first()->id,
+                'player_id' => Player::where('full_name', 'Чумаков Архип')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Паничев Семен Александрович')->first()->id,
-                'number' => null,
-            ],
-            //--------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Паутов Александ Павлович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Прощин Роман Дмитриевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Тихонов Ярослав Александрович')->first()->id,
+                'player_id' => Player::where('full_name', 'Товстый Александр')->first()->id,
                 'number' => null,
             ],
             //--------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Федотов Георгий Максимович')->first()->id,
+                'player_id' => Player::where('full_name', 'Заливалов Даниил')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Чесалов Алексей Дмитриевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Нежданов Игорь')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Шилов Никита Сергеевич')->first()->id,
-                'number' => null,
-            ],
-            //--------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Яковлев Ярослав Павлович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Лащенов Никита Владимирович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Юханов Дмитрий Александрович')->first()->id,
+                'player_id' => Player::where('full_name', 'Золотов Тихай')->first()->id,
                 'number' => null,
             ],
             //--------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Кузнецов Савелий Сергеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Шилов Никита')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Прощин Роман Дмитриевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Афанасьев Артем')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Яркин Илья Юрьевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Левченко Владислав')->first()->id,
+                'number' => null,
+            ],
+            //--------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $yaroslavich,
+                'player_id' => Player::where('full_name', 'Федотов Георгий')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Нутрихин Илья Владиславович')->first()->id,
+                'player_id' => Player::where('full_name', 'Воронин Тимофей')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $yaroslavich,
+                'player_id' => Player::where('full_name', 'Смирнов Илья')->first()->id,
+                'number' => null,
+            ],
+            //--------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $yaroslavich,
+                'player_id' => Player::where('full_name', 'Зубов Матвей')->first()->id,
                 'number' => null,
             ],
         ];
 
         $torpedoPlayers = [
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Чеблоков Даниил Дмитриевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Чеблоков Даниил')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Тихонов Антон Сергеевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Тихонов Антон')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Пульников Илья Алексеевич')->first()->id,
-                'number' => null,
-            ],
-            //-------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Медведев Георгий Алексеевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Шушин Даниил Владимирович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Шлыков Егор Васильевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Тумаков Иван')->first()->id,
                 'number' => null,
             ],
             //-------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Седов Егор Витальевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Пеньков Никита')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Железняков Мирослав Сергеевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Камушков Клим Владимирович')->first()->id,
-                'number' => null,
-            ],
-            //-------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Ткаченко Никита Александрович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Заблоцкий Евгений Алексеевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Мурадов Алаудин Алиханович')->first()->id,
-                'number' => null,
-            ],
-            //-------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Марков Андрей Михайлович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Никитин Станислав Андреевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Орлов Илья Александрович')->first()->id,
-                'number' => null,
-            ],
-            //-------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Челин Павел Николаевич')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Голубев Владимир Александрович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Иванов Тихон Константинович')->first()->id,
-                'number' => null,
-            ],
-            //-------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Кравчук Егор Владимирович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Белавский Дмитрий Владимирович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Вакорин Дмитрий Витальевич')->first()->id,
-                'number' => null,
-            ],
-            //-------------------------------------
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Тихомиров Даниил Ярославович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
-                'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Тумаков Иван Александрович')->first()->id,
-                'number' => null,
-            ],
-            [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $torpedo,
                 'player_id' => Player::where('full_name', 'Казаков Даниил')->first()->id,
                 'number' => null,
             ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Зазнобин Егор')->first()->id,
+                'number' => null,
+            ],
             //-------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Буров Даниил')->first()->id,
+                'player_id' => Player::where('full_name', 'Челин Павел')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Голубев Владимир')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Иванов Тихон')->first()->id,
+                'number' => null,
+            ],
+            //-------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Кравчук Егор')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Ткаченко Никита')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Крюков Даниил')->first()->id,
+                'number' => null,
+            ],
+            //-------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Марков Андрей')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Морозов Иван')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Медведев Георгий')->first()->id,
+                'number' => null,
+            ],
+            //-------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Шупин Даниил')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Шлыков Егор')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Седов Егор')->first()->id,
+                'number' => null,
+            ],
+            //-------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Железняков Мирослав')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Камушков Клим')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Савченко Павел')->first()->id,
+                'number' => null,
+            ],
+            //-------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Заблоцкий Евгений')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
                 'team_id' => $torpedo,
                 'player_id' => Player::where('full_name', 'Тельман Евгений')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Павлов Сергей')->first()->id,
+                'player_id' => Player::where('full_name', 'Чванчиков Андрей')->first()->id,
                 'number' => null,
             ],
             //-------------------------------------
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Аверьянов Алексей Андреевич')->first()->id,
+                'player_id' => Player::where('full_name', 'Кустов Даниил')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
                 'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Воробьев Владислав Олегович')->first()->id,
+                'player_id' => Player::where('full_name', 'Орлов Илья')->first()->id,
                 'number' => null,
             ],
             [
-                'tournament_id' => $tovarischesky,
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Кулешов Владислав')->first()->id,
+                'number' => null,
+            ],
+            //-------------------------------------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Воробьев Владислав')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
                 'team_id' => $torpedo,
                 'player_id' => Player::where('full_name', 'Малетин Илья')->first()->id,
                 'number' => null,

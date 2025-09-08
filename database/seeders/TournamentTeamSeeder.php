@@ -15,7 +15,7 @@ class TournamentTeamSeeder extends Seeder
      */
     public function run(): void
     {
-        $tovarischesky = Tournament::where('name', 'Товарищеский турнир')->first()->id;
+        $predsezon = Tournament::where('name', 'Предсезонный турнир')->first()->id;
 
         $pereslavl = Team::where('name', 'ХК Переславль')->first()->id;
         $zubr = Team::where('name', 'ХК Зубр')->first()->id;
@@ -24,27 +24,27 @@ class TournamentTeamSeeder extends Seeder
         $torpedo = Team::where('name', 'ХК Торпедо')->first()->id;
 
         TournamentTeam::create([
-            'tournament_id' => $tovarischesky,
+            'tournament_id' => $predsezon,
             'team_id' => $pereslavl,
         ]);
 
         TournamentTeam::create([
-            'tournament_id' => $tovarischesky,
+            'tournament_id' => $predsezon,
             'team_id' => $zubr,
         ]);
 
         TournamentTeam::create([
-            'tournament_id' => $tovarischesky,
+            'tournament_id' => $predsezon,
             'team_id' => $vympelV,
         ]);
 
         TournamentTeam::create([
-            'tournament_id' => $tovarischesky,
+            'tournament_id' => $predsezon,
             'team_id' => $yaroslavich,
         ]);
 
         TournamentTeam::create([
-            'tournament_id' => $tovarischesky,
+            'tournament_id' => $predsezon,
             'team_id' => $torpedo,
         ]);
     }
