@@ -17,7 +17,6 @@ class TournamentGameSeeder extends Seeder
         $pereslavl = Team::where('name', 'ХК Переславль')->first()->id;
         $zubr = Team::where('name', 'ХК Зубр')->first()->id;
         $vympelV = Team::where('name', 'ХК Вымпел-V')->first()->id;
-        $vympelK = Team::where('name', 'ХК Вымпел-К')->first()->id;
         $yaroslavich = Team::where('name', 'ХК Ярославич')->first()->id;
         $torpedo = Team::where('name', 'ХК Торпедо')->first()->id;
         $bgv = Team::where('name', 'ХК БГВ')->first()->id;
@@ -96,7 +95,7 @@ class TournamentGameSeeder extends Seeder
 //-----------------------------------------------------------------------------------------
         TournamentGame::create([
             'tournament_id' => $predsezon,
-            'game_id' => Game::where('team_a_id', $vympelK)
+            'game_id' => Game::where('team_a_id', $vympelV)
                 ->where('team_b_id', $yaroslavich)
                 ->where('date','2024-09-30')
                 ->first()->id,

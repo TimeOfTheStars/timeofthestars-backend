@@ -15,7 +15,6 @@ class GameMatchSeeder extends Seeder
         $pereslavl = Team::where('name', 'ХК Переславль')->first()->id;
         $zubr = Team::where('name', 'ХК Зубр')->first()->id;
         $vympelV = Team::where('name', 'ХК Вымпел-V')->first()->id;
-        $vympelK = Team::where('name', 'ХК Вымпел-К')->first()->id;
         $yaroslavich = Team::where('name', 'ХК Ярославич')->first()->id;
         $torpedo = Team::where('name', 'ХК Торпедо')->first()->id;
         $bgv = Team::where('name', 'ХК БГВ')->first()->id;
@@ -97,7 +96,7 @@ class GameMatchSeeder extends Seeder
             ],
             //----------------------------------------------------------------
             [
-                'team_a_id' => $vympelK,
+                'team_a_id' => $vympelV,
                 'team_b_id' => $yaroslavich,
                 'date' => '2024-09-30',
                 'time' => '20:00:00',
