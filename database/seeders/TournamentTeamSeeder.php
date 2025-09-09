@@ -22,6 +22,7 @@ class TournamentTeamSeeder extends Seeder
         $vympelV = Team::where('name', 'ХК Вымпел-V')->first()->id;
         $yaroslavich = Team::where('name', 'ХК Ярославич')->first()->id;
         $torpedo = Team::where('name', 'ХК Торпедо')->first()->id;
+        $bgv = Team::where('name', 'ХК БГВ')->first()->id;
 
         TournamentTeam::create([
             'tournament_id' => $predsezon,
@@ -46,6 +47,11 @@ class TournamentTeamSeeder extends Seeder
         TournamentTeam::create([
             'tournament_id' => $predsezon,
             'team_id' => $torpedo,
+        ]);
+
+        TournamentTeam::create([
+            'tournament_id' => $predsezon,
+            'team_id' => $bgv,
         ]);
     }
 }
