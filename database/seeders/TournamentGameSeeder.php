@@ -25,7 +25,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $yaroslavich)
                 ->where('team_b_id', $zubr)
-                ->where('date','2024-09-09')
+                ->where('date','2025-09-09')
                 ->first()->id,
         ]);
 
@@ -33,7 +33,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $torpedo)
                 ->where('team_b_id', $vympelV)
-                ->where('date','2024-09-10')
+                ->where('date','2025-09-10')
                 ->first()->id,
         ]);
 
@@ -41,7 +41,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $pereslavl)
                 ->where('team_b_id', $bgv)
-                ->where('date','2024-09-12')
+                ->where('date','2025-09-12')
                 ->first()->id,
         ]);
 //-----------------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $yaroslavich)
                 ->where('team_b_id', $torpedo)
-                ->where('date','2024-09-16')
+                ->where('date','2025-09-16')
                 ->first()->id,
         ]);
 
@@ -57,7 +57,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $vympelV)
                 ->where('team_b_id', $bgv)
-                ->where('date','2024-09-17')
+                ->where('date','2025-09-17')
                 ->first()->id,
         ]);
 
@@ -65,7 +65,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $pereslavl)
                 ->where('team_b_id', $zubr)
-                ->where('date','2024-09-19')
+                ->where('date','2025-09-19')
                 ->first()->id,
         ]);
 //-----------------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $zubr)
                 ->where('team_b_id', $vympelV)
-                ->where('date','2024-09-23')
+                ->where('date','2025-09-23')
                 ->first()->id,
         ]);
 
@@ -81,7 +81,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $torpedo)
                 ->where('team_b_id', $bgv)
-                ->where('date','2024-09-24')
+                ->where('date','2025-09-24')
                 ->first()->id,
         ]);
 
@@ -89,7 +89,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $yaroslavich)
                 ->where('team_b_id', $pereslavl)
-                ->where('date','2024-09-26')
+                ->where('date','2025-09-26')
                 ->first()->id,
         ]);
 //-----------------------------------------------------------------------------------------
@@ -97,7 +97,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $vympelV)
                 ->where('team_b_id', $yaroslavich)
-                ->where('date','2024-09-30')
+                ->where('date','2025-09-30')
                 ->first()->id,
         ]);
 
@@ -105,7 +105,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $zubr)
                 ->where('team_b_id', $bgv)
-                ->where('date','2024-10-01')
+                ->where('date','2025-10-01')
                 ->first()->id,
         ]);
 
@@ -113,7 +113,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $pereslavl)
                 ->where('team_b_id', $torpedo)
-                ->where('date','2024-10-03')
+                ->where('date','2025-10-03')
                 ->first()->id,
         ]);
         //-----------------------------------------------------------------------------------------
@@ -121,7 +121,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $yaroslavich)
                 ->where('team_b_id', $bgv)
-                ->where('date','2024-10-07')
+                ->where('date','2025-10-07')
                 ->first()->id,
         ]);
 
@@ -129,7 +129,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $pereslavl)
                 ->where('team_b_id', $vympelV)
-                ->where('date','2024-10-08')
+                ->where('date','2025-10-08')
                 ->first()->id,
         ]);
 
@@ -137,7 +137,7 @@ class TournamentGameSeeder extends Seeder
             'tournament_id' => $predsezon,
             'game_id' => Game::where('team_a_id', $zubr)
                 ->where('team_b_id', $torpedo)
-                ->where('date','2024-10-10')
+                ->where('date','2025-10-10')
                 ->first()->id,
         ]);
     }

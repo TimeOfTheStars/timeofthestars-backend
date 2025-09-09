@@ -23,7 +23,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $yaroslavich,
                 'team_b_id' => $zubr,
-                'date' => '2024-09-09',
+                'date' => '2025-09-09',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -31,7 +31,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $torpedo,
                 'team_b_id' => $vympelV,
-                'date' => '2024-09-10',
+                'date' => '2025-09-10',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -39,7 +39,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $pereslavl,
                 'team_b_id' => $bgv,
-                'date' => '2024-09-12',
+                'date' => '2025-09-12',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -48,7 +48,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $yaroslavich,
                 'team_b_id' => $torpedo,
-                'date' => '2024-09-16',
+                'date' => '2025-09-16',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -56,7 +56,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $vympelV,
                 'team_b_id' => $bgv,
-                'date' => '2024-09-17',
+                'date' => '2025-09-17',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -64,7 +64,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $pereslavl,
                 'team_b_id' => $zubr,
-                'date' => '2024-09-19',
+                'date' => '2025-09-19',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -73,7 +73,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $zubr,
                 'team_b_id' => $vympelV,
-                'date' => '2024-09-23',
+                'date' => '2025-09-23',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -81,7 +81,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $torpedo,
                 'team_b_id' => $bgv,
-                'date' => '2024-09-24',
+                'date' => '2025-09-24',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -89,7 +89,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $yaroslavich,
                 'team_b_id' => $pereslavl,
-                'date' => '2024-09-26',
+                'date' => '2025-09-26',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -98,7 +98,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $vympelV,
                 'team_b_id' => $yaroslavich,
-                'date' => '2024-09-30',
+                'date' => '2025-09-30',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -106,7 +106,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $zubr,
                 'team_b_id' => $bgv,
-                'date' => '2024-10-01',
+                'date' => '2025-10-01',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -114,7 +114,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $pereslavl,
                 'team_b_id' => $torpedo,
-                'date' => '2024-10-03',
+                'date' => '2025-10-03',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -123,7 +123,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $yaroslavich,
                 'team_b_id' => $bgv,
-                'date' => '2024-10-07',
+                'date' => '2025-10-07',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -131,7 +131,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $pereslavl,
                 'team_b_id' => $vympelV,
-                'date' => '2024-10-08',
+                'date' => '2025-10-08',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
@@ -139,7 +139,7 @@ class GameMatchSeeder extends Seeder
             [
                 'team_a_id' => $zubr,
                 'team_b_id' => $torpedo,
-                'date' => '2024-10-10',
+                'date' => '2025-10-10',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score' => null
