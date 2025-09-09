@@ -803,7 +803,7 @@ class PlayerSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-// Команда: ХК Вымпел-у
+// Команда: ХК Вымпел-V
         Player::create([
             'full_name' => 'Шарпанов Виктор',
             'birth_date' => null,
@@ -958,6 +958,231 @@ class PlayerSeeder extends Seeder
         ]);
         Player::create([
             'full_name' => 'Шайтанов Александр',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+// БГВ
+        Player::create([
+            'full_name' => 'Тимощенко Алексей',
+            'birth_date' => null,
+            'position' => 'вратарь',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Лемеза Вадим',
+            'birth_date' => null,
+            'position' => 'вратарь',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Канаев Даниил',
+            'birth_date' => null,
+            'position' => 'вратарь',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Мосолов Николай',
+            'birth_date' => null,
+            'position' => 'защитник',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Ларюхин Владислав',
+            'birth_date' => null,
+            'position' => 'защитник',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Туркин Владислав',
+            'birth_date' => null,
+            'position' => 'защитник',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Тонков Никита',
+            'birth_date' => null,
+            'position' => 'защитник',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Пучков Павел',
+            'birth_date' => null,
+            'position' => 'защитник',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Пригоренко Ярослав',
+            'birth_date' => null,
+            'position' => 'защитник',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Еремеев Матвей',
+            'birth_date' => null,
+            'position' => 'защитник',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Слободян Максим',
+            'birth_date' => null,
+            'position' => 'защитник',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Антипов Никита',
+            'birth_date' => null,
+            'position' => 'защитник',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Лисенчук Денис',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Шолгин Даниил',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Зарубин Денис',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Разживин Артем',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Соколов Илья',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Голосов Егор',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Новиков Антон',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Васильев Максим',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Лавров Дмитрий',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Филиппов Илья',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Лобимов Никита',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Устинов Даниил',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Player::create([
+            'full_name' => 'Шмелев Валерий',
             'birth_date' => null,
             'position' => 'нападающий',
             'grip' => null,

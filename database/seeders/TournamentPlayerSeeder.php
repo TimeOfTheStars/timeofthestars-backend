@@ -765,6 +765,166 @@ class TournamentPlayerSeeder extends Seeder
             ],
         ];
 
+        $bgvPlayers = [
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Тимощенко Алексей')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Лемеза Вадим')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Канаев Даниил')->first()->id,
+                'number' => null,
+            ],
+            //------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Мосолов Николай')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Ларюхин Владислав')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Туркин Владислав')->first()->id,
+                'number' => null,
+            ],
+            //------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Тонков Никита')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Пучков Павел')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Пригоренко Ярослав')->first()->id,
+                'number' => null,
+            ],
+            //------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Еремеев Матвей')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Слободян Максим')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Антипов Никита')->first()->id,
+                'number' => null,
+            ],
+            //------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Лисенчук Денис')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Шолгин Даниил')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Зарубин Денис')->first()->id,
+                'number' => null,
+            ],
+            //------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Разживин Артем')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Соколов Илья')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Голосов Егор')->first()->id,
+                'number' => null,
+            ],
+            //------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Новиков Антон')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Васильев Максим')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Лавров Дмитрий')->first()->id,
+                'number' => null,
+            ],
+            //------
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Филиппов Илья')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Лобимов Никита')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Устинов Даниил')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $bgv,
+                'player_id' => Player::where('full_name', 'Шмелев Валерий')->first()->id,
+                'number' => null,
+            ],
+        ];
+
         foreach ($pereslavlPlayers as $player) {
             TournamentPlayer::create($player);
         }
@@ -782,6 +942,10 @@ class TournamentPlayerSeeder extends Seeder
         }
 
         foreach ($torpedoPlayers as $player) {
+            TournamentPlayer::create($player);
+        }
+
+        foreach ($bgvPlayers as $player) {
             TournamentPlayer::create($player);
         }
     }
