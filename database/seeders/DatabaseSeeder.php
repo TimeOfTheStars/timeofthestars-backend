@@ -2,14 +2,10 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
         $this->call([
@@ -18,15 +14,20 @@ class DatabaseSeeder extends Seeder
 
             GameMatchSeeder::class,
 
-            //ChampionshipSeeder::class,
+//---------------------- Чемпионаты -----------------------
+            ChampionshipSeeder::class,
+
             //ChampionshipGameSeeder::class,
             //ChampionshipTeamSeeder::class,
             //ChampionshipPlayerSeeder::class,
 
+//---------------------------------------------------------
+
+//------------------------ Турниры ------------------------
             TournamentSeeder::class,
 
             PreSeasonSeeder::class,
-
+//---------------------------------------------------------
             UserSeeder::class,
         ]);
     }

@@ -1143,7 +1143,7 @@ class PreSeasonSeeder extends Seeder
         foreach ($tournamentGames as $game) {
             TournamentGame::create($game);
         }
-        echo "✅ Связь матчей с турниром настроена.\n\n";
+        echo "\n✅ Связь матчей с турниром настроена.\n\n";
 
         foreach ($teams as $team) {
             TournamentTeam::create($team);

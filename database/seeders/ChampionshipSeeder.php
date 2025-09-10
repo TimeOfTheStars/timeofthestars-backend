@@ -8,9 +8,6 @@ use App\Models\Championship;
 
 class ChampionshipSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
 //        Championship::create([
