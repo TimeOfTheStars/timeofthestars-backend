@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Game extends Model
 {
-    protected $fillable = ['team_a_id', 'team_b_id', 'date', 'time', 'location', 'score'];
+    protected $fillable = ['team_a_id', 'team_b_id', 'date', 'time', 'location', 'score_team_a', 'score_team_b'];
 
     public function tournaments(): BelongsToMany
     {

@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('city')->nullable();
             $table->unsignedInteger('players_count')->default(0);
-            $table->unsignedInteger('wins')->default(0);
-            $table->unsignedInteger('losses')->default(0);
             $table->timestamps();
         });
     }

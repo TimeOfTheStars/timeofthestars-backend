@@ -27,31 +27,43 @@ class TournamentTeamSeeder extends Seeder
         TournamentTeam::create([
             'tournament_id' => $predsezon,
             'team_id' => $pereslavl,
+            'wins' => 0,
+            'losses' => 0,
         ]);
 
         TournamentTeam::create([
             'tournament_id' => $predsezon,
             'team_id' => $zubr,
+            'wins' => 1,
+            'losses' => 0,
         ]);
 
         TournamentTeam::create([
             'tournament_id' => $predsezon,
             'team_id' => $vympelV,
+            'wins' => 0,
+            'losses' => 0,
         ]);
 
         TournamentTeam::create([
             'tournament_id' => $predsezon,
             'team_id' => $yaroslavich,
+            'wins' => 0,
+            'losses' => 1,
         ]);
 
         TournamentTeam::create([
             'tournament_id' => $predsezon,
             'team_id' => $torpedo,
+            'wins' => 0,
+            'losses' => 0,
         ]);
 
         TournamentTeam::create([
             'tournament_id' => $predsezon,
             'team_id' => $bgv,
+            'wins' => 0,
+            'losses' => 0,
         ]);
     }
 }

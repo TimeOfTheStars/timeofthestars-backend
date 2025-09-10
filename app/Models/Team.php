@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Team extends Model
 {
-    protected $fillable = ['name', 'city', 'players_count', 'wins', 'losses'];
+    protected $fillable = ['name', 'city', 'players_count'];
 
     public function gamesAsTeamA(): HasMany
     {
