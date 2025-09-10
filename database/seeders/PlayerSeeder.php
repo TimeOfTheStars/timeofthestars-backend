@@ -53,7 +53,7 @@ class PlayerSeeder extends Seeder
             'updated_at' => now(),
         ]);
         Player::create([
-            'full_name' => 'Яшенин Савелий',
+            'full_name' => 'Ященин Савелий',
             'birth_date' => null,
             'position' => 'защитник',
             'grip' => null,
@@ -77,7 +77,7 @@ class PlayerSeeder extends Seeder
             'updated_at' => now(),
         ]);
         Player::create([
-            'full_name' => 'Кузьмин Владимир',
+            'full_name' => 'Клемин Владимир',
             'birth_date' => null,
             'position' => 'защитник',
             'grip' => null,
@@ -101,7 +101,7 @@ class PlayerSeeder extends Seeder
             'updated_at' => now(),
         ]);
         Player::create([
-            'full_name' => 'Заливалов Даниил',
+            'full_name' => 'Зашивалов Даниил',
             'birth_date' => null,
             'position' => 'нападающий',
             'grip' => null,
@@ -117,7 +117,7 @@ class PlayerSeeder extends Seeder
             'updated_at' => now(),
         ]);
         Player::create([
-            'full_name' => 'Золотов Тихай',
+            'full_name' => 'Золотов Тихан',
             'birth_date' => null,
             'position' => 'нападающий',
             'grip' => null,
@@ -263,7 +263,7 @@ class PlayerSeeder extends Seeder
             'updated_at' => now(),
         ]);
         Player::create([
-            'full_name' => 'Беланский Дмитрий',
+            'full_name' => 'Белавский Дмитрий',
             'birth_date' => null,
             'position' => 'защитник',
             'grip' => null,
@@ -311,7 +311,7 @@ class PlayerSeeder extends Seeder
             'updated_at' => now(),
         ]);
         Player::create([
-            'full_name' => 'Шупин Даниил',
+            'full_name' => 'Шушин Даниил',
             'birth_date' => null,
             'position' => 'нападающий',
             'grip' => null,
@@ -545,7 +545,7 @@ class PlayerSeeder extends Seeder
             'updated_at' => now(),
         ]);
         Player::create([
-            'full_name' => 'Авагин Ашот',
+            'full_name' => 'Авагян Ашот',
             'birth_date' => null,
             'position' => 'нападающий',
             'grip' => null,
@@ -609,7 +609,7 @@ class PlayerSeeder extends Seeder
             'updated_at' => now(),
         ]);
         Player::create([
-            'full_name' => 'Мокшашев Александр',
+            'full_name' => 'Мокшанцев Александр',
             'birth_date' => null,
             'position' => 'нападающий',
             'grip' => null,
@@ -917,7 +917,7 @@ class PlayerSeeder extends Seeder
             'updated_at' => now(),
         ]);
         Player::create([
-            'full_name' => 'Сатимбаев Мерген',
+            'full_name' => 'Сагимбаев Мерген',
             'birth_date' => null,
             'position' => 'нападающий',
             'grip' => null,
@@ -966,7 +966,7 @@ class PlayerSeeder extends Seeder
         ]);
 // БГВ
         Player::create([
-            'full_name' => 'Тимощенко Алексей',
+            'full_name' => 'Тимошенко Алексей',
             'birth_date' => null,
             'position' => 'вратарь',
             'grip' => null,
@@ -1029,7 +1029,7 @@ class PlayerSeeder extends Seeder
         ]);
 
         Player::create([
-            'full_name' => 'Пучков Павел',
+            'full_name' => 'Пушков Павел',
             'birth_date' => null,
             'position' => 'защитник',
             'grip' => null,
@@ -1038,7 +1038,7 @@ class PlayerSeeder extends Seeder
         ]);
 
         Player::create([
-            'full_name' => 'Пригоренко Ярослав',
+            'full_name' => 'Григоренко Ярослав',
             'birth_date' => null,
             'position' => 'защитник',
             'grip' => null,
@@ -1047,7 +1047,7 @@ class PlayerSeeder extends Seeder
         ]);
 
         Player::create([
-            'full_name' => 'Еремеев Матвей',
+            'full_name' => 'Еремычев Матвей',
             'birth_date' => null,
             'position' => 'защитник',
             'grip' => null,
@@ -1056,7 +1056,7 @@ class PlayerSeeder extends Seeder
         ]);
 
         Player::create([
-            'full_name' => 'Слободян Максим',
+            'full_name' => 'Слободянюк Максим',
             'birth_date' => null,
             'position' => 'защитник',
             'grip' => null,
@@ -1083,7 +1083,7 @@ class PlayerSeeder extends Seeder
         ]);
 
         Player::create([
-            'full_name' => 'Шолгин Даниил',
+            'full_name' => 'Шопыгин Даниил',
             'birth_date' => null,
             'position' => 'нападающий',
             'grip' => null,
@@ -1164,7 +1164,7 @@ class PlayerSeeder extends Seeder
         ]);
 
         Player::create([
-            'full_name' => 'Лобимов Никита',
+            'full_name' => 'Любимов Никита',
             'birth_date' => null,
             'position' => 'нападающий',
             'grip' => null,

@@ -124,7 +124,7 @@ class TournamentPlayerSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Авагин Ашот')->first()->id,
+                'player_id' => Player::where('full_name', 'Авагян Ашот')->first()->id,
                 'number' => null,
             ],
             [
@@ -174,7 +174,7 @@ class TournamentPlayerSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Мокшашев Александр')->first()->id,
+                'player_id' => Player::where('full_name', 'Мокшанцев Александр')->first()->id,
                 'number' => null,
             ],
             //----------------------------------------
@@ -419,7 +419,7 @@ class TournamentPlayerSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
-                'player_id' => Player::where('full_name', 'Сатимбаев Мерген')->first()->id,
+                'player_id' => Player::where('full_name', 'Сагимбаев Мерген')->first()->id,
                 'number' => null,
             ],
             //-----------------------------------------
@@ -491,14 +491,14 @@ class TournamentPlayerSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Яшенин Савелий')->first()->id,
+                'player_id' => Player::where('full_name', 'Ященин Савелий')->first()->id,
                 'number' => null,
             ],
             //--------------------------------------
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Кузьмин Владимир')->first()->id,
+                'player_id' => Player::where('full_name', 'Клемин Владимир')->first()->id,
                 'number' => null,
             ],
             [
@@ -517,7 +517,7 @@ class TournamentPlayerSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Заливалов Даниил')->first()->id,
+                'player_id' => Player::where('full_name', 'Зашивалов Даниил')->first()->id,
                 'number' => null,
             ],
             [
@@ -529,7 +529,7 @@ class TournamentPlayerSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Золотов Тихай')->first()->id,
+                'player_id' => Player::where('full_name', 'Золотов Тихан')->first()->id,
                 'number' => null,
             ],
             //--------------------------------------
@@ -646,6 +646,12 @@ class TournamentPlayerSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $torpedo,
+                'player_id' => Player::where('full_name', 'Белавский Дмитрий')->first()->id,
+                'number' => null,
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $torpedo,
                 'player_id' => Player::where('full_name', 'Ткаченко Никита')->first()->id,
                 'number' => null,
             ],
@@ -678,7 +684,7 @@ class TournamentPlayerSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $torpedo,
-                'player_id' => Player::where('full_name', 'Шупин Даниил')->first()->id,
+                'player_id' => Player::where('full_name', 'Шушин Даниил')->first()->id,
                 'number' => null,
             ],
             [
@@ -769,7 +775,7 @@ class TournamentPlayerSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $bgv,
-                'player_id' => Player::where('full_name', 'Тимощенко Алексей')->first()->id,
+                'player_id' => Player::where('full_name', 'Тимошенко Алексей')->first()->id,
                 'number' => null,
             ],
             [
@@ -813,26 +819,26 @@ class TournamentPlayerSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $bgv,
-                'player_id' => Player::where('full_name', 'Пучков Павел')->first()->id,
+                'player_id' => Player::where('full_name', 'Пушков Павел')->first()->id,
                 'number' => null,
             ],
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $bgv,
-                'player_id' => Player::where('full_name', 'Пригоренко Ярослав')->first()->id,
+                'player_id' => Player::where('full_name', 'Григоренко Ярослав')->first()->id,
                 'number' => null,
             ],
             //------
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $bgv,
-                'player_id' => Player::where('full_name', 'Еремеев Матвей')->first()->id,
+                'player_id' => Player::where('full_name', 'Еремычев Матвей')->first()->id,
                 'number' => null,
             ],
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $bgv,
-                'player_id' => Player::where('full_name', 'Слободян Максим')->first()->id,
+                'player_id' => Player::where('full_name', 'Слободянюк Максим')->first()->id,
                 'number' => null,
             ],
             [
@@ -851,7 +857,7 @@ class TournamentPlayerSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $bgv,
-                'player_id' => Player::where('full_name', 'Шолгин Даниил')->first()->id,
+                'player_id' => Player::where('full_name', 'Шопыгин Даниил')->first()->id,
                 'number' => null,
             ],
             [
@@ -908,7 +914,7 @@ class TournamentPlayerSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $bgv,
-                'player_id' => Player::where('full_name', 'Лобимов Никита')->first()->id,
+                'player_id' => Player::where('full_name', 'Любимов Никита')->first()->id,
                 'number' => null,
             ],
             [
