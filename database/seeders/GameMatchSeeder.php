@@ -26,7 +26,7 @@ class GameMatchSeeder extends Seeder
                 'date' => '2025-09-09',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
-                'score' => null
+                'score' => '2 : 8'
             ],
             [
                 'team_a_id' => $torpedo,
