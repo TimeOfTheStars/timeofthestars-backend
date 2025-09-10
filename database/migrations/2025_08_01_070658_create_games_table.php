@@ -18,7 +18,6 @@ return new class extends Migration
             $table->date('date');
             $table->time('time');
             $table->string('location')->nullable();
-            //$table->string('score')->nullable(); // пример: '2:1'
             $table->unsignedInteger('score_team_a')->nullable();
             $table->unsignedInteger('score_team_b')->nullable();
             $table->timestamps();

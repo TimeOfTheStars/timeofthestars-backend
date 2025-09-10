@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
 
             PreSeasonSeeder::class,
 //---------------------------------------------------------
+
+        TournamentTeamsSeeder::class,
             UserSeeder::class,
         ]);
     }
