@@ -13,21 +13,20 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            TeamSeeder::class, //+
-            PlayerSeeder::class, //+
+            TeamSeeder::class,
+            PlayerSeeder::class,
 
-            GameMatchSeeder::class,//+
+            GameMatchSeeder::class,
 
-            //ChampionshipSeeder::class, //+
+            //ChampionshipSeeder::class,
             //ChampionshipGameSeeder::class,
             //ChampionshipTeamSeeder::class,
             //ChampionshipPlayerSeeder::class,
 
-            TournamentSeeder::class,//+
+            TournamentSeeder::class,
+
             PreSeasonSeeder::class,
-            //TournamentGameSeeder::class,//+
-            //TournamentTeamSeeder::class,//+
-            //TournamentPlayerSeeder::class,
+
             UserSeeder::class,
         ]);
     }
