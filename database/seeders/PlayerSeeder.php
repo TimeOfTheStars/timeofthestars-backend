@@ -831,7 +831,7 @@ class PlayerSeeder extends Seeder
             [
                 'full_name' => 'Кузнецов Даниил',
                 'birth_date' => null,
-                'position' => 'нападающий',
+                'position' => 'вратарь',
                 'grip' => null,
                 'created_at' => now(),
                 'updated_at' => now(),

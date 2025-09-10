@@ -350,12 +350,12 @@ class PreSeasonSeeder extends Seeder
         ];
 
         $zubrPlayers = [
-            [
-                'tournament_id' => $predsezon,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Бархаткин Артем')->first()->id,
-                'number' => 80,
-            ],
+//            [
+//                'tournament_id' => $predsezon,
+//                'team_id' => $zubr,
+//                'player_id' => Player::where('full_name', 'Бархаткин Артем')->first()->id,
+//                'number' => 80,
+//            ],
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $zubr,
@@ -452,13 +452,13 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 1,
             ],
             //---------------------------------------
-            [
-                'tournament_id' => $predsezon,
-                'team_id' => $zubr,
-                'player_id' => Player::where('full_name', 'Бондырев Игорь')->first()->id,
-                'number' => 43,
-                'assists' => 1,
-            ],
+//            [
+//                'tournament_id' => $predsezon,
+//                'team_id' => $zubr,
+//                'player_id' => Player::where('full_name', 'Бондырев Игорь')->first()->id,
+//                'number' => 43,
+//                'assists' => 1,
+//            ],
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $zubr,
@@ -510,7 +510,7 @@ class PreSeasonSeeder extends Seeder
                 'tournament_id' => $predsezon,
                 'team_id' => $zubr,
                 'player_id' => Player::where('full_name', 'Кузнецов Даниил')->first()->id,
-                'number' => 81,
+                'number' => 31,
             ],
         ];
 
@@ -644,24 +644,24 @@ class PreSeasonSeeder extends Seeder
         ];
 
         $yaroslavichPlayers = [
-            [
-                'tournament_id' => $predsezon,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Созонов Юрий')->first()->id,
-                'number' => null,
-            ],
+//            [
+//                'tournament_id' => $predsezon,
+//                'team_id' => $yaroslavich,
+//                'player_id' => Player::where('full_name', 'Созонов Юрий')->first()->id,
+//                'number' => null,
+//            ],
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
                 'player_id' => Player::where('full_name', 'Тихонов Ярослав')->first()->id,
-                'number' => null,
+                'number' => 33,
             ],
-            [
-                'tournament_id' => $predsezon,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Шведов Константин')->first()->id,
-                'number' => null,
-            ],
+//            [
+//                'tournament_id' => $predsezon,
+//                'team_id' => $yaroslavich,
+//                'player_id' => Player::where('full_name', 'Шведов Константин')->first()->id,
+//                'number' => null,
+//            ],
             //--------------------------------------
             [
                 'tournament_id' => $predsezon,
@@ -669,30 +669,30 @@ class PreSeasonSeeder extends Seeder
                 'player_id' => Player::where('full_name', 'Паутов Александр')->first()->id,
                 'number' => 17,
             ],
-            [
-                'tournament_id' => $predsezon,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Сарычев Никита')->first()->id,
-                'number' => 42,
-            ],
-            [
-                'tournament_id' => $predsezon,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Ященин Савелий')->first()->id,
-                'number' => 44,
-            ],
+//            [
+//                'tournament_id' => $predsezon,
+//                'team_id' => $yaroslavich,
+//                'player_id' => Player::where('full_name', 'Сарычев Никита')->first()->id,
+//                'number' => 42,
+//            ],
+//            [
+//                'tournament_id' => $predsezon,
+//                'team_id' => $yaroslavich,
+//                'player_id' => Player::where('full_name', 'Ященин Савелий')->first()->id,
+//                'number' => 44,
+//            ],
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
                 'player_id' => Player::where('full_name', 'Красильников Георгий')->first()->id,
                 'number' => 45,
             ],
-            [
-                'tournament_id' => $predsezon,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Вельс Григорий')->first()->id,
-                'number' => 44,
-            ],
+//            [
+//                'tournament_id' => $predsezon,
+//                'team_id' => $yaroslavich,
+//                'player_id' => Player::where('full_name', 'Вельс Григорий')->first()->id,
+//                'number' => 44,
+//            ],
             //--------------------------------------
             [
                 'tournament_id' => $predsezon,
@@ -726,12 +726,12 @@ class PreSeasonSeeder extends Seeder
                 'number' => 29,
                 'assists'=> 1,
             ],
-            [
-                'tournament_id' => $predsezon,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Золотов Тихан')->first()->id,
-                'number' => 31,
-            ],
+//            [
+//                'tournament_id' => $predsezon,
+//                'team_id' => $yaroslavich,
+//                'player_id' => Player::where('full_name', 'Золотов Тихан')->first()->id,
+//                'number' => 31,
+//            ],
             //--------------------------------------
             [
                 'tournament_id' => $predsezon,
