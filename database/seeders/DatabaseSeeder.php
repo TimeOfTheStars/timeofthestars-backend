@@ -24,9 +24,10 @@ class DatabaseSeeder extends Seeder
             //ChampionshipPlayerSeeder::class,
 
             TournamentSeeder::class,//+
-            TournamentGameSeeder::class,//+
-            TournamentTeamSeeder::class,//+
-            TournamentPlayerSeeder::class,
+            PreSeasonSeeder::class,
+            //TournamentGameSeeder::class,//+
+            //TournamentTeamSeeder::class,//+
+            //TournamentPlayerSeeder::class,
             UserSeeder::class,
         ]);
     }
