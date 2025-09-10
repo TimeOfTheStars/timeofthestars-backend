@@ -17,6 +17,10 @@ return new class extends Migration
             $table->foreignId('team_id')->constrained()->onDelete('cascade');
             $table->unsignedInteger('wins')->default(0);
             $table->unsignedInteger('losses')->default(0);
+            $table->unsignedInteger('draws')->default(0);
+            $table->unsignedInteger('goals_scored')->default(0);
+            $table->unsignedInteger('goals_conceded')->default(0);
+            $table->unsignedInteger('games')->default(0);
             $table->timestamps();
         });
     }
