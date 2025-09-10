@@ -192,7 +192,7 @@ class PlayerSeeder extends Seeder
         $torpedoPlayers = [
             [
                 'full_name' => 'Чеблоков Даниил',
-                'birth_date' => null,
+                'birth_date' => '2001-12-27',
                 'position' => 'вратарь',
                 'grip' => null,
                 'created_at' => now(),
@@ -424,6 +424,30 @@ class PlayerSeeder extends Seeder
             ],
             [
                 'full_name' => 'Малетин Илья',
+                'birth_date' => null,
+                'position' => 'нападающий',
+                'grip' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'full_name' => 'Пятаков Алексей',
+                'birth_date' => null,
+                'position' => 'нападающий',
+                'grip' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'full_name' => 'Жилов Сергей',
+                'birth_date' => null,
+                'position' => 'нападающий',
+                'grip' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'full_name' => 'Таганчиков Сергей',
                 'birth_date' => null,
                 'position' => 'нападающий',
                 'grip' => null,
@@ -993,6 +1017,22 @@ class PlayerSeeder extends Seeder
             ],
             [
                 'full_name' => 'Шайтанов Александр',
+                'birth_date' => null,
+                'position' => 'нападающий',
+                'grip' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'full_name' => 'Свешников Вячеслав',
+                'birth_date' => null,
+                'position' => 'нападающий',
+                'grip' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'full_name' => 'Кардышев Владислав',
                 'birth_date' => null,
                 'position' => 'нападающий',
                 'grip' => null,
