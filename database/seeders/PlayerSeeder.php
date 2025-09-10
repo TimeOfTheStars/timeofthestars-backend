@@ -181,6 +181,15 @@ class PlayerSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
+        Player::create([
+            'full_name' => 'Божедомов Михаил',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
 // Команда: ХК Торпедо
         Player::create([
             'full_name' => 'Чеблоков Даниил',
@@ -796,6 +805,30 @@ class PlayerSeeder extends Seeder
         ]);
         Player::create([
             'full_name' => 'Ухарский Андрей',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Player::create([
+            'full_name' => 'Пасечник Никита',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Player::create([
+            'full_name' => 'Величко Глеб',
+            'birth_date' => null,
+            'position' => 'нападающий',
+            'grip' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Player::create([
+            'full_name' => 'Кузнецов Даниил',
             'birth_date' => null,
             'position' => 'нападающий',
             'grip' => null,
