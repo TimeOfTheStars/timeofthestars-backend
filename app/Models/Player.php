@@ -12,12 +12,12 @@ class Player extends Model
     public function championships(): BelongsToMany
     {
         return $this->belongsToMany(Championship::class, 'championship_players', 'player_id', 'championship_id')
-            ->withPivot('team_id', 'matches', 'goals', 'assists', 'penalties', 'number');
+            ->withPivot('team_id', 'matches', 'goals', 'assists', 'penalties', 'number','gaa');
     }
 
     public function tournaments(): BelongsToMany
     {
         return $this->belongsToMany(Tournament::class, 'tournament_players', 'player_id', 'tournament_id')
-            ->withPivot('team_id', 'matches', 'goals', 'assists', 'penalties', 'number');
+            ->withPivot('team_id', 'matches', 'goals', 'assists', 'penalties', 'number','gaa');
     }
 }

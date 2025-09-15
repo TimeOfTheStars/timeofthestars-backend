@@ -190,6 +190,7 @@ class PreSeasonSeeder extends Seeder
                 'team_id' => $pereslavl,
                 'player_id' => Player::where('full_name', 'Королев Александр')->first()->id,
                 'number' => null,
+                'gaa' => 1
             ],
             [
                 'tournament_id' => $predsezon,
@@ -592,6 +593,7 @@ class PreSeasonSeeder extends Seeder
                 'penalties' => 0,
                 'goals' => 0,
                 'matches' => 1,
+                'gaa'=>2,
             ],
         ];
 
@@ -821,6 +823,7 @@ class PreSeasonSeeder extends Seeder
                 'penalties' => 0,
                 'goals' => 0,
                 'matches' => 1,
+                'gaa'=>3,
             ],
         ];
 
@@ -844,6 +847,7 @@ class PreSeasonSeeder extends Seeder
                 'penalties' => 0,
                 'goals' => 0,
                 'matches' => 1,
+                'gaa'=>8,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -1083,6 +1087,7 @@ class PreSeasonSeeder extends Seeder
                 'penalties' => 0,
                 'goals' => 0,
                 'matches' => 1,
+                'gaa' => 9
             ],
             //-------------------------------------
             [

@@ -16,6 +16,7 @@ class TeamSeeder extends Seeder
         Team::create([
             'name' => 'ХК Переславль',
             'city' => 'Переславль',
+            'slug'=> 'pereslavl',
             'players_count' => 28,
             'created_at' => now(),
             'updated_at' => now(),
@@ -24,6 +25,7 @@ class TeamSeeder extends Seeder
         Team::create([
             'name' => 'ХК Зубр',
             'city' => 'Ярославль',
+            'slug'=> 'zubr',
             'players_count' => 18,
             'created_at' => now(),
             'updated_at' => now(),
@@ -33,6 +35,7 @@ class TeamSeeder extends Seeder
             'name' => 'ХК Вымпел-V',
             'city' => 'Ярославль',
             'players_count' => 29,
+            'slug'=> 'vympelv',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -41,6 +44,7 @@ class TeamSeeder extends Seeder
             'name' => 'ХК Ярославич',
             'city' => 'Ярославль',
             'players_count' => 29,
+            'slug'=> 'yaroslavich',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -49,6 +53,7 @@ class TeamSeeder extends Seeder
             'name' => 'ХК Торпедо',
             'city' => 'Ярославль',
             'players_count' => 30,
+            'slug'=> 'torpedo',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -57,6 +62,7 @@ class TeamSeeder extends Seeder
             'name' => 'ХК БГВ',
             'city' => 'Ярославль',
             'players_count' => 30,
+            'slug' => 'bgv',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

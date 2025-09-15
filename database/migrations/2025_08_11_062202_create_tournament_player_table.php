@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedInteger('goals')->default(0);
             $table->unsignedInteger('assists')->default(0);
             $table->unsignedInteger('penalties')->default(0);
+            $table->unsignedInteger('gaa')->default(null)->nullable();
             $table->unsignedInteger('number')->nullable();
             $table->timestamps();
         });

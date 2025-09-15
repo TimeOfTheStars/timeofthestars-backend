@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Team extends Model
 {
-    protected $fillable = ['name', 'city', 'players_count'];
+    protected $fillable = ['name', 'city', 'players_count','slug'];
 
     public function gamesAsTeamA(): HasMany
     {
@@ -34,13 +34,13 @@ class Team extends Model
     public function championshipPlayers(): BelongsToMany
     {
         return $this->belongsToMany(Player::class, 'championship_players', 'team_id', 'player_id')
-            ->withPivot('championship_id', 'matches', 'goals', 'assists', 'penalties', 'number');
+            ->withPivot('championship_id', 'matches', 'goals', 'assists', 'penalties', 'number','gaa');
     }
 
     public function tournamentPlayers(): BelongsToMany
     {
         return $this->belongsToMany(Player::class, 'tournament_players', 'team_id', 'player_id')
-            ->withPivot('tournament_id', 'matches', 'goals', 'assists', 'penalties', 'number');
+            ->withPivot('tournament_id', 'matches', 'goals', 'assists', 'penalties', 'number','gaa');
     }
 }
 
