@@ -562,7 +562,7 @@ class PlayerSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'full_name' => 'Смирнов Максим',
+                'full_name' => 'Смирнов Михаил',
                 'birth_date' => null,
                 'position' => 'нападающий',
                 'grip' => null,
