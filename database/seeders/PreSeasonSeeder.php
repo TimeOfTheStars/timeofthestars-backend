@@ -255,7 +255,7 @@ class PreSeasonSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $pereslavl,
-                'player_id' => Player::where('full_name', 'Смирнов Максим')->first()->id,
+                'player_id' => Player::where('full_name', 'Смирнов Михаил')->first()->id,
                 'number' => null,
                 'goals' => 1,
                 'assists' => 4,
