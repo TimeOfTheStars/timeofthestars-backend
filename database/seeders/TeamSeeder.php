@@ -14,8 +14,8 @@ class TeamSeeder extends Seeder
     public function run(): void
     {
         Team::create([
-            'name' => 'ХК Переславль',
-            'city' => 'Переславль',
+            'name' => 'СХК Переславль-Залесский',
+            'city' => 'Переславль-Залесский',
             'slug'=> 'pereslavl',
             'players_count' => 28,
             'created_at' => now(),

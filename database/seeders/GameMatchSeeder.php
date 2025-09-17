@@ -12,7 +12,7 @@ class GameMatchSeeder extends Seeder
 {
     public function run(): void
     {
-        $pereslavl = Team::where('name', 'ХК Переславль')->first()->id;
+        $pereslavl = Team::where('name', 'СХК Переславль-Залесский')->first()->id;
         $zubr = Team::where('name', 'ХК Зубр')->first()->id;
         $vympelV = Team::where('name', 'ХК Вымпел-V')->first()->id;
         $yaroslavich = Team::where('name', 'ХК Ярославич')->first()->id;

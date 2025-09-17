@@ -186,6 +186,14 @@ class PlayerSeeder extends Seeder
                 'grip' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
+            ],
+            [
+                'full_name' => 'Клёмин Владимир',
+                'birth_date' => null,
+                'position' => 'защитник',
+                'grip' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ];
 
@@ -453,7 +461,24 @@ class PlayerSeeder extends Seeder
                 'grip' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
+            [
+                'full_name' => 'Трунов Сергей',
+                'birth_date' => null,
+                'position' => 'нападающий',
+                'grip' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'full_name' => 'Идрисов Камиль',
+                'birth_date' => null,
+                'position' => 'защитник',
+                'grip' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
         ];
 
         $pereslavlPlayers = [
