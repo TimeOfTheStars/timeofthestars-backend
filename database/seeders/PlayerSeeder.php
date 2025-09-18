@@ -76,7 +76,7 @@ class PlayerSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'full_name' => 'Клемин Владимир',
+                'full_name' => 'Клёмин Владимир',
                 'birth_date' => null,
                 'position' => 'защитник',
                 'grip' => null,
@@ -187,14 +187,14 @@ class PlayerSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-            [
-                'full_name' => 'Клёмин Владимир',
-                'birth_date' => null,
-                'position' => 'защитник',
-                'grip' => null,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
+//            [
+//                'full_name' => 'Клёмин Владимир',
+//                'birth_date' => null,
+//                'position' => 'защитник',
+//                'grip' => null,
+//                'created_at' => now(),
+//                'updated_at' => now(),
+//            ]
         ];
 
         $torpedoPlayers = [

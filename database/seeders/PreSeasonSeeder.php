@@ -954,12 +954,12 @@ class PreSeasonSeeder extends Seeder
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Клемин Владимир')->first()->id,
+                'player_id' => Player::where('full_name', 'Клёмин Владимир')->first()->id,
                 'number' => 63,
                 'assists' => 0,
                 'penalties' => 0,
                 'goals' => 0,
-                'matches' => 1,
+                'matches' => 2,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -1095,16 +1095,16 @@ class PreSeasonSeeder extends Seeder
                 'goals' => 0,
                 'matches' => 1,
             ],
-            [
-                'tournament_id' => $predsezon,
-                'team_id' => $yaroslavich,
-                'player_id' => Player::where('full_name', 'Клёмин Владимир')->first()->id,
-                'number' => 69,
-                'assists' => 0,
-                'penalties' => 0,
-                'goals' => 0,
-                'matches' => 1,
-            ],
+//            [
+//                'tournament_id' => $predsezon,
+//                'team_id' => $yaroslavich,
+//                'player_id' => Player::where('full_name', 'Клёмин Владимир')->first()->id,
+//                'number' => 69,
+//                'assists' => 0,
+//                'penalties' => 0,
+//                'goals' => 0,
+//                'matches' => 1,
+//            ],
         ];
 
         $torpedoPlayers = [
