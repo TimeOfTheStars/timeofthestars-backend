@@ -875,7 +875,7 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 0,
                 'penalties' => 0,
                 'goals' => 0,
-                'matches' => 1,
+                'matches' => 2,
                 'gaa'=>3,
             ],
             [
@@ -886,7 +886,7 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 0,
                 'penalties' => 0,
                 'goals' => 0,
-                'matches' => 1,
+                'matches' => 2,
                 'gaa'=>8,
             ],
             [
@@ -918,7 +918,7 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 0,
                 'penalties' => 0,
                 'goals' => 0,
-                'matches' => 1,
+                'matches' => 2,
             ],
             [
                 'tournament_id' => $predsezon,
