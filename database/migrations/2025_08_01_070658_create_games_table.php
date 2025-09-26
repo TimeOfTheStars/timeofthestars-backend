@@ -13,13 +13,22 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('team_a_id')->constrained('teams')->onDelete('cascade');
-            $table->foreignId('team_b_id')->constrained('teams')->onDelete('cascade');
+            $table->foreignId('team_a_id')
+                ->constrained('teams')
+                ->onDelete('cascade');
+            $table->foreignId('team_b_id')
+                ->constrained('teams')
+                ->onDelete('cascade');
             $table->date('date');
             $table->time('time');
             $table->string('location')->nullable();
             $table->unsignedInteger('score_team_a')->nullable();
             $table->unsignedInteger('score_team_b')->nullable();
+            $table->foreignId('bullet_win_team')
+                ->nullable()
+                ->default(null)
+                ->constrained('teams')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

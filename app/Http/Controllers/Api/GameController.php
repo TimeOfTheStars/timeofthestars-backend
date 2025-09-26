@@ -21,12 +21,16 @@ class GameController extends Controller
             'date' => 'required|date',
             'time' => 'required',
             'location' => 'nullable|string',
-            'score' => 'nullable|string',
+            'score_team_a' => 'nullable|integer|min:0',
+            'score_team_b' => 'nullable|integer|min:0',
+            'bullet_win_team' => 'nullable|exists:teams,id',
+
             'tournament_ids' => 'nullable|array',
             'tournament_ids.*' => 'exists:tournaments,id',
             'championship_ids' => 'nullable|array',
             'championship_ids.*' => 'exists:championships,id',
         ]);
+
 
         $game = Game::create($validated);
         if (!empty($validated['tournament_ids'])) {
@@ -36,12 +40,12 @@ class GameController extends Controller
             $game->championships()->sync($validated['championship_ids']);
         }
 
-        return $game->load(['teamA', 'teamB', 'tournaments', 'championships']);
+        return $game->load(['teamA', 'teamB', 'tournaments', 'championships', 'bulletWinner']);
     }
 
     public function show(Game $game)
     {
-        return $game->load(['teamA', 'teamB', 'tournaments', 'championships']);
+        return $game->load(['teamA', 'teamB', 'tournaments', 'championships', 'bulletWinner']);
     }
 
     public function update(Request $request, Game $game)
@@ -52,12 +56,16 @@ class GameController extends Controller
             'date' => 'nullable|date',
             'time' => 'nullable',
             'location' => 'nullable|string',
-            'score' => 'nullable|string',
+            'score_team_a' => 'nullable|integer|min:0',
+            'score_team_b' => 'nullable|integer|min:0',
+            'bullet_win_team' => 'nullable|exists:teams,id',
+
             'tournament_ids' => 'nullable|array',
             'tournament_ids.*' => 'exists:tournaments,id',
             'championship_ids' => 'nullable|array',
             'championship_ids.*' => 'exists:championships,id',
         ]);
+
 
         $game->update($validated);
 
@@ -68,7 +76,7 @@ class GameController extends Controller
             $game->championships()->sync($validated['championship_ids'] ?? []);
         }
 
-        return $game->load(['teamA', 'teamB', 'tournaments', 'championships']);
+        return $game->load(['teamA', 'teamB', 'tournaments', 'championships', 'bulletWinner']);
     }
 
     public function destroy(Game $game)
