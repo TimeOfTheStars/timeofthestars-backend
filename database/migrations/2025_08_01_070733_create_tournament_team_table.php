@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedInteger('goals_scored')->default(0);
             $table->unsignedInteger('goals_conceded')->default(0);
             $table->unsignedInteger('games')->default(0);
+            $table->unsignedInteger('extra_points')->default(0);
             $table->timestamps();
         });
     }

@@ -26,15 +26,19 @@ class TournamentTeamsSeeder extends Seeder
             }
 
             foreach (array_keys($teams) as $teamId) {
-                $wins = $losses = $draws = $goalsScored = $goalsConceded = $gamesCount = 0;
+                $wins = $losses = $draws = $goalsScored = $goalsConceded = $gamesCount = $extraPoints = 0;
 
                 foreach ($games as $g) {
-                    // учитываем матч только если оба счёта есть
+                    // матч сыгран только если есть оба счёта
                     if ($g->score_team_a === null || $g->score_team_b === null) {
-                        continue; // матч не сыгран → не влияет на статистику
+                        continue;
                     }
 
-                    // теперь гарантировано: матч сыгран
+                    // если эта команда указана как bullet_win_team → добавляем extra point
+                    if ($g->bullet_win_team !== null && $g->bullet_win_team == $teamId) {
+                        $extraPoints++;
+                    }
+
                     if ($g->team_a_id == $teamId) {
                         $goalsScored += $g->score_team_a;
                         $goalsConceded += $g->score_team_b;
@@ -45,7 +49,7 @@ class TournamentTeamsSeeder extends Seeder
                         } else {
                             $draws++;
                         }
-                        $gamesCount++; // считаем игру для team_a
+                        $gamesCount++;
                     } elseif ($g->team_b_id == $teamId) {
                         $goalsScored += $g->score_team_b;
                         $goalsConceded += $g->score_team_a;
@@ -56,7 +60,7 @@ class TournamentTeamsSeeder extends Seeder
                         } else {
                             $draws++;
                         }
-                        $gamesCount++; // считаем игру для team_b
+                        $gamesCount++;
                     }
                 }
 
@@ -69,6 +73,7 @@ class TournamentTeamsSeeder extends Seeder
                         'goals_scored' => $goalsScored,
                         'goals_conceded' => $goalsConceded,
                         'games' => $gamesCount,
+                        'extra_points' => $extraPoints,
                     ]
                 );
             }
