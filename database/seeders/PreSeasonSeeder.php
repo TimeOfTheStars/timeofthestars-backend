@@ -86,7 +86,7 @@ class PreSeasonSeeder extends Seeder
                 'tournament_id' => $predsezon,
                 'game_id' => Game::where('team_a_id', $yaroslavich)
                     ->where('team_b_id', $pereslavl)
-                    ->where('date', '2025-09-26')
+                    ->where('date', '2025-10-14')
                     ->first()->id,
             ],
             [
