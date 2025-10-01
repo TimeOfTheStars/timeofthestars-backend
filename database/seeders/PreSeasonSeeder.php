@@ -84,13 +84,6 @@ class PreSeasonSeeder extends Seeder
             ],
             [
                 'tournament_id' => $predsezon,
-                'game_id' => Game::where('team_a_id', $yaroslavich)
-                    ->where('team_b_id', $pereslavl)
-                    ->where('date', '2025-10-14')
-                    ->first()->id,
-            ],
-            [
-                'tournament_id' => $predsezon,
                 'game_id' => Game::where('team_a_id', $vympelV)
                     ->where('team_b_id', $yaroslavich)
                     ->where('date', '2025-09-30')
@@ -134,7 +127,14 @@ class PreSeasonSeeder extends Seeder
                     ->where('team_b_id', $torpedo)
                     ->where('date', '2025-10-10')
                     ->first()->id,
-            ]
+            ],
+            [
+                'tournament_id' => $predsezon,
+                'game_id' => Game::where('team_a_id', $yaroslavich)
+                    ->where('team_b_id', $pereslavl)
+                    ->where('date', '2025-10-14')
+                    ->first()->id,
+            ],
         ];
 
         $teams = [
