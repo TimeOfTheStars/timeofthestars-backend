@@ -139,8 +139,8 @@ class GameMatchSeeder extends Seeder
                 'date' => '2025-10-08',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
-                'score_team_a' => null,
-                'score_team_b' => null
+                'score_team_a' => 1,
+                'score_team_b' => 5
             ],
             [
                 'team_a_id' => $zubr,
@@ -148,8 +148,8 @@ class GameMatchSeeder extends Seeder
                 'date' => '2025-10-10',
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
-                'score_team_a' => null,
-                'score_team_b' => null
+                'score_team_a' => 3,
+                'score_team_b' => 4
             ],
             [
                 'team_a_id' => $yaroslavich,
