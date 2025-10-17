@@ -149,7 +149,8 @@ class GameMatchSeeder extends Seeder
                 'time' => '20:00:00',
                 'location' => 'СК "Торпедо"',
                 'score_team_a' => 3,
-                'score_team_b' => 4
+                'score_team_b' => 3,
+                'bullet_win_team' => $torpedo,
             ],
             [
                 'team_a_id' => $yaroslavich,
