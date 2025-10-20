@@ -431,20 +431,20 @@ class PreSeasonSeeder extends Seeder
                 'team_id' => $zubr,
                 'player_id' => Player::where('full_name', 'Пасынков Александр')->first()->id,
                 'number' => 72,
-                'assists' => 1,
+                'assists' => 2,
                 'penalties' => 0,
                 'goals' => 1,
-                'matches' => 2,
+                'matches' => 3,
             ],
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $zubr,
                 'player_id' => Player::where('full_name', 'Никулин Семен')->first()->id,
                 'number' => 81,
-                'assists' => 0,
+                'assists' => 1,
                 'penalties' => 0,
                 'goals' => 0,
-                'matches' => 1,
+                'matches' => 2,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -454,7 +454,7 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 2,
                 'penalties' => 0,
                 'goals' => 0,
-                'matches' => 2,
+                'matches' => 3,
             ],
             //---------------------------------------
             [
@@ -465,7 +465,7 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 1,
                 'penalties' => 1,
                 'goals' => 0,
-                'matches' => 2,
+                'matches' => 3,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -473,9 +473,9 @@ class PreSeasonSeeder extends Seeder
                 'player_id' => Player::where('full_name', 'Кривенко Даниил')->first()->id,
                 'number' => 69,
                 'penalties' => 1,
-                'assists' => 0,
+                'assists' => 1,
                 'goals' => 0,
-                'matches' => 1,
+                'matches' => 2,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -483,9 +483,9 @@ class PreSeasonSeeder extends Seeder
                 'player_id' => Player::where('full_name', 'Кошелев Александр')->first()->id,
                 'number' => 14,
                 'assists' => 0,
-                'penalties' => 1,
+                'penalties' => 2,
                 'goals' => 0,
-                'matches' => 2,
+                'matches' => 3,
             ],
             //---------------------------------------
             [
@@ -504,9 +504,9 @@ class PreSeasonSeeder extends Seeder
                 'player_id' => Player::where('full_name', 'Ардашев Дмитрий')->first()->id,
                 'number' => 43,
                 'assists' => 0,
-                'penalties' => 1,
+                'penalties' => 3,
                 'goals' => 1,
-                'matches' => 2,
+                'matches' => 3,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -524,20 +524,20 @@ class PreSeasonSeeder extends Seeder
                 'team_id' => $zubr,
                 'player_id' => Player::where('full_name', 'Сорокин Артем')->first()->id,
                 'number' => 15,
-                'goals' => 1,
+                'goals' => 2,
                 'assists' => 1,
-                'penalties' => 0,
-                'matches' => 2,
+                'penalties' => 2,
+                'matches' => 3,
             ],
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $zubr,
                 'player_id' => Player::where('full_name', 'Ершов Иван')->first()->id,
                 'number' => 98,
-                'goals' => 2,
-                'assists' => 1,
+                'goals' => 3,
+                'assists' => 2,
                 'penalties' => 0,
-                'matches' => 2,
+                'matches' => 3,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -558,7 +558,7 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 0,
                 'penalties' => 0,
                 'goals' => 1,
-                'matches' => 1,
+                'matches' => 2,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -589,7 +589,7 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 0,
                 'penalties' => 1,
                 'goals' => 0,
-                'matches' => 2,
+                'matches' => 3,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -598,8 +598,8 @@ class PreSeasonSeeder extends Seeder
                 'number' => 97,
                 'assists' => 0,
                 'penalties' => 0,
-                'goals' => 0,
-                'matches' => 1,
+                'goals' => 1,
+                'matches' => 2,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -639,7 +639,7 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 0,
                 'penalties' => 0,
                 'goals' => 0,
-                'matches' => 1,
+                'matches' => 2,
                 'gaa'=>2,
             ],
         ];
@@ -660,10 +660,10 @@ class PreSeasonSeeder extends Seeder
                 'team_id' => $vympelV,
                 'player_id' => Player::where('full_name', 'Бардин Даниил')->first()->id,
                 'number' => 55,
-                'assists' => 1,
-                'penalties' => 0,
+                'assists' => 2,
+                'penalties' => 1,
                 'goals' => 0,
-                'matches' => 2,
+                'matches' => 3,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -684,7 +684,7 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 1,
                 'penalties' => 0,
                 'goals' => 0,
-                'matches' => 2,
+                'matches' => 3,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -694,7 +694,7 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 0,
                 'penalties' => 0,
                 'goals' => 1,
-                'matches' => 2,
+                'matches' => 3,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -704,7 +704,7 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 1,
                 'penalties' => 0,
                 'goals' => 2,
-                'matches' => 1,
+                'matches' => 2,
             ],
             //-----------------------------------------
             [
@@ -721,11 +721,11 @@ class PreSeasonSeeder extends Seeder
                 'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
                 'player_id' => Player::where('full_name', 'Лебедев Александр')->first()->id,
-                'number' => null,
+                'number' => 23,
                 'assists' => 0,
-                'penalties' => 0,
+                'penalties' => 1,
                 'goals' => 0,
-                'matches' => 0,
+                'matches' => 1,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -734,8 +734,8 @@ class PreSeasonSeeder extends Seeder
                 'number' => 48,
                 'assists' => 0,
                 'penalties' => 1,
-                'goals' => 3,
-                'matches' => 2,
+                'goals' => 4,
+                'matches' => 3,
             ],
             //-----------------------------------------
             [
@@ -764,9 +764,9 @@ class PreSeasonSeeder extends Seeder
                 'player_id' => Player::where('full_name', 'Бычков Егор')->first()->id,
                 'number' => 57,
                 'assists' => 0,
-                'penalties' => 0,
+                'penalties' => 2,
                 'goals' => 1,
-                'matches' => 2,
+                'matches' => 3,
             ],
             //-----------------------------------------
             [
@@ -777,7 +777,7 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 2,
                 'penalties' => 0,
                 'goals' => 2,
-                'matches' => 2,
+                'matches' => 3,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -786,8 +786,8 @@ class PreSeasonSeeder extends Seeder
                 'number' => 52,
                 'assists' => 1,
                 'penalties' => 0,
-                'goals' => 1,
-                'matches' => 2,
+                'goals' => 2,
+                'matches' => 3,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -815,20 +815,20 @@ class PreSeasonSeeder extends Seeder
                 'team_id' => $vympelV,
                 'player_id' => Player::where('full_name', 'Тельцов Иван')->first()->id,
                 'number' => 96,
-                'assists' => 2,
+                'assists' => 3,
                 'penalties' => 0,
                 'goals' => 1,
-                'matches' => 2,
+                'matches' => 3,
             ],
             [
                 'tournament_id' => $predsezon,
                 'team_id' => $vympelV,
                 'player_id' => Player::where('full_name', 'Тимофеев Дмитрий')->first()->id,
                 'number' => 80,
-                'assists' => 4,
+                'assists' => 5,
                 'penalties' => 0,
                 'goals' => 3,
-                'matches' => 2,
+                'matches' => 3,
             ],
             //-----------------------------------------
             [
@@ -847,9 +847,9 @@ class PreSeasonSeeder extends Seeder
                 'player_id' => Player::where('full_name', 'Шайтанов Александр')->first()->id,
                 'number' => 32,
                 'assists' => 1,
-                'penalties' => 1,
+                'penalties' => 3,
                 'goals' => 0,
-                'matches' => 1,
+                'matches' => 2,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -1414,7 +1414,7 @@ class PreSeasonSeeder extends Seeder
                 'assists' => 0,
                 'penalties' => 0,
                 'goals' => 0,
-                'matches' => 1,
+                'matches' => 2,
             ],
             [
                 'tournament_id' => $predsezon,
@@ -1828,6 +1828,18 @@ class PreSeasonSeeder extends Seeder
             ],
         ];
 
+        $otherPlayer = [
+            [
+                'tournament_id' => $predsezon,
+                'team_id' => $vympelV,
+                'player_id' => Player::where('full_name', 'Рачев Кирилл')->first()->id,
+                'number' => 1,
+                'assists' => 0,
+                'penalties' => 1,
+                'goals' => 0,
+                'matches' => 1,
+            ],
+        ];
 
         foreach ($tournamentGames as $game) {
             TournamentGame::create($game);
@@ -1868,5 +1880,10 @@ class PreSeasonSeeder extends Seeder
             TournamentPlayer::create($player);
         }
         echo "✅ Команда БГВ заполнена.\n\n";
+
+        foreach ($otherPlayer as $player) {
+            Player::create($player);
+        }
+        echo "✅ Дополнительные игроки заполнены\n\n";
     }
 }

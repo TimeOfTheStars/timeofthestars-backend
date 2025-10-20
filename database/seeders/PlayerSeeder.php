@@ -1325,6 +1325,17 @@ class PlayerSeeder extends Seeder
             ]
         ];
 
+        $otherPlayer = [
+            [
+                'full_name' => 'Рачев Кирилл',
+                'birth_date' => null,
+                'position' => 'нападающий',
+                'grip' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ];
+
         foreach ($yaroslavichPlayers as $player) {
             Player::create($player);
         }
@@ -1354,5 +1365,10 @@ class PlayerSeeder extends Seeder
             Player::create($player);
         }
         echo "✅ Игроки команда БГВ заполнены.\n\n";
+
+        foreach ($otherPlayer as $player) {
+            Player::create($player);
+        }
+        echo "✅ Дополнительные игроки заполнены\n\n";
     }
 }
