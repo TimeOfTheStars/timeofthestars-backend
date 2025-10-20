@@ -2022,7 +2022,7 @@ class PreSeasonSeeder extends Seeder
         echo "✅ Команда БГВ заполнена.\n\n";
 
         foreach ($otherPlayer as $player) {
-            Player::create($player);
+            TournamentPlayer::create($player);
         }
         echo "✅ Дополнительные игроки заполнены\n\n";
     }
