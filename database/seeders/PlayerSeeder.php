@@ -1430,6 +1430,30 @@ class PlayerSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'full_name' => 'Казаков Иван',
+                'birth_date' => null,
+                'position' => 'нападающий',
+                'grip' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'full_name' => 'Идиатуллин Александр',
+                'birth_date' => null,
+                'position' => 'нападающий',
+                'grip' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'full_name' => 'Козулин Дмитрий',
+                'birth_date' => null,
+                'position' => 'нападающий',
+                'grip' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         foreach ($yaroslavichPlayers as $player) {
