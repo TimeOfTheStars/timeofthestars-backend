@@ -10,13 +10,13 @@ class ChampionshipSeeder extends Seeder
 {
     public function run(): void
     {
-//        Championship::create([
-//            'name' => 'Звезда Отечества',
-//            'start_date' => '2024-10-09',
-//            'end_date' => '2025-04-18',
-//            'location' => 'СК "Торпедо", СК "Переславль", СК "Кострома"',
-//            'created_at' => now(),
-//            'updated_at' => now(),
-//        ]);
+       Championship::create([
+           'name' => 'Звезда Отечества',
+           'start_date' => '2025-10-21',
+           'end_date' => null,
+           'location' => 'СК "Торпедо"',
+           'created_at' => now(),
+           'updated_at' => now(),
+       ]);
     }
 }

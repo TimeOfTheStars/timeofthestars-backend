@@ -18,8 +18,9 @@ class GameMatchSeeder extends Seeder
         $yaroslavich = Team::where('name', 'ХК Ярославич')->first()->id;
         $torpedo = Team::where('name', 'ХК Торпедо')->first()->id;
         $bgv = Team::where('name', 'ХК БГВ')->first()->id;
+        $pvo = Team::where('name', 'ХК ПВО')->first()->id;
 
-        $matches = [
+        $tournirMatches = [
             [
                 'team_a_id' => $yaroslavich,
                 'team_b_id' => $zubr,
@@ -47,7 +48,6 @@ class GameMatchSeeder extends Seeder
                 'score_team_a' => 13,
                 'score_team_b' => 1
             ],
-//----------------------------------------------------------------
             [
                 'team_a_id' => $yaroslavich,
                 'team_b_id' => $torpedo,
@@ -75,7 +75,6 @@ class GameMatchSeeder extends Seeder
                 'score_team_a' => 9,
                 'score_team_b' => 3
             ],
-            //----------------------------------------------------------------
             [
                 'team_a_id' => $zubr,
                 'team_b_id' => $vympelV,
@@ -95,7 +94,6 @@ class GameMatchSeeder extends Seeder
                 'score_team_b' => 7,
                 'bullet_win_team' => $bgv,
             ],
-            //----------------------------------------------------------------
             [
                 'team_a_id' => $vympelV,
                 'team_b_id' => $yaroslavich,
@@ -123,7 +121,6 @@ class GameMatchSeeder extends Seeder
                 'score_team_a' => 6,
                 'score_team_b' => 7
             ],
-            //----------------------------------------------------------------
             [
                 'team_a_id' => $yaroslavich,
                 'team_b_id' => $bgv,
@@ -163,7 +160,41 @@ class GameMatchSeeder extends Seeder
             ],
         ];
 
-        foreach ($matches as $match) {
+        $championshipMatches = [
+            [
+                'team_a_id' => $yaroslavich,
+                'team_b_id' => $torpedo,
+                'date' => '2025-10-21',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score_team_a' => null,
+                'score_team_b' => null
+            ],
+            [
+                'team_a_id' => $zubr,
+                'team_b_id' => $pvo,
+                'date' => '2025-10-22',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score_team_a' => null,
+                'score_team_b' => null
+            ],
+            [
+                'team_a_id' => $vympelV,
+                'team_b_id' => $pereslavl,
+                'date' => '2025-10-24',
+                'time' => '20:15:00',
+                'location' => 'СК "Торпедо"',
+                'score_team_a' => null,
+                'score_team_b' => null
+            ],
+        ];
+
+        foreach ($tournirMatches as $match) {
+            Game::create($match);
+        }
+
+        foreach ($championshipMatches as $match) {
             Game::create($match);
         }
     }

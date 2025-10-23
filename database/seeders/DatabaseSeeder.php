@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
 //---------------------- Чемпионаты -----------------------
             ChampionshipSeeder::class,
 
+            ZvezdaOtechestvaSeeder::class,
+
             //ChampionshipGameSeeder::class,
             //ChampionshipTeamSeeder::class,
             //ChampionshipPlayerSeeder::class,

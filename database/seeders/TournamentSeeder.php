@@ -12,7 +12,7 @@ class TournamentSeeder extends Seeder
         Tournament::create([
             'name' => 'Предсезонный турнир',
             'start_date' => '2025-09-09',
-            'end_date' => null,
+            'end_date' => '2025-10-14',
             'location' => 'СК "Торпедо"',
             'created_at' => now(),
             'updated_at' => now(),

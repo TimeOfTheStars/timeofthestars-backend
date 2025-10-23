@@ -67,15 +67,22 @@ class TeamSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-//        Team::create([
-//            'name' => 'ХК Вымпел-К',
-//            'city' => 'Ярославль',
-//            'players_count' => 30,
-//            'wins' => 0,
-//            'losses' => 0,
-//            'created_at' => now(),
-//            'updated_at' => now(),
-//        ]);
+       Team::create([
+           'name' => 'ХК ПВО',
+           'city' => 'Ярославль',
+           'players_count' => 30,
+           'slug' => 'pvo',
+           'created_at' => now(),
+           'updated_at' => now(),
+       ]);
 
+       Team::create([
+           'name' => 'ХК Время Звезд',
+           'city' => 'Ярославль',
+           'players_count' => 30,
+           'slug' => 'vremyaZvezd',
+           'created_at' => now(),
+           'updated_at' => now(),
+       ]);
     }
 }
