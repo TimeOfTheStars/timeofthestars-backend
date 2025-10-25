@@ -11,7 +11,8 @@ class Championship extends Model
 
     public function teams(): BelongsToMany
     {
-        return $this->belongsToMany(Team::class, 'championship_teams', 'championship_id', 'team_id');
+        return $this->belongsToMany(Team::class, 'championship_teams', 'championship_id', 'team_id')
+            ->withPivot('wins', 'losses', 'draws', 'goals_scored','games','goals_conceded','extra_points');
     }
 
     public function games(): BelongsToMany

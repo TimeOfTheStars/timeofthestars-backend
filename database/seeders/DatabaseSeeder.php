@@ -19,9 +19,7 @@ class DatabaseSeeder extends Seeder
 
             ZvezdaOtechestvaSeeder::class,
 
-            //ChampionshipGameSeeder::class,
-            //ChampionshipTeamSeeder::class,
-            //ChampionshipPlayerSeeder::class,
+            ChampionshipTeamsSeeder::class,
 
 //---------------------------------------------------------
 
@@ -31,8 +29,9 @@ class DatabaseSeeder extends Seeder
             PreSeasonSeeder::class,
 //---------------------------------------------------------
 
-        TournamentTeamsSeeder::class,
-            UserSeeder::class,
+            TournamentTeamsSeeder::class,
+
+            // UserSeeder::class,
         ]);
     }
 }
