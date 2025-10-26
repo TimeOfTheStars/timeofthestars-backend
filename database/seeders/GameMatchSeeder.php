@@ -188,6 +188,24 @@ class GameMatchSeeder extends Seeder
                 'score_team_a' => 6,
                 'score_team_b' => 3
             ],
+            [
+                'team_a_id' => $yaroslavich,
+                'team_b_id' => $zubr,
+                'date' => '2025-10-28',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score_team_a' => null,
+                'score_team_b' => null
+            ],
+            [
+                'team_a_id' => $vympelV,
+                'team_b_id' => $pvo,
+                'date' => '2025-10-29',
+                'time' => '20:00:00',
+                'location' => 'СК "Торпедо"',
+                'score_team_a' => null,
+                'score_team_b' => null
+            ],
         ];
 
         foreach ($tournirMatches as $match) {
