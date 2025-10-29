@@ -1,0 +1,116 @@
+import uvicorn
+from fastapi import FastAPI
+from fastapi.openapi.utils import get_openapi
+from sqlalchemy import text
+from sqlalchemy.ext.asyncio import create_async_engine
+from app.routers import root_router
+
+from app import logger
+from app.config import settings
+app = FastAPI(
+    title="123",
+    description="""321
+    """,
+    version="1.0.0",
+    openapi_tags=[
+        {"name": "User", "description": "Операции с пользователями"},
+        {"name": "Health", "description": "Проверка состояния сервиса"},
+    ],
+    # Явно указываем схему безопасности
+    openapi_extra={
+        "components": {
+            "securitySchemes": {
+                "BearerAuth": {"type": "http", "scheme": "bearer", "bearerFormat": "JWT"}
+            }
+        },
+        "security": [{"BearerAuth": []}],
+    },
+)
+
+# Подключаем роутеры
+app.include_router(root_router)
+
+
+
+
+# --- Swagger с авторизацией ---
+def custom_openapi():
+    if app.openapi_schema:
+        return app.openapi_schema
+    openapi_schema = get_openapi(
+        title=app.title,
+        version=app.version,
+        description=app.description,
+        routes=app.routes,
+    )
+
+    # Добавляем схему безопасности
+    if "components" not in openapi_schema:
+        openapi_schema["components"] = {}
+
+    openapi_schema["components"]["securitySchemes"] = {
+        "BearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT",
+            "description": "Введите JWT токен в формате: Bearer <token>",
+        }
+    }
+
+    # Применяем безопасность ко всем путям, кроме публичных
+    public_paths = {
+        "/docs",
+        "/redoc",
+        "/openapi.json",
+        "/favicon.ico",
+        "/user/create",
+        "/health",
+        "/metrics",
+        "/sentry-debug",
+    }
+
+    for path, path_item in openapi_schema.get("paths", {}).items():
+        # Пропускаем публичные пути
+        if any(path.startswith(public_path) for public_path in public_paths):
+            continue
+
+        for operation in path_item.values():
+            if isinstance(operation, dict):
+                operation["security"] = [{"BearerAuth": []}]
+
+    # Добавляем глобальную схему безопасности
+    openapi_schema["security"] = [{"BearerAuth": []}]
+
+    # Принудительно обновляем схему
+    app.openapi_schema = openapi_schema
+
+    return openapi_schema
+
+
+app.openapi = custom_openapi
+# --- конец Swagger настройки ---
+
+
+# Проверка подключения к БД при старте
+@app.on_event("startup")
+async def _ping_db_on_startup():
+    try:
+        from app.config import settings as _settings
+
+        engine = create_async_engine(_settings.database_uri_async)
+        async with engine.begin() as conn:
+            await conn.execute(text("SELECT 1"))
+        await engine.dispose()
+        logger.info("Database connection check: OK")
+    except Exception as exc:
+        logger.error(f"Database connection check FAILED: {exc}")
+
+
+if __name__ == "__main__":
+    uvicorn.run(
+        app,
+        host=settings.APP_HOST,
+        port=settings.APP_PORT,
+        # reload=True,
+        log_level="debug",
+    )

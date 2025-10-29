@@ -1,0 +1,46 @@
+services:
+  hockey_db:
+    image: bitnami/postgresql:latest
+    container_name: hockey_db
+    restart: always
+    ports:
+      - "5033:5433"
+    volumes:
+      - simbiz-data:/bitnami/postgresql
+    environment:
+      - POSTGRESQL_DATABASE=${DB_NAME}
+      - POSTGRESQL_USERNAME=${DB_USER}
+      - POSTGRESQL_PASSWORD=${DB_PASSWORD}
+      - POSTGRESQL_PORT_NUMBER=${DB_PORT}
+      - POSTGRESQL_REPLICATION_MODE=${POSTGRESQL_REPLICATION_MODE}
+    networks:
+      - hockey
+
+  hockey_api:
+    container_name: hockey_api
+    restart: always
+    build:
+      context: .
+    command: >
+      sh -c "sh ./app.sh"
+    ports:
+      - "8003:8002"
+    environment:
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+    volumes:
+      - .:/app
+    networks:
+      - hockey
+    depends_on:
+      - hockey_db
+
+volumes:
+  simbiz-data:
+
+networks:
+  hockey:
+    external: true

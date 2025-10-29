@@ -1,0 +1,61 @@
+[tool.poetry]
+name = "simbiz-api-gateway"
+version = "0.1.0"
+description = "API Gateway for Simbiz platform"
+authors = ["Dmitry Voropaev <workerv0ropaev@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "~0.115.11"
+uvicorn = "~0.34.0"
+httpx = "~0.28.1"
+loguru = "0.7.2"
+pydantic = "2.10.6"
+pydantic-settings = "~2.8.1"
+python-dotenv = "1.0.1"
+typing-extensions = "4.12.2"
+fastapi-users = "11.0.0"
+slowapi = "0.1.9"
+limits = "3.10.0"
+
+[tool.ruff]
+line-length = 100
+fix = true
+show-fixes = true
+unsafe-fixes = true
+exclude = ["alembic", "migrations", "venv", ".venv", "htmlcov"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "PL", "RUF"]
+# Глобально игнорируем правила, конфликтующие с русскими комментариями/строками и магическими значениями
+ignore = [
+  "E203",  # конфликт с black
+  "E266",
+  "E501",
+  "RUF001",  # ambiguous unicode in strings (русский текст)
+  "RUF002",  # ambiguous unicode in docstrings
+  "RUF003",  # ambiguous unicode in comments
+  "PLR2004", # magic value used in comparison
+  "PLW0603", # global statement
+]
+
+[tool.ruff.lint.isort]
+force-single-line = false
+known-first-party = ["app"]
+
+[tool.ruff.lint.per-file-ignores]
+# В тестах допускаем магические числа/коды статусов и т.п.
+"tests/**/*" = ["PLR2004"]
+# В реэкспортах middleware подавляем F401, т.к. это публичный API пакета
+"app/middleware/__init__.py" = ["F401"]
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+include = "\\.(py|pyi)$"
+exclude = "(alembic|migrations|venv|.venv|htmlcov)"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
