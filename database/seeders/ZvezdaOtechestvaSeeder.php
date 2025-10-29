@@ -23,7 +23,7 @@ class ZvezdaOtechestvaSeeder extends Seeder
         $vympelV = Team::where('name', 'ХК Вымпел-V')->first()->id;
         $yaroslavich = Team::where('name', 'ХК Ярославич')->first()->id;
         $torpedo = Team::where('name', 'ХК Торпедо')->first()->id;  
-        $pvo = Team::where('name', 'ХК ЯВВУ ПВО ')->first()->id;
+        $pvo = Team::where('name', 'ХК ЯВВУ ПВО')->first()->id;
         $vremyaZvezd = Team::where('name','ХК Время Звезд')->first()->id;
 
         $championshipGames = [
