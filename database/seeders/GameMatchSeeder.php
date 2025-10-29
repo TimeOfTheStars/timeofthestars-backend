@@ -18,7 +18,7 @@ class GameMatchSeeder extends Seeder
         $yaroslavich = Team::where('name', 'ХК Ярославич')->first()->id;
         $torpedo = Team::where('name', 'ХК Торпедо')->first()->id;
         $bgv = Team::where('name', 'ХК БГВ')->first()->id;
-        $pvo = Team::where('name', 'ХК ПВО')->first()->id;
+        $pvo = Team::where('name', 'ХК ЯВВУ ПВО')->first()->id;
 
         $tournirMatches = [
             [
