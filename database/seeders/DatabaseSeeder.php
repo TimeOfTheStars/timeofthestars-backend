@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
 
             TournamentTeamsSeeder::class,
 
-            // UserSeeder::class,
+             UserSeeder::class,
         ]);
     }
 }
