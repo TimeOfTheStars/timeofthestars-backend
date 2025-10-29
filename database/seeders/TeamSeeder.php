@@ -68,7 +68,7 @@ class TeamSeeder extends Seeder
         ]);
 
        Team::create([
-           'name' => 'ХК ПВО',
+           'name' => 'ХК ЯВВУ ПВО',
            'city' => 'Ярославль',
            'players_count' => 30,
            'slug' => 'pvo',
