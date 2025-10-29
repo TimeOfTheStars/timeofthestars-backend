@@ -13,21 +13,21 @@ class ChampionshipTeamsSeeder extends Seeder
     {
         $championships = Championship::all();
 
-        echo "=== ChampionshipTeamsSeeder started ===\n";
-        echo "Found {$championships->count()} championships\n";
+        // echo "=== ChampionshipTeamsSeeder started ===\n";
+        // echo "Found {$championships->count()} championships\n";
 
         foreach ($championships as $championship) {
-        echo "Processing championship #" . $championship->id . " (" . (isset($championship->name) ? $championship->name : 'no name') . ")...\n";
+        // echo "Processing championship #" . $championship->id . " (" . (isset($championship->name) ? $championship->name : 'no name') . ")...\n";
 
             $games = DB::table('games')
                 ->join('championship_games', 'games.id', '=', 'championship_games.game_id')
                 ->where('championship_games.championship_id', $championship->id)
                 ->get();
 
-            echo "  Found {$games->count()} games\n";
+            // echo "  Found {$games->count()} games\n";
 
             if ($games->isEmpty()) {
-                echo "  ⚠️  No games for this championship, skipping.\n";
+                //echo "  ⚠️  No games for this championship, skipping.\n";
                 continue;
             }
 
@@ -37,7 +37,7 @@ class ChampionshipTeamsSeeder extends Seeder
                 $teams[$g->team_b_id] = true;
             }
 
-            echo "  Found " . count($teams) . " unique teams\n";
+            // echo "  Found " . count($teams) . " unique teams\n";
 
             foreach (array_keys($teams) as $teamId) {
                 $wins = $losses = $draws = $goalsScored = $goalsConceded = $gamesCount = $extraPoints = 0;
@@ -92,12 +92,12 @@ class ChampionshipTeamsSeeder extends Seeder
                     ]
                 );
 
-                echo "    ✅ Team {$teamId}: {$wins}W / {$draws}D / {$losses}L | GS {$goalsScored} : {$goalsConceded} GC | {$gamesCount} games | +{$extraPoints} XP\n";
+                // echo "    ✅ Team {$teamId}: {$wins}W / {$draws}D / {$losses}L | GS {$goalsScored} : {$goalsConceded} GC | {$gamesCount} games | +{$extraPoints} XP\n";
             }
 
-            echo "✅ Finished championship #{$championship->id}\n\n";
+            // echo "✅ Finished championship #{$championship->id}\n\n";
         }
 
-        echo "=== ChampionshipTeamsSeeder finished ===\n";
+        // echo "=== ChampionshipTeamsSeeder finished ===\n";
     }
 }
