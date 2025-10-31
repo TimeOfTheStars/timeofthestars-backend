@@ -19,6 +19,7 @@ class GameMatchSeeder extends Seeder
         $torpedo = Team::where('name', 'ХК Торпедо')->first()->id;
         $bgv = Team::where('name', 'ХК БГВ')->first()->id;
         $pvo = Team::where('name', 'ХК ЯВВУ ПВО')->first()->id;
+        $vremyaZvezd = Team::where('name','ХК Время Звезд')->first()->id;
 
         $tournirMatches = [
             [
@@ -205,6 +206,15 @@ class GameMatchSeeder extends Seeder
                 'location' => 'СК "Торпедо"',
                 'score_team_a' => 12,
                 'score_team_b' => 6
+            ],
+            [
+                'team_a_id' => $vremyaZvezd,
+                'team_b_id' => $torpedo,
+                'date' => '2025-11-01',
+                'time' => '17:45:00',
+                'location' => 'СК "Торпедо"',
+                'score_team_a' => null,
+                'score_team_b' => null
             ],
         ];
 
