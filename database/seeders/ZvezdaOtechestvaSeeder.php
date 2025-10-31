@@ -62,6 +62,13 @@ class ZvezdaOtechestvaSeeder extends Seeder
                     ->where('date', '2025-10-29')
                     ->first()->id,
             ],
+            [
+                'championship_id' => $zo,
+                'game_id' => Game::where('team_a_id', $vremyaZvezd)
+                    ->where('team_b_id', $torpedo)
+                    ->where('date', '2025-11-01')
+                    ->first()->id,
+            ],
         ];
 
         $teams = [
