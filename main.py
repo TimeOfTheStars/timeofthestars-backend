@@ -5,7 +5,6 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
 from app.routers import root_router
 
-from app import logger
 from app.config import settings
 app = FastAPI(
     title="123",
@@ -94,16 +93,12 @@ app.openapi = custom_openapi
 # Проверка подключения к БД при старте
 @app.on_event("startup")
 async def _ping_db_on_startup():
-    try:
-        from app.config import settings as _settings
+    from app.config import settings as _settings
 
-        engine = create_async_engine(_settings.database_uri_async)
-        async with engine.begin() as conn:
-            await conn.execute(text("SELECT 1"))
-        await engine.dispose()
-        logger.info("Database connection check: OK")
-    except Exception as exc:
-        logger.error(f"Database connection check FAILED: {exc}")
+    engine = create_async_engine(_settings.database_uri_async)
+    async with engine.begin() as conn:
+        await conn.execute(text("SELECT 1"))
+    await engine.dispose()
 
 
 if __name__ == "__main__":
