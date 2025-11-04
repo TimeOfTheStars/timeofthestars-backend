@@ -3,19 +3,21 @@ from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
-from app.routers import root_router
+from app.routers import (
+    root_router,
+    teams_router,
+    players_router,
+    tournaments_router,
+    championships_router,
+    games_router,
+)
 
 from app.config import settings
 app = FastAPI(
-    title="123",
-    description="""321
+    title="TimeOfTheStars",
+    description="""Один русский черный мальчмк заработал капитальчик
     """,
     version="1.0.0",
-    openapi_tags=[
-        {"name": "User", "description": "Операции с пользователями"},
-        {"name": "Health", "description": "Проверка состояния сервиса"},
-    ],
-    # Явно указываем схему безопасности
     openapi_extra={
         "components": {
             "securitySchemes": {
@@ -28,6 +30,11 @@ app = FastAPI(
 
 # Подключаем роутеры
 app.include_router(root_router)
+app.include_router(teams_router)
+app.include_router(players_router)
+app.include_router(tournaments_router)
+app.include_router(championships_router)
+app.include_router(games_router)
 
 
 
