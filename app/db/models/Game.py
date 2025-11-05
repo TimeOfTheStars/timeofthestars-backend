@@ -16,6 +16,7 @@ class Game(Base):
     date = Column(Date, nullable=False)
     time = Column(Time, nullable=False)
     location = Column(String, nullable=False)
+    scan = Column(String, nullable=True)
 
     bullet_win_team = Column(Integer, ForeignKey("teams.id"), nullable=True)
 
