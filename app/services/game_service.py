@@ -4,7 +4,10 @@ from sqlalchemy import select, update, delete
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.models.Game import Game
+from app.db.models.ChampionshipGames import ChampionshipGames
+from app.db.models.TournamentGames import TournamentGames
 from app.schemas import GameCreate, GameUpdate
+from app.services import championship_service, tournament_service
 
 
 async def list_games(db: AsyncSession) -> Sequence[Game]:
@@ -29,9 +32,43 @@ async def update_game(db: AsyncSession, game_id: int, data: GameUpdate) -> Game 
     payload = {k: v for k, v in data.model_dump(exclude_unset=True).items()}
     if not payload:
         return await get_game(db, game_id)
+    
+    # Проверяем, обновляются ли результаты игры (score_team_a или score_team_b)
+    score_updated = "score_team_a" in payload or "score_team_b" in payload
+    
     await db.execute(update(Game).where(Game.id == game_id).values(**payload))
     result = await db.execute(select(Game).where(Game.id == game_id))
-    return result.scalar_one_or_none()
+    updated_game = result.scalar_one_or_none()
+    
+    # Если обновлены результаты, пересчитываем статистику во всех связанных турнирах/чемпионатах
+    if score_updated and updated_game:
+        # Находим все чемпионаты, где участвует эта игра
+        championships_result = await db.execute(
+            select(ChampionshipGames.championship_id)
+            .where(ChampionshipGames.game_id == game_id)
+        )
+        championship_ids = [row[0] for row in championships_result.all()]
+        
+        # Находим все турниры, где участвует эта игра
+        tournaments_result = await db.execute(
+            select(TournamentGames.tournament_id)
+            .where(TournamentGames.game_id == game_id)
+        )
+        tournament_ids = [row[0] for row in tournaments_result.all()]
+        
+        # Пересчитываем статистику для всех связанных чемпионатов
+        for championship_id in championship_ids:
+            await championship_service.recalculate_championship_teams_stats(
+                db, championship_id, game_id
+            )
+        
+        # Пересчитываем статистику для всех связанных турниров
+        for tournament_id in tournament_ids:
+            await tournament_service.recalculate_tournament_teams_stats(
+                db, tournament_id, game_id
+            )
+    
+    return updated_game
 
 
 async def delete_game(db: AsyncSession, game_id: int) -> bool:

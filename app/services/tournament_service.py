@@ -120,6 +120,9 @@ async def add_game(db: AsyncSession, tournament_id: int, game_id: int) -> None:
     if exists is None:
         link = TournamentGames(tournament_id=tournament_id, game_id=game_id)
         db.add(link)
+        await db.flush()
+        # Пересчитываем статистику команд после добавления игры
+        await recalculate_tournament_teams_stats(db, tournament_id, game_id)
 
 
 async def remove_game(db: AsyncSession, tournament_id: int, game_id: int) -> bool:
@@ -131,7 +134,13 @@ async def remove_game(db: AsyncSession, tournament_id: int, game_id: int) -> boo
         )
         .returning(TournamentGames.id)
     )
-    return result.scalar_one_or_none() is not None
+    deleted = result.scalar_one_or_none() is not None
+    
+    if deleted:
+        # Пересчитываем статистику всех команд после удаления игры
+        await recalculate_tournament_teams_stats(db, tournament_id, None)
+    
+    return deleted
 
 
 # Get methods with statistics
@@ -210,6 +219,98 @@ async def get_tournament_games(db: AsyncSession, tournament_id: int) -> Sequence
         .order_by(Game.date, Game.time)
     )
     return result.scalars().all()
+
+
+async def recalculate_tournament_teams_stats(
+    db: AsyncSession, tournament_id: int, game_id: int | None = None
+) -> None:
+    """Пересчитывает статистику всех команд в турнире на основе игр"""
+    # Получаем все игры турнира
+    if game_id:
+        # Пересчитываем только для команд, участвующих в этой игре
+        game_result = await db.execute(select(Game).where(Game.id == game_id))
+        game = game_result.scalar_one_or_none()
+        if not game or game.score_team_a is None or game.score_team_b is None:
+            return  # Игра еще не сыграна
+        
+        team_ids = [game.team_a_id, game.team_b_id]
+    else:
+        # Пересчитываем для всех команд
+        team_ids = None
+    
+    # Получаем все игры турнира с результатами
+    games_query = (
+        select(Game)
+        .join(TournamentGames, Game.id == TournamentGames.game_id)
+        .where(
+            TournamentGames.tournament_id == tournament_id,
+            Game.score_team_a.isnot(None),
+            Game.score_team_b.isnot(None),
+        )
+    )
+    
+    games_result = await db.execute(games_query)
+    games = games_result.scalars().all()
+    
+    # Получаем все команды в турнире
+    if team_ids:
+        teams_query = select(TournamentTeams).where(
+            TournamentTeams.tournament_id == tournament_id,
+            TournamentTeams.team_id.in_(team_ids),
+        )
+    else:
+        teams_query = select(TournamentTeams).where(
+            TournamentTeams.tournament_id == tournament_id
+        )
+    
+    teams_result = await db.execute(teams_query)
+    tournament_teams = teams_result.scalars().all()
+    
+    # Пересчитываем статистику для каждой команды
+    for tt in tournament_teams:
+        wins = 0
+        losses = 0
+        draws = 0
+        goals_scored = 0
+        goals_conceded = 0
+        games_count = 0
+        
+        for game in games:
+            # Проверяем, участвует ли команда в этой игре
+            if game.team_a_id == tt.team_id:
+                if game.score_team_a is not None and game.score_team_b is not None:
+                    goals_scored += game.score_team_a
+                    goals_conceded += game.score_team_b
+                    games_count += 1
+                    
+                    if game.score_team_a > game.score_team_b:
+                        wins += 1
+                    elif game.score_team_a < game.score_team_b:
+                        losses += 1
+                    else:
+                        draws += 1
+            elif game.team_b_id == tt.team_id:
+                if game.score_team_a is not None and game.score_team_b is not None:
+                    goals_scored += game.score_team_b
+                    goals_conceded += game.score_team_a
+                    games_count += 1
+                    
+                    if game.score_team_b > game.score_team_a:
+                        wins += 1
+                    elif game.score_team_b < game.score_team_a:
+                        losses += 1
+                    else:
+                        draws += 1
+        
+        # Обновляем статистику команды
+        tt.wins = wins
+        tt.losses = losses
+        tt.draws = draws
+        tt.goals_scored = goals_scored
+        tt.goals_conceded = goals_conceded
+        tt.games = games_count
+        # extra_points можно настроить отдельно (например, 3 за победу, 1 за ничью)
+        tt.extra_points = wins * 3 + draws * 1
 
 
 
