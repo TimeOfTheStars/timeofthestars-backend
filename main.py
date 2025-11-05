@@ -14,7 +14,7 @@ from app.routers import (
 
 from app.config import settings
 app = FastAPI(
-    title="TimeOfTheStars",
+    title="Time Of The Stars",
     description="""Один русский черный мальчмк заработал капитальчик
     """,
     version="1.0.0",

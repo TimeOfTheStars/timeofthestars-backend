@@ -39,3 +39,7 @@ async def delete_game(db: AsyncSession, game_id: int) -> bool:
     return result.scalar_one_or_none() is not None
 
 
+
+
+
+

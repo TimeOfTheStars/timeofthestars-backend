@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Date, ForeignKey, Time
+from sqlalchemy.orm import relationship
 from app.db import Base
 
 class Game(Base):
@@ -17,3 +18,7 @@ class Game(Base):
     location = Column(String, nullable=False)
 
     bullet_win_team = Column(Integer, ForeignKey("teams.id"), nullable=True)
+
+    # Links to tournaments/championships
+    championship_links = relationship("ChampionshipGames", back_populates="game", cascade="all, delete-orphan")
+    tournament_links = relationship("TournamentGames", back_populates="game", cascade="all, delete-orphan")
