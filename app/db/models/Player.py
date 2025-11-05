@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy.orm import relationship
 from app.db import Base
 
 class Player(Base):
@@ -10,3 +11,7 @@ class Player(Base):
     position = Column(String, nullable=True)
     grip = Column(String, nullable=True)
     photo_url = Column(String, nullable=True)
+
+    # Player participation per championship/tournament (with team context)
+    championship_entries = relationship("ChampionshipPlayers", back_populates="player", cascade="all, delete-orphan")
+    tournament_entries = relationship("TournamentPlayers", back_populates="player", cascade="all, delete-orphan")
