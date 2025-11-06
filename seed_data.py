@@ -178,11 +178,11 @@ async def seed_data():
         # Связываем команды с чемпионатом
         print("Связываю команды с чемпионатом...")
         championship_teams = [
-            ChampionshipTeams(championship_id=championship.id, team_id=teams[0].id, wins=2, losses=0, draws=0, goals_scored=12, goals_conceded=3, games=3, extra_points=6),
-            ChampionshipTeams(championship_id=championship.id, team_id=teams[1].id, wins=0, losses=1, draws=1, goals_scored=4, goals_conceded=5, games=2, extra_points=1),
-            ChampionshipTeams(championship_id=championship.id, team_id=teams[2].id, wins=0, losses=1, draws=1, goals_scored=3, goals_conceded=6, games=2, extra_points=1),
-            ChampionshipTeams(championship_id=championship.id, team_id=teams[3].id, wins=2, losses=0, draws=0, goals_scored=11, goals_conceded=4, games=2, extra_points=6),
-            ChampionshipTeams(championship_id=championship.id, team_id=teams[4].id, wins=0, losses=2, draws=0, goals_scored=1, goals_conceded=8, games=2, extra_points=0),
+            ChampionshipTeams(championship_id=championship.id, team_id=teams[0].id),
+            ChampionshipTeams(championship_id=championship.id, team_id=teams[1].id),
+            ChampionshipTeams(championship_id=championship.id, team_id=teams[2].id),
+            ChampionshipTeams(championship_id=championship.id, team_id=teams[3].id),
+            ChampionshipTeams(championship_id=championship.id, team_id=teams[4].id),
         ]
         session.add_all(championship_teams)
         await session.flush()
@@ -224,10 +224,10 @@ async def seed_data():
         # Связываем команды с турниром
         print("Связываю команды с турниром...")
         tournament_teams = [
-            TournamentTeams(tournament_id=tournament.id, team_id=teams[0].id, wins=1, losses=0, draws=0, goals_scored=4, goals_conceded=3, games=1, extra_points=3),
-            TournamentTeams(tournament_id=tournament.id, team_id=teams[2].id, wins=0, losses=1, draws=0, goals_scored=1, goals_conceded=4, games=1, extra_points=0),
-            TournamentTeams(tournament_id=tournament.id, team_id=teams[3].id, wins=1, losses=0, draws=0, goals_scored=4, goals_conceded=3, games=1, extra_points=3),
-            TournamentTeams(tournament_id=tournament.id, team_id=teams[4].id, wins=0, losses=1, draws=0, goals_scored=0, goals_conceded=3, games=1, extra_points=0),
+            TournamentTeams(tournament_id=tournament.id, team_id=teams[0].id),
+            TournamentTeams(tournament_id=tournament.id, team_id=teams[2].id),
+            TournamentTeams(tournament_id=tournament.id, team_id=teams[3].id),
+            TournamentTeams(tournament_id=tournament.id, team_id=teams[4].id),
         ]
         session.add_all(tournament_teams)
         await session.flush()

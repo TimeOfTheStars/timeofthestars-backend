@@ -288,6 +288,7 @@ class ChampionshipTeamsAdmin(LinkView, model=ChampionshipTeams):
         ChampionshipTeams.goals_scored,
         ChampionshipTeams.goals_conceded,
         ChampionshipTeams.games,
+        ChampionshipTeams.points,
         ChampionshipTeams.extra_points,
     ]
     column_sortable_list = [
@@ -295,6 +296,7 @@ class ChampionshipTeamsAdmin(LinkView, model=ChampionshipTeams):
         ChampionshipTeams.championship_id,
         ChampionshipTeams.team_id,
         ChampionshipTeams.wins,
+        ChampionshipTeams.points,
         ChampionshipTeams.extra_points,
     ]
     form_columns = [
@@ -306,6 +308,7 @@ class ChampionshipTeamsAdmin(LinkView, model=ChampionshipTeams):
         ChampionshipTeams.goals_scored,
         ChampionshipTeams.goals_conceded,
         ChampionshipTeams.games,
+        ChampionshipTeams.points,
         ChampionshipTeams.extra_points,
     ]
 
@@ -337,6 +340,7 @@ class TournamentTeamsAdmin(LinkView, model=TournamentTeams):
         TournamentTeams.goals_scored,
         TournamentTeams.goals_conceded,
         TournamentTeams.games,
+        TournamentTeams.points,
         TournamentTeams.extra_points,
     ]
     column_sortable_list = [
@@ -344,7 +348,8 @@ class TournamentTeamsAdmin(LinkView, model=TournamentTeams):
         TournamentTeams.tournament_id,
         TournamentTeams.team_id,
         TournamentTeams.wins,
-        TournamentTeams.extra_points,
+        TournamentTeams.points,
+        TournamentTeams.extra_points
     ]
     form_columns = [
         TournamentTeams.tournament_id,
@@ -355,6 +360,7 @@ class TournamentTeamsAdmin(LinkView, model=TournamentTeams):
         TournamentTeams.goals_scored,
         TournamentTeams.goals_conceded,
         TournamentTeams.games,
+        TournamentTeams.points,
         TournamentTeams.extra_points,
     ]
 

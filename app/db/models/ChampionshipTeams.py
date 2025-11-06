@@ -18,6 +18,7 @@ class ChampionshipTeams(Base):
     goals_scored = Column(Integer, default=0)
     goals_conceded = Column(Integer, default=0)
     games = Column(Integer, default=0)
+    points = Column(Integer, default=0)
     extra_points = Column(Integer, default=0)
 
     championship = relationship("Championship", back_populates="championship_teams")

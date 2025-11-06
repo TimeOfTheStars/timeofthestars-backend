@@ -172,6 +172,7 @@ async def get_championship_teams(db: AsyncSession, championship_id: int) -> Sequ
                 "goals_scored": ct.goals_scored,
                 "goals_conceded": ct.goals_conceded,
                 "games": ct.games,
+                "points": ct.points,
                 "extra_points": ct.extra_points,
             }
         })
@@ -276,7 +277,8 @@ async def recalculate_championship_teams_stats(
         goals_scored = 0
         goals_conceded = 0
         games_count = 0
-        
+        extra_points = 0
+
         for game in games:
             # Проверяем, участвует ли команда в этой игре
             if game.team_a_id == ct.team_id:
@@ -291,6 +293,8 @@ async def recalculate_championship_teams_stats(
                         losses += 1
                     else:
                         draws += 1
+                        if game.bullet_win_team == ct.team_id:
+                            extra_points += 1
             elif game.team_b_id == ct.team_id:
                 if game.score_team_a is not None and game.score_team_b is not None:
                     goals_scored += game.score_team_b
@@ -303,6 +307,8 @@ async def recalculate_championship_teams_stats(
                         losses += 1
                     else:
                         draws += 1
+                        if game.bullet_win_team == ct.team_id:
+                            extra_points += 1
         
         # Обновляем статистику команды
         ct.wins = wins
@@ -311,8 +317,8 @@ async def recalculate_championship_teams_stats(
         ct.goals_scored = goals_scored
         ct.goals_conceded = goals_conceded
         ct.games = games_count
-        # extra_points можно настроить отдельно (например, 3 за победу, 1 за ничью)
-        ct.extra_points = wins * 2 + draws * 1
+        # points можно настроить отдельно (например, 3 за победу, 1 за ничью)
+        ct.points = wins * 2 + draws * 1 + extra_points * 1
 
 
 
