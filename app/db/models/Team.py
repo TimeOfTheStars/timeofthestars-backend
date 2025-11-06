@@ -18,3 +18,6 @@ class Team(Base):
 
     championship_players = relationship("ChampionshipPlayers", back_populates="team", cascade="all, delete-orphan")
     tournament_players = relationship("TournamentPlayers", back_populates="team", cascade="all, delete-orphan")
+
+    def __repr__(self):
+        return f"({self.id}) {self.name}"

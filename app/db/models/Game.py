@@ -20,6 +20,13 @@ class Game(Base):
 
     bullet_win_team = Column(Integer, ForeignKey("teams.id"), nullable=True)
 
+    team_a = relationship("Team", foreign_keys=[team_a_id])
+    team_b = relationship("Team", foreign_keys=[team_b_id])
+    bullet_team = relationship("Team", foreign_keys=[bullet_win_team])
+
     # Links to tournaments/championships
     championship_links = relationship("ChampionshipGames", back_populates="game", cascade="all, delete-orphan")
     tournament_links = relationship("TournamentGames", back_populates="game", cascade="all, delete-orphan")
+
+    def __repr__(self):
+        return f"({self.id}) {self.team_a_id} vs {self.team_b_id}"

@@ -2,6 +2,7 @@ from sqladmin import Admin, ModelView
 from sqladmin.authentication import AuthenticationBackend
 from fastapi import Request
 
+
 from app.db.base import engine
 from app.config import settings
 from app.db.models import (
@@ -87,11 +88,11 @@ class GameAdmin(ModelView, model=Game):
     name = "Игра"
     name_plural = "Игры"
     icon = "fa-solid fa-gamepad"
-    
+
     column_list = [
         Game.id,
-        Game.team_a_id,
-        Game.team_b_id,
+        Game.team_a,
+        Game.team_b,
         Game.score_team_a,
         Game.score_team_b,
         Game.date,
@@ -101,14 +102,14 @@ class GameAdmin(ModelView, model=Game):
     column_searchable_list = [Game.date, Game.team_a_id, Game.team_b_id, Game.location,]
     column_sortable_list = [Game.id, Game.date, Game.time]
     form_columns = [
-        Game.team_a_id,
-        Game.team_b_id,
+        Game.team_a,
+        Game.team_b,
         Game.score_team_a,
         Game.score_team_b,
         Game.date,
         Game.time,
         Game.location,
-        Game.bullet_win_team,
+        Game.bullet_team,
     ]
     column_labels = {
         Game.id: "ID",
@@ -119,6 +120,11 @@ class GameAdmin(ModelView, model=Game):
         Game.date: "Дата игры",
         Game.time: "Время игры",
         Game.location: "Локация",
+    }
+    column_formatters = {
+        Game.team_a: lambda m, c: m.team_a.name if m.team_a else "-",
+        Game.team_b: lambda m, c: m.team_b.name if m.team_b else "-",
+        Game.bullet_team: lambda m, c: m.bullet_team.name if m.bullet_team else "-",
     }
 
 class ChampionshipAdmin(ModelView, model=Championship):
