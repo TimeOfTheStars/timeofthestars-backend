@@ -65,7 +65,12 @@ class TeamAdmin(ModelView, model=Team):
         Team.id: "ID",
         Team.name: "Название",
         Team.city: "Город",
-        Team.players_count: "Количество игроков"
+        Team.players_count: "Количество игроков",
+        Team.logo_url: "Ссылка на логотип",
+        Team.championship_entries:"Чемпионаты",
+        Team.tournament_entries:"Турниры",
+        Team.championship_players: "Игроки чемпионатов",
+        Team.tournament_players: "Игроки турниров",
     }
 
 class PlayerAdmin(ModelView, model=Player):
@@ -81,7 +86,9 @@ class PlayerAdmin(ModelView, model=Player):
         Player.id: "ID",
         Player.full_name: "ФИО",
         Player.position: "Позиция",
-        Player.birth_date: "День рождения"
+        Player.birth_date: "День рождения",
+        Player.grip: "Хват",
+        Player.photo_url: "Ссылка на фото"
     }
 
 class GameAdmin(ModelView, model=Game):
@@ -99,7 +106,7 @@ class GameAdmin(ModelView, model=Game):
         Game.time,
         Game.location,
     ]
-    column_searchable_list = [Game.date, Game.team_a_id, Game.team_b_id, Game.location,]
+    column_searchable_list = [Game.date, Game.team_a, Game.team_b, Game.location,]
     column_sortable_list = [Game.id, Game.date, Game.time]
     form_columns = [
         Game.team_a,
@@ -113,13 +120,14 @@ class GameAdmin(ModelView, model=Game):
     ]
     column_labels = {
         Game.id: "ID",
-        Game.team_a_id: "ID Команды А",
-        Game.team_b_id: "ID Команды B",
+        Game.team_a: "Команда А",
+        Game.team_b: "Команда B",
         Game.score_team_a: "Счёт команды А",
         Game.score_team_b: "Счёт команды B",
         Game.date: "Дата игры",
         Game.time: "Время игры",
         Game.location: "Локация",
+        Game.bullet_team: "Победитель буллитов"
     }
     column_formatters = {
         Game.team_a: lambda m, c: m.team_a.name if m.team_a else "-",
@@ -192,26 +200,26 @@ class ChampionshipPlayersAdmin(ModelView, model=ChampionshipPlayers):
 
     column_list = [
         ChampionshipPlayers.id,
-        ChampionshipPlayers.championship_id,
-        ChampionshipPlayers.team_id,
-        ChampionshipPlayers.player_id,
+        ChampionshipPlayers.championship,
+        ChampionshipPlayers.team,
+        ChampionshipPlayers.player,
         ChampionshipPlayers.number,
         ChampionshipPlayers.matches,
         ChampionshipPlayers.goals,
         ChampionshipPlayers.assists,
         ChampionshipPlayers.penalties,
     ]
-    column_searchable_list = [ChampionshipPlayers.player_id, ChampionshipPlayers.team_id]
+    column_searchable_list = [ChampionshipPlayers.player, ChampionshipPlayers.team]
     column_sortable_list = [
         ChampionshipPlayers.id,
-        ChampionshipPlayers.championship_id,
+        ChampionshipPlayers.championship,
         ChampionshipPlayers.goals,
         ChampionshipPlayers.matches,
     ]
     form_columns = [
-        ChampionshipPlayers.championship_id,
-        ChampionshipPlayers.team_id,
-        ChampionshipPlayers.player_id,
+        ChampionshipPlayers.championship,
+        ChampionshipPlayers.team,
+        ChampionshipPlayers.player,
         ChampionshipPlayers.number,
         ChampionshipPlayers.matches,
         ChampionshipPlayers.goals,
@@ -221,9 +229,9 @@ class ChampionshipPlayersAdmin(ModelView, model=ChampionshipPlayers):
     ]
     column_labels = {
         ChampionshipPlayers.id: "ID",
-        ChampionshipPlayers.championship_id: "ID чемпионата",
-        ChampionshipPlayers.team_id: "ID команды",
-        ChampionshipPlayers.player_id: "ID игрока",
+        ChampionshipPlayers.championship: "Чемпионат",
+        ChampionshipPlayers.team: "Команда",
+        ChampionshipPlayers.player: "Игрок",
         ChampionshipPlayers.number: "Номер",
         ChampionshipPlayers.matches: "Матчи",
         ChampionshipPlayers.goals: "Голы",
@@ -238,26 +246,26 @@ class TournamentPlayersAdmin(ModelView, model=TournamentPlayers):
 
     column_list = [
         TournamentPlayers.id,
-        TournamentPlayers.tournament_id,
-        TournamentPlayers.team_id,
-        TournamentPlayers.player_id,
+        TournamentPlayers.tournament,
+        TournamentPlayers.team,
+        TournamentPlayers.player,
         TournamentPlayers.number,
         TournamentPlayers.matches,
         TournamentPlayers.goals,
         TournamentPlayers.assists,
         TournamentPlayers.penalties,
     ]
-    column_searchable_list = [TournamentPlayers.player_id, TournamentPlayers.team_id]
+    column_searchable_list = [TournamentPlayers.player, TournamentPlayers.team]
     column_sortable_list = [
         TournamentPlayers.id,
-        TournamentPlayers.tournament_id,
+        TournamentPlayers.tournament,
         TournamentPlayers.goals,
         TournamentPlayers.matches,
     ]
     form_columns = [
-        TournamentPlayers.tournament_id,
-        TournamentPlayers.team_id,
-        TournamentPlayers.player_id,
+        TournamentPlayers.tournament,
+        TournamentPlayers.team,
+        TournamentPlayers.player,
         TournamentPlayers.number,
         TournamentPlayers.matches,
         TournamentPlayers.goals,
@@ -267,9 +275,9 @@ class TournamentPlayersAdmin(ModelView, model=TournamentPlayers):
     ]
     column_labels = {
         TournamentPlayers.id: "ID",
-        TournamentPlayers.tournament_id: "ID чемпионата",
-        TournamentPlayers.team_id: "ID команды",
-        TournamentPlayers.player_id: "ID игрока",
+        TournamentPlayers.tournament: "Чемпионат",
+        TournamentPlayers.team: "Команда",
+        TournamentPlayers.player: "Игрок",
         TournamentPlayers.number: "Номер",
         TournamentPlayers.matches: "Матчи",
         TournamentPlayers.goals: "Голы",
@@ -286,8 +294,8 @@ class ChampionshipTeamsAdmin(LinkView, model=ChampionshipTeams):
 
     column_list = [
         ChampionshipTeams.id,
-        ChampionshipTeams.championship_id,
-        ChampionshipTeams.team_id,
+        ChampionshipTeams.championship,
+        ChampionshipTeams.team,
         ChampionshipTeams.wins,
         ChampionshipTeams.losses,
         ChampionshipTeams.draws,
@@ -299,15 +307,8 @@ class ChampionshipTeamsAdmin(LinkView, model=ChampionshipTeams):
     ]
     column_sortable_list = [
         ChampionshipTeams.id,
-        ChampionshipTeams.championship_id,
-        ChampionshipTeams.team_id,
-        ChampionshipTeams.wins,
-        ChampionshipTeams.points,
-        ChampionshipTeams.extra_points,
-    ]
-    form_columns = [
-        ChampionshipTeams.championship_id,
-        ChampionshipTeams.team_id,
+        ChampionshipTeams.championship,
+        ChampionshipTeams.team,
         ChampionshipTeams.wins,
         ChampionshipTeams.losses,
         ChampionshipTeams.draws,
@@ -317,19 +318,30 @@ class ChampionshipTeamsAdmin(LinkView, model=ChampionshipTeams):
         ChampionshipTeams.points,
         ChampionshipTeams.extra_points,
     ]
-
-class ChampionshipGamesAdmin(LinkView, model=ChampionshipGames):
-    name = "Игра в чемпионате"
-    name_plural = "Игры в чемпионатах"
-    icon = "fa-solid fa-link"
-
-    column_list = [
-        ChampionshipGames.id,
-        ChampionshipGames.championship_id,
-        ChampionshipGames.game_id,
+    form_columns = [
+        ChampionshipTeams.championship,
+        ChampionshipTeams.team,
+        ChampionshipTeams.wins,
+        ChampionshipTeams.losses,
+        ChampionshipTeams.draws,
+        ChampionshipTeams.goals_scored,
+        ChampionshipTeams.goals_conceded,
+        ChampionshipTeams.games,
+        ChampionshipTeams.points,
+        ChampionshipTeams.extra_points,
     ]
-    column_sortable_list = [ChampionshipGames.id, ChampionshipGames.championship_id]
-    form_columns = [ChampionshipGames.championship_id, ChampionshipGames.game_id]
+    column_labels = {
+        ChampionshipTeams.championship: "Чемпионат",
+        ChampionshipTeams.team: "Команда",
+        ChampionshipTeams.wins: "Победы",
+        ChampionshipTeams.losses: "поражения",
+        ChampionshipTeams.draws: "Ничьи",
+        ChampionshipTeams.goals_scored: "Забито",
+        ChampionshipTeams.goals_conceded: "Пропущено",
+        ChampionshipTeams.games: "К-во игр",
+        ChampionshipTeams.points: "Очки",
+        ChampionshipTeams.extra_points: "Доп. очки"
+    }
 
 class TournamentTeamsAdmin(LinkView, model=TournamentTeams):
     name = "Команда в турнире"
@@ -338,8 +350,8 @@ class TournamentTeamsAdmin(LinkView, model=TournamentTeams):
 
     column_list = [
         TournamentTeams.id,
-        TournamentTeams.tournament_id,
-        TournamentTeams.team_id,
+        TournamentTeams.tournament,
+        TournamentTeams.team,
         TournamentTeams.wins,
         TournamentTeams.losses,
         TournamentTeams.draws,
@@ -351,15 +363,15 @@ class TournamentTeamsAdmin(LinkView, model=TournamentTeams):
     ]
     column_sortable_list = [
         TournamentTeams.id,
-        TournamentTeams.tournament_id,
-        TournamentTeams.team_id,
+        TournamentTeams.tournament,
+        TournamentTeams.team,
         TournamentTeams.wins,
         TournamentTeams.points,
         TournamentTeams.extra_points
     ]
     form_columns = [
-        TournamentTeams.tournament_id,
-        TournamentTeams.team_id,
+        TournamentTeams.tournament,
+        TournamentTeams.team,
         TournamentTeams.wins,
         TournamentTeams.losses,
         TournamentTeams.draws,
@@ -370,6 +382,18 @@ class TournamentTeamsAdmin(LinkView, model=TournamentTeams):
         TournamentTeams.extra_points,
     ]
 
+class ChampionshipGamesAdmin(LinkView, model=ChampionshipGames):
+    name = "Игра в чемпионате"
+    name_plural = "Игры в чемпионатах"
+    icon = "fa-solid fa-link"
+
+    column_list = [
+        ChampionshipGames.id,
+        ChampionshipGames.championship,
+        ChampionshipGames.game_id,
+    ]
+    form_columns = [ChampionshipGames.championship, ChampionshipGames.game_id]
+
 class TournamentGamesAdmin(LinkView, model=TournamentGames):
     name = "Игра в турнире"
     name_plural = "Игры в турнирах"
@@ -377,11 +401,11 @@ class TournamentGamesAdmin(LinkView, model=TournamentGames):
 
     column_list = [
         TournamentGames.id,
-        TournamentGames.tournament_id,
+        TournamentGames.tournament,
         TournamentGames.game_id,
     ]
-    column_sortable_list = [TournamentGames.id, TournamentGames.tournament_id]
-    form_columns = [TournamentGames.tournament_id, TournamentGames.game_id]
+    column_sortable_list = [TournamentGames.id, TournamentGames.tournament]
+    form_columns = [TournamentGames.tournament, TournamentGames.game_id]
 
 def setup_admin(app):
     """Настройка и подключение админ-панели к приложению"""
@@ -402,9 +426,10 @@ def setup_admin(app):
         admin.add_view(TournamentAdmin)
         admin.add_view(ChampionshipPlayersAdmin)
         admin.add_view(TournamentPlayersAdmin)
+
         admin.add_view(ChampionshipTeamsAdmin)
-        admin.add_view(ChampionshipGamesAdmin)
         admin.add_view(TournamentTeamsAdmin)
+        admin.add_view(ChampionshipGamesAdmin)
         admin.add_view(TournamentGamesAdmin)
         
         return admin

@@ -23,4 +23,4 @@ class Championship(Base):
     games = relationship("Game", secondary="championship_games", viewonly=True)
 
     def __repr__(self):
-        return f"({self.id}) {self.name}"
+        return f"{self.name}"

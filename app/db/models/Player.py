@@ -17,4 +17,4 @@ class Player(Base):
     tournament_entries = relationship("TournamentPlayers", back_populates="player", cascade="all, delete-orphan")
 
     def __repr__(self):
-        return f"({self.id}) {self.name}"
+        return f"({self.id}) {self.full_name}"
