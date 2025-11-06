@@ -15,6 +15,8 @@ from app.routers import (
 
 from app.config import settings
 from app.admin import setup_admin
+# Импортируем модели для регистрации SQLAlchemy событий
+from app.db.models import ChampionshipGames, TournamentGames  # noqa: F401
 
 app = FastAPI(
     title="Time Of The Stars",

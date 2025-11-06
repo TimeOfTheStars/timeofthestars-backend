@@ -21,22 +21,17 @@ from app.db.models import (
 
 class LinkView(ModelView):
     category = "Связующие таблицы"
-    can_create = False
-    can_edit = False
+    # can_create = False
+    # can_edit = False
     can_delete = False
 
 class AdminAuth(AuthenticationBackend):
-    """
-    Простая аутентификация для админ-панели.
-    В продакшене нужно использовать полноценную систему авторизации.
-    """
     async def login(self, request: Request) -> bool:
         form = await request.form()
         username = form.get("username")
         password = form.get("password")
         
         # TODO: Заменить на реальную проверку через БД или JWT
-        # Для разработки используем простую проверку
         if username == "admin" and password == "admin":
             request.session.update({"authenticated": True})
             return True
@@ -334,7 +329,7 @@ class ChampionshipTeamsAdmin(LinkView, model=ChampionshipTeams):
         ChampionshipTeams.championship: "Чемпионат",
         ChampionshipTeams.team: "Команда",
         ChampionshipTeams.wins: "Победы",
-        ChampionshipTeams.losses: "поражения",
+        ChampionshipTeams.losses: "Поражения",
         ChampionshipTeams.draws: "Ничьи",
         ChampionshipTeams.goals_scored: "Забито",
         ChampionshipTeams.goals_conceded: "Пропущено",
@@ -366,6 +361,11 @@ class TournamentTeamsAdmin(LinkView, model=TournamentTeams):
         TournamentTeams.tournament,
         TournamentTeams.team,
         TournamentTeams.wins,
+        TournamentTeams.losses,
+        TournamentTeams.draws,
+        TournamentTeams.goals_scored,
+        TournamentTeams.goals_conceded,
+        TournamentTeams.games,
         TournamentTeams.points,
         TournamentTeams.extra_points
     ]
@@ -381,6 +381,18 @@ class TournamentTeamsAdmin(LinkView, model=TournamentTeams):
         TournamentTeams.points,
         TournamentTeams.extra_points,
     ]
+    column_labels = {
+        TournamentTeams.tournament: "Туринир",
+        TournamentTeams.team: "Команда",
+        TournamentTeams.wins: "Победы",
+        TournamentTeams.losses: "Поражения",
+        TournamentTeams.draws: "Ничьи",
+        TournamentTeams.goals_scored: "Забито",
+        TournamentTeams.goals_conceded: "Пропущено",
+        TournamentTeams.games: "К-во игр",
+        TournamentTeams.points: "Очки",
+        TournamentTeams.extra_points: "Доп. очки"
+    }
 
 class ChampionshipGamesAdmin(LinkView, model=ChampionshipGames):
     name = "Игра в чемпионате"
@@ -390,9 +402,9 @@ class ChampionshipGamesAdmin(LinkView, model=ChampionshipGames):
     column_list = [
         ChampionshipGames.id,
         ChampionshipGames.championship,
-        ChampionshipGames.game_id,
+        ChampionshipGames.game,
     ]
-    form_columns = [ChampionshipGames.championship, ChampionshipGames.game_id]
+    form_columns = [ChampionshipGames.championship, ChampionshipGames.game]
 
 class TournamentGamesAdmin(LinkView, model=TournamentGames):
     name = "Игра в турнире"
@@ -402,10 +414,10 @@ class TournamentGamesAdmin(LinkView, model=TournamentGames):
     column_list = [
         TournamentGames.id,
         TournamentGames.tournament,
-        TournamentGames.game_id,
+        TournamentGames.game,
     ]
     column_sortable_list = [TournamentGames.id, TournamentGames.tournament]
-    form_columns = [TournamentGames.tournament, TournamentGames.game_id]
+    form_columns = [TournamentGames.tournament, TournamentGames.game]
 
 def setup_admin(app):
     """Настройка и подключение админ-панели к приложению"""
