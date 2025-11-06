@@ -31,11 +31,14 @@ async def seed_data():
         # Создаём команды
         print("Создаю команды...")
         teams = [
-            Team(name="Спартак", slug="spartak", city="Москва", players_count=15),
-            Team(name="ЦСКА", slug="cska", city="Москва", players_count=14),
-            Team(name="Динамо", slug="dinamo", city="Москва", players_count=16),
-            Team(name="Зенит", slug="zenit", city="Санкт-Петербург", players_count=15),
-            Team(name="Локомотив", slug="lokomotiv", city="Москва", players_count=14),
+            Team(name="Переславль-Залесский", slug="pereslavl", city="Переславль-Залесский"),
+            Team(name="Зубр", slug="zubr", city="Ярославль"),
+            Team(name="Вымпел-V", slug="vympelv", city="Ярославль"),
+            Team(name="Ярославич", slug="yaroslavich", city="Ярославль"),
+            Team(name="Торпедо", slug="torpedo", city="Ярославль"),
+            Team(name="БГВ", slug="bgv", city="Ярославль"),
+            Team(name="ЯВВУ ПВО", slug="pvo", city="Ярославль"),
+            Team(name="Время звезд", slug="vremyazvezd", city="Ярославль"),
         ]
         session.add_all(teams)
         await session.flush()
@@ -152,10 +155,9 @@ async def seed_data():
         # Создаём чемпионат
         print("Создаю чемпионат...")
         championship = Championship(
-            name="Чемпионат России 2024",
-            start_date=base_date,
-            end_date=base_date + timedelta(days=60),
-            location="Москва",
+            name="Звезда Отечества",
+            start_date=date(2025, 10, 21),
+            location="СК «Торпедо», ГУОР, СК «Переславль»",
         )
         session.add(championship)
         await session.flush()
@@ -164,10 +166,10 @@ async def seed_data():
         # Создаём турнир
         print("Создаю турнир...")
         tournament = Tournament(
-            name="Кубок России 2024",
-            start_date=base_date + timedelta(days=20),
-            end_date=base_date + timedelta(days=40),
-            location="Санкт-Петербург",
+            name="Предсезонный турнир",
+            start_date=date(2025, 9, 9),
+            end_date=date(2025, 10, 14),
+            location="СК «Торпедо»",
         )
         session.add(tournament)
         await session.flush()

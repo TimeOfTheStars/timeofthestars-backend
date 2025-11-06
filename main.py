@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
+from starlette.middleware.sessions import SessionMiddleware
 from app.routers import (
     root_router,
     teams_router,
@@ -13,6 +14,8 @@ from app.routers import (
 )
 
 from app.config import settings
+from app.admin import setup_admin
+
 app = FastAPI(
     title="Time Of The Stars",
     description="""Один русский черный мальчмк заработал капитальчик
@@ -28,6 +31,11 @@ app = FastAPI(
     },
 )
 
+# Добавляем middleware для сессий (если админ-панель включена)
+# Важно: middleware должен быть добавлен ДО подключения роутеров
+if settings.ADMIN_ENABLED:
+    app.add_middleware(SessionMiddleware, secret_key=settings.SECRET_KEY)
+
 # Подключаем роутеры
 app.include_router(root_router)
 app.include_router(teams_router)
@@ -35,6 +43,15 @@ app.include_router(players_router)
 app.include_router(tournaments_router)
 app.include_router(championships_router)
 app.include_router(games_router)
+
+# Подключаем админ-панель
+if settings.ADMIN_ENABLED:
+    try:
+        setup_admin(app)
+    except Exception as e:
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.warning(f"Не удалось инициализировать админ-панель: {e}. Продолжаем работу без админ-панели.")
 
 
 
@@ -73,6 +90,7 @@ def custom_openapi():
         "/health",
         "/metrics",
         "/sentry-debug",
+        "/admin",  # Админ-панель имеет свою систему авторизации
     }
 
     for path, path_item in openapi_schema.get("paths", {}).items():

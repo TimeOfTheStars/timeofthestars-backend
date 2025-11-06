@@ -13,3 +13,6 @@ sqlalchemy
 alembic
 punq
 asyncpg
+sqladmin
+jinja2
+itsdangerous

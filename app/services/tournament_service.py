@@ -310,7 +310,7 @@ async def recalculate_tournament_teams_stats(
         tt.goals_conceded = goals_conceded
         tt.games = games_count
         # extra_points можно настроить отдельно (например, 3 за победу, 1 за ничью)
-        tt.extra_points = wins * 3 + draws * 1
+        tt.extra_points = wins * 2 + draws * 1
 
 
 
