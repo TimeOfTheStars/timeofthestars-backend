@@ -113,6 +113,29 @@ async def remove_player(
     return result.scalar_one_or_none() is not None
 
 
+async def ensure_teams_in_championship(db: AsyncSession, championship_id: int, game_id: int) -> None:
+    """Вспомогательная функция: добавляет команды из игры в ChampionshipTeams, если их там еще нет"""
+    game_result = await db.execute(select(Game).where(Game.id == game_id))
+    game = game_result.scalar_one_or_none()
+    
+    if game:
+        # Автоматически добавляем команды в ChampionshipTeams, если их там еще нет
+        for team_id in [game.team_a_id, game.team_b_id]:
+            if team_id:
+                team_exists_q = select(ChampionshipTeams.id).where(
+                    ChampionshipTeams.championship_id == championship_id,
+                    ChampionshipTeams.team_id == team_id,
+                )
+                team_exists = (await db.execute(team_exists_q)).scalar_one_or_none()
+                if team_exists is None:
+                    team_link = ChampionshipTeams(
+                        championship_id=championship_id,
+                        team_id=team_id,
+                    )
+                    db.add(team_link)
+        await db.flush()
+
+
 async def add_game(db: AsyncSession, championship_id: int, game_id: int) -> None:
     exists_q = select(ChampionshipGames.id).where(
         ChampionshipGames.championship_id == championship_id,
@@ -123,6 +146,10 @@ async def add_game(db: AsyncSession, championship_id: int, game_id: int) -> None
         link = ChampionshipGames(championship_id=championship_id, game_id=game_id)
         db.add(link)
         await db.flush()
+        
+        # Автоматически добавляем команды в ChampionshipTeams, если их там еще нет
+        await ensure_teams_in_championship(db, championship_id, game_id)
+        
         # Пересчитываем статистику команд после добавления игры
         await recalculate_championship_teams_stats(db, championship_id, game_id)
 
@@ -172,6 +199,7 @@ async def get_championship_teams(db: AsyncSession, championship_id: int) -> Sequ
                 "goals_scored": ct.goals_scored,
                 "goals_conceded": ct.goals_conceded,
                 "games": ct.games,
+                "points": ct.points,
                 "extra_points": ct.extra_points,
             }
         })
@@ -276,7 +304,8 @@ async def recalculate_championship_teams_stats(
         goals_scored = 0
         goals_conceded = 0
         games_count = 0
-        
+        extra_points = 0
+
         for game in games:
             # Проверяем, участвует ли команда в этой игре
             if game.team_a_id == ct.team_id:
@@ -291,6 +320,8 @@ async def recalculate_championship_teams_stats(
                         losses += 1
                     else:
                         draws += 1
+                        if game.bullet_win_team == ct.team_id:
+                            extra_points += 1
             elif game.team_b_id == ct.team_id:
                 if game.score_team_a is not None and game.score_team_b is not None:
                     goals_scored += game.score_team_b
@@ -303,6 +334,8 @@ async def recalculate_championship_teams_stats(
                         losses += 1
                     else:
                         draws += 1
+                        if game.bullet_win_team == ct.team_id:
+                            extra_points += 1
         
         # Обновляем статистику команды
         ct.wins = wins
@@ -311,8 +344,9 @@ async def recalculate_championship_teams_stats(
         ct.goals_scored = goals_scored
         ct.goals_conceded = goals_conceded
         ct.games = games_count
-        # extra_points можно настроить отдельно (например, 3 за победу, 1 за ничью)
-        ct.extra_points = wins * 3 + draws * 1
+        # points можно настроить отдельно (например, 3 за победу, 1 за ничью)
+        ct.points = wins * 2 + draws * 1 + extra_points * 1
+        ct.extra_points = extra_points
 
 
 

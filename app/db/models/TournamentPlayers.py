@@ -23,3 +23,6 @@ class TournamentPlayers(Base):
     tournament = relationship("Tournament", back_populates="tournament_players")
     team = relationship("Team", back_populates="tournament_players")
     player = relationship("Player", back_populates="tournament_entries")
+
+    def __repr__(self):
+        return f"Игрок: {self.id}"

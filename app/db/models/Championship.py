@@ -21,3 +21,6 @@ class Championship(Base):
     teams = relationship("Team", secondary="championship_teams", viewonly=True)
     players = relationship("Player", secondary="championship_players", viewonly=True)
     games = relationship("Game", secondary="championship_games", viewonly=True)
+
+    def __repr__(self):
+        return f"{self.name}"

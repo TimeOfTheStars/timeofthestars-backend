@@ -57,6 +57,7 @@ class ChampionshipTeamStats(BaseModel):
     goals_scored: int
     goals_conceded: int
     games: int
+    points: int
     extra_points: int
 
     class Config:

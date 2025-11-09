@@ -31,6 +31,12 @@ class Settings(BaseSettings):
     )
     # Полный URL может переопределить раздельные параметры
     DATABASE_URL: str | None = Field(default=None)
+    
+    # Секретный ключ для сессий (для админ-панели)
+    SECRET_KEY: str = Field(default="change-this-secret-key-in-production")
+    
+    # Включить/выключить админ-панель
+    ADMIN_ENABLED: bool = Field(default=True)
 
     @property
     def database_settings(self) -> dict:

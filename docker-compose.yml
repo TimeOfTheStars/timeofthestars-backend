@@ -5,8 +5,6 @@ services:
     restart: always
     ports:
       - "5033:5433"
-    volumes:
-      - simbiz-data:/bitnami/postgresql
     environment:
       - POSTGRESQL_DATABASE=${DB_NAME}
       - POSTGRESQL_USERNAME=${DB_USER}
@@ -37,9 +35,6 @@ services:
       - hockey
     depends_on:
       - hockey_db
-
-volumes:
-  simbiz-data:
 
 networks:
   hockey:

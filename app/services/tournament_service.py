@@ -111,6 +111,29 @@ async def remove_player(
     return result.scalar_one_or_none() is not None
 
 
+async def ensure_teams_in_tournament(db: AsyncSession, tournament_id: int, game_id: int) -> None:
+    """Вспомогательная функция: добавляет команды из игры в TournamentTeams, если их там еще нет"""
+    game_result = await db.execute(select(Game).where(Game.id == game_id))
+    game = game_result.scalar_one_or_none()
+    
+    if game:
+        # Автоматически добавляем команды в TournamentTeams, если их там еще нет
+        for team_id in [game.team_a_id, game.team_b_id]:
+            if team_id:
+                team_exists_q = select(TournamentTeams.id).where(
+                    TournamentTeams.tournament_id == tournament_id,
+                    TournamentTeams.team_id == team_id,
+                )
+                team_exists = (await db.execute(team_exists_q)).scalar_one_or_none()
+                if team_exists is None:
+                    team_link = TournamentTeams(
+                        tournament_id=tournament_id,
+                        team_id=team_id,
+                    )
+                    db.add(team_link)
+        await db.flush()
+
+
 async def add_game(db: AsyncSession, tournament_id: int, game_id: int) -> None:
     exists_q = select(TournamentGames.id).where(
         TournamentGames.tournament_id == tournament_id,
@@ -121,6 +144,10 @@ async def add_game(db: AsyncSession, tournament_id: int, game_id: int) -> None:
         link = TournamentGames(tournament_id=tournament_id, game_id=game_id)
         db.add(link)
         await db.flush()
+        
+        # Автоматически добавляем команды в TournamentTeams, если их там еще нет
+        await ensure_teams_in_tournament(db, tournament_id, game_id)
+        
         # Пересчитываем статистику команд после добавления игры
         await recalculate_tournament_teams_stats(db, tournament_id, game_id)
 
@@ -170,6 +197,7 @@ async def get_tournament_teams(db: AsyncSession, tournament_id: int) -> Sequence
                 "goals_scored": tt.goals_scored,
                 "goals_conceded": tt.goals_conceded,
                 "games": tt.games,
+                "points": tt.points,
                 "extra_points": tt.extra_points,
             }
         })
@@ -274,6 +302,7 @@ async def recalculate_tournament_teams_stats(
         goals_scored = 0
         goals_conceded = 0
         games_count = 0
+        extra_points = 0
         
         for game in games:
             # Проверяем, участвует ли команда в этой игре
@@ -289,6 +318,8 @@ async def recalculate_tournament_teams_stats(
                         losses += 1
                     else:
                         draws += 1
+                        if game.bullet_win_team == tt.team_id:
+                            extra_points += 1
             elif game.team_b_id == tt.team_id:
                 if game.score_team_a is not None and game.score_team_b is not None:
                     goals_scored += game.score_team_b
@@ -301,6 +332,8 @@ async def recalculate_tournament_teams_stats(
                         losses += 1
                     else:
                         draws += 1
+                        if game.bullet_win_team == tt.team_id:
+                            extra_points += 1
         
         # Обновляем статистику команды
         tt.wins = wins
@@ -309,8 +342,9 @@ async def recalculate_tournament_teams_stats(
         tt.goals_scored = goals_scored
         tt.goals_conceded = goals_conceded
         tt.games = games_count
-        # extra_points можно настроить отдельно (например, 3 за победу, 1 за ничью)
-        tt.extra_points = wins * 3 + draws * 1
+        # points можно настроить отдельно (например, 3 за победу, 1 за ничью)
+        tt.points = wins * 2 + draws * 1 + extra_points * 1
+        tt.extra_points = extra_points
 
 
 

@@ -15,3 +15,6 @@ class Player(Base):
     # Player participation per championship/tournament (with team context)
     championship_entries = relationship("ChampionshipPlayers", back_populates="player", cascade="all, delete-orphan")
     tournament_entries = relationship("TournamentPlayers", back_populates="player", cascade="all, delete-orphan")
+
+    def __repr__(self):
+        return f"({self.id}) {self.full_name}"
