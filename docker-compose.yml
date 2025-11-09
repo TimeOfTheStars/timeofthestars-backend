@@ -36,9 +36,6 @@ services:
     depends_on:
       - hockey_db
 
-volumes:
-  simbiz-data:
-
 networks:
   hockey:
     external: true
