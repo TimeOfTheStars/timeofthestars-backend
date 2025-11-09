@@ -24,7 +24,7 @@ async def seed_data():
     """Заполняет базу данных тестовыми данными"""
     async with session_maker() as session:
         # Очищаем данные (опционально, можно закомментировать)
-        # await clear_data(session)
+        await clear_data(session)
         await add_data(session)
 
 async def add_data(session):
@@ -572,6 +572,7 @@ async def clear_data(session: AsyncSession):
         Game,
         Player,
         Team,
+        AdminUser
     )
     
     print("Очищаю данные...")
@@ -586,6 +587,7 @@ async def clear_data(session: AsyncSession):
     await session.execute(delete(Game))
     await session.execute(delete(Player))
     await session.execute(delete(Team))
+    await session.execute(delete(AdminUser))
     await session.commit()
     print("Данные очищены")
 

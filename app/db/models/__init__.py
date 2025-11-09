@@ -12,8 +12,11 @@ from .TournamentTeams import TournamentTeams
 from .TournamentGames import TournamentGames
 from .TournamentPlayers import TournamentPlayers
 
+from .AdminUser import AdminUser
+
 
 __all__ = ["Team", "Player", "Game",
            "Championship", "ChampionshipTeams", "ChampionshipGames", "ChampionshipPlayers",
            "Tournament", "TournamentTeams", "TournamentGames", "TournamentPlayers",
+           "AdminUser",
 ]

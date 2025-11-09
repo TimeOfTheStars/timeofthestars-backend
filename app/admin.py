@@ -1,10 +1,11 @@
 from sqladmin import Admin, ModelView
 from sqladmin.authentication import AuthenticationBackend
 from fastapi import Request
+from sqlalchemy.future import select
 
-
-from app.db.base import engine
+from app.db.base import engine, session_maker
 from app.config import settings
+from app.utils.password import pwd_context
 from app.db.models import (
     Team,
     Player,
@@ -17,6 +18,7 @@ from app.db.models import (
     TournamentTeams,
     TournamentPlayers,
     TournamentGames,
+    AdminUser,
 )
 
 class LinkView(ModelView):
@@ -31,10 +33,26 @@ class AdminAuth(AuthenticationBackend):
         username = form.get("username")
         password = form.get("password")
         
-        # TODO: Заменить на реальную проверку через БД или JWT
-        if username == "admin" and password == "admin":
-            request.session.update({"authenticated": True})
-            return True
+        if not username or not password:
+            return False
+        
+        # Проверяем пользователя в БД
+        async with session_maker() as session:
+            result = await session.execute(
+                select(AdminUser).where(AdminUser.username == username)
+            )
+            admin_user = result.scalar_one_or_none()
+            
+            if admin_user and admin_user.is_active:
+                # Проверяем пароль
+                if pwd_context.verify(password, admin_user.hashed_password):
+                    request.session.update({
+                        "authenticated": True,
+                        "user_id": admin_user.id,
+                        "username": admin_user.username
+                    })
+                    return True
+        
         return False
 
     async def logout(self, request: Request) -> bool:
@@ -421,6 +439,21 @@ class TournamentGamesAdmin(LinkView, model=TournamentGames):
     column_sortable_list = [TournamentGames.id, TournamentGames.tournament]
     form_columns = [TournamentGames.tournament, TournamentGames.game]
 
+class AdminUserAdmin(ModelView, model=AdminUser):
+    name = "Администратор"
+    name_plural = "Администраторы"
+    icon = "fa-solid fa-user-shield"
+    
+    column_list = [AdminUser.id, AdminUser.username, AdminUser.is_active]
+    column_searchable_list = [AdminUser.username]
+    form_columns = [AdminUser.username, AdminUser.hashed_password, AdminUser.is_active]
+    column_labels = {
+        AdminUser.id: "ID",
+        AdminUser.username: "Имя пользователя",
+        AdminUser.hashed_password: "Пароль (будет автоматически захеширован)",
+        AdminUser.is_active: "Активен",
+    }
+
 def setup_admin(app):
     """Настройка и подключение админ-панели к приложению"""
     try:
@@ -445,6 +478,7 @@ def setup_admin(app):
         admin.add_view(TournamentTeamsAdmin)
         admin.add_view(ChampionshipGamesAdmin)
         admin.add_view(TournamentGamesAdmin)
+        admin.add_view(AdminUserAdmin)
         
         return admin
     except Exception as e:
