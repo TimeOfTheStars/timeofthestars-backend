@@ -232,6 +232,7 @@ class ChampionshipPlayersAdmin(ModelView, model=ChampionshipPlayers):
         ChampionshipPlayers.goals: "Голы",
         ChampionshipPlayers.assists: "Передачи",
         ChampionshipPlayers.penalties: "Штрафы",
+        ChampionshipPlayers.gaa: "Коэффициент надёжности (КН) вратаря"
     }
 
 class TournamentPlayersAdmin(ModelView, model=TournamentPlayers):
@@ -278,6 +279,7 @@ class TournamentPlayersAdmin(ModelView, model=TournamentPlayers):
         TournamentPlayers.goals: "Голы",
         TournamentPlayers.assists: "Передачи",
         TournamentPlayers.penalties: "Штрафы",
+        TournamentPlayers.gaa: "Коэффициент надёжности (КН) вратаря"
     }
 
 # ----------------------------------------------------------------------------------------------------------------------
