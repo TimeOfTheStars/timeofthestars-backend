@@ -16,3 +16,7 @@ asyncpg
 sqladmin
 jinja2
 itsdangerous
+passlib[bcrypt]>=1.7.4
+# Используем bcrypt < 4.1.0 для совместимости с passlib
+# или обновите passlib до последней версии, где проблема исправлена
+bcrypt>=4.0.1,<4.1.0
