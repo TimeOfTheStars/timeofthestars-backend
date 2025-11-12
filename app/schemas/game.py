@@ -10,6 +10,7 @@ class GameBase(BaseModel):
     date: date
     time: time
     location: str
+    scan: str | None
     bullet_win_team: int |  None
 
 
@@ -25,6 +26,7 @@ class GameUpdate(BaseModel):
     date: date |  None
     time: time |  None
     location: str |  None
+    scan: str | None
     bullet_win_team: int |  None
 
 

@@ -4,6 +4,7 @@ from fastapi.openapi.utils import get_openapi
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
 from starlette.middleware.sessions import SessionMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 from app.routers import (
     root_router,
     teams_router,
@@ -55,8 +56,13 @@ if settings.ADMIN_ENABLED:
         logger = logging.getLogger(__name__)
         logger.warning(f"Не удалось инициализировать админ-панель: {e}. Продолжаем работу без админ-панели.")
 
-
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # либо конкретно: ["https://timeofthestars.ru"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # --- Swagger с авторизацией ---
 def custom_openapi():

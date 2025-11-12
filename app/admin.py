@@ -130,6 +130,7 @@ class GameAdmin(ModelView, model=Game):
         Game.time,
         Game.location,
         Game.bullet_team,
+        Game.scan
     ]
     column_labels = {
         Game.id: "ID",
@@ -140,7 +141,8 @@ class GameAdmin(ModelView, model=Game):
         Game.date: "Дата игры",
         Game.time: "Время игры",
         Game.location: "Локация",
-        Game.bullet_team: "Победитель буллитов"
+        Game.bullet_team: "Победитель буллитов",
+        Game.scan: "Скан протокола"
     }
     column_formatters = {
         Game.team_a: lambda m, c: m.team_a.name if m.team_a else "-",
@@ -289,7 +291,7 @@ class TournamentPlayersAdmin(ModelView, model=TournamentPlayers):
     ]
     column_labels = {
         TournamentPlayers.id: "ID",
-        TournamentPlayers.tournament: "Чемпионат",
+        TournamentPlayers.tournament: "Турнир",
         TournamentPlayers.team: "Команда",
         TournamentPlayers.player: "Игрок",
         TournamentPlayers.number: "Номер",
