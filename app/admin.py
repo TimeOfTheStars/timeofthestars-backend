@@ -25,7 +25,7 @@ class LinkView(ModelView):
     category = "Связующие таблицы"
     # can_create = False
     # can_edit = False
-    can_delete = False
+    # can_delete = False
 
 class AdminAuth(AuthenticationBackend):
     async def login(self, request: Request) -> bool:
@@ -91,7 +91,7 @@ class PlayerAdmin(ModelView, model=Player):
     name_plural = "Игроки"
     icon = "fa-solid fa-user"
     
-    column_list = [Player.id, Player.full_name, Player.position, Player.birth_date]
+    column_list = [Player.id, Player.full_name, Player.position, Player.birth_date, Player.photo_url]
     column_searchable_list = [Player.full_name, Player.position]
     column_sortable_list = [Player.id, Player.full_name, Player.birth_date]
     form_columns = [Player.full_name, Player.birth_date, Player.position, Player.grip, Player.photo_url]
@@ -118,6 +118,7 @@ class GameAdmin(ModelView, model=Game):
         Game.date,
         Game.time,
         Game.location,
+        Game.scan
     ]
     column_searchable_list = [Game.date, Game.team_a, Game.team_b, Game.location,]
     column_sortable_list = [Game.id, Game.date, Game.time]
@@ -224,7 +225,7 @@ class ChampionshipPlayersAdmin(ModelView, model=ChampionshipPlayers):
         ChampionshipPlayers.assists,
         ChampionshipPlayers.penalties,
     ]
-    column_searchable_list = [ChampionshipPlayers.player, ChampionshipPlayers.team]
+    # column_searchable_list = [ChampionshipPlayers.player, ChampionshipPlayers.team]
     column_sortable_list = [
         ChampionshipPlayers.id,
         ChampionshipPlayers.championship,
@@ -271,7 +272,7 @@ class TournamentPlayersAdmin(ModelView, model=TournamentPlayers):
         TournamentPlayers.assists,
         TournamentPlayers.penalties,
     ]
-    column_searchable_list = [TournamentPlayers.player, TournamentPlayers.team]
+    # column_searchable_list = [TournamentPlayers.player, TournamentPlayers.team]
     column_sortable_list = [
         TournamentPlayers.id,
         TournamentPlayers.tournament,

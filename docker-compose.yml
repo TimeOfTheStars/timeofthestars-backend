@@ -11,6 +11,8 @@ services:
       - POSTGRESQL_PASSWORD=${DB_PASSWORD}
       - POSTGRESQL_PORT_NUMBER=${DB_PORT}
       - POSTGRESQL_REPLICATION_MODE=${POSTGRESQL_REPLICATION_MODE}
+    volumes:
+      - hockey_db_data:/bitnami/postgresql
     networks:
       - hockey
 
@@ -35,6 +37,9 @@ services:
       - hockey
     depends_on:
       - hockey_db
+
+volumes:
+  hockey_db_data:
 
 networks:
   hockey:

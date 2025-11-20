@@ -21,7 +21,7 @@ from app.db.models import ChampionshipGames, TournamentGames  # noqa: F401
 
 app = FastAPI(
     title="Time Of The Stars",
-    description="""Один русский черный мальчмк заработал капитальчик
+    description="""Хоккейная лига «TIME OF THE STARS»
     """,
     version="1.0.0",
     openapi_extra={
@@ -58,7 +58,7 @@ if settings.ADMIN_ENABLED:
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # либо конкретно: ["https://timeofthestars.ru"]
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
