@@ -118,7 +118,7 @@ class GameAdmin(ModelView, model=Game):
         Game.date,
         Game.time,
         Game.location,
-        Game.scan
+        Game.scan,
     ]
     column_searchable_list = [Game.date, Game.team_a, Game.team_b, Game.location,]
     column_sortable_list = [Game.id, Game.date, Game.time]
@@ -131,7 +131,8 @@ class GameAdmin(ModelView, model=Game):
         Game.time,
         Game.location,
         Game.bullet_team,
-        Game.scan
+        Game.scan,
+        Game.video_url
     ]
     column_labels = {
         Game.id: "ID",

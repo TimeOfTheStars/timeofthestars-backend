@@ -11,6 +11,7 @@ class GameBase(BaseModel):
     time: time
     location: str
     scan: str | None
+    video_url: str | None
     bullet_win_team: int |  None
 
 
@@ -27,6 +28,7 @@ class GameUpdate(BaseModel):
     time: time |  None
     location: str |  None
     scan: str | None
+    video_url: str | None
     bullet_win_team: int |  None
 
 

@@ -17,6 +17,7 @@ class Game(Base):
     time = Column(Time, nullable=False)
     location = Column(String, nullable=False)
     scan = Column(String, nullable=True)
+    video_url = Column(String, nullable=True)
 
     bullet_win_team = Column(Integer, ForeignKey("teams.id"), nullable=True)
 
