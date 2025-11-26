@@ -12,7 +12,7 @@ done
 echo "PostgreSQL is ready."
 
 echo "Running Alembic migrations..."
-alembic upgrade heads || { echo "Alembic migration failed"; exit 1; }
+alembic upgrade head || { echo "Alembic migration failed"; exit 1; }
 
 echo "Starting application..."
 
