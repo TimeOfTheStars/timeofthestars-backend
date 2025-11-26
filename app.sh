@@ -11,8 +11,8 @@ until pg_isready -h "$DB_HOST" -p "$DB_PORT" -q; do
 done
 echo "PostgreSQL is ready."
 
-echo "Running Alembic migrations..."
-alembic upgrade head || { echo "Alembic migration failed"; exit 1; }
+#echo "Running Alembic migrations..."
+#alembic upgrade head || { echo "Alembic migration failed"; exit 1; }
 
 echo "Starting application..."
 
