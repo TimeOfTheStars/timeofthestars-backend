@@ -1,4 +1,4 @@
-from typing import Sequence
+from collections.abc import Sequence
 
 from sqlalchemy import select, update, delete
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -33,8 +33,20 @@ async def update_game(db: AsyncSession, game_id: int, data: GameUpdate) -> Game 
     if not payload:
         return await get_game(db, game_id)
     
-    # Проверяем, обновляются ли результаты игры (score_team_a или score_team_b)
-    score_updated = "score_team_a" in payload or "score_team_b" in payload
+    # Получаем текущие значения, чтобы понять, действительно ли изменились счета
+    current_game_result = await db.execute(select(Game).where(Game.id == game_id))
+    current_game = current_game_result.scalar_one_or_none()
+    if current_game is None:
+        return None
+
+    old_a = current_game.score_team_a
+    old_b = current_game.score_team_b
+
+    new_a = payload.get("score_team_a", old_a)
+    new_b = payload.get("score_team_b", old_b)
+
+    # Пересчитываем статистику только если счета действительно изменились
+    score_updated = (old_a != new_a) or (old_b != new_b)
     
     await db.execute(update(Game).where(Game.id == game_id).values(**payload))
     result = await db.execute(select(Game).where(Game.id == game_id))
