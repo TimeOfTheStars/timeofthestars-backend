@@ -348,6 +348,9 @@ async def recalculate_championship_teams_stats(
         ct.points = wins * 2 + draws * 1 + extra_points * 1
         ct.extra_points = extra_points
 
+    # Сбрасываем изменения в БД, чтобы статистика стала доступна немедленно
+    await db.flush()
+
 
 
 
