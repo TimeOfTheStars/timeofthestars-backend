@@ -21,11 +21,18 @@ from app.db.models import (
     AdminUser,
 )
 
-class LinkView(ModelView):
-    category = "Связующие таблицы"
-    # can_create = False
-    # can_edit = False
-    # can_delete = False
+class RoleProtectedModelView(ModelView):
+    allowed_roles = {"admin"}
+
+    def _has_access(self, request: Request) -> bool:
+        role = request.session.get("role")
+        return bool(role in self.allowed_roles)
+
+    def is_accessible(self, request: Request) -> bool:
+        return bool(request.session.get("authenticated")) and self._has_access(request)
+
+    def is_visible(self, request: Request) -> bool:
+        return self.is_accessible(request)
 
 class AdminAuth(AuthenticationBackend):
     async def login(self, request: Request) -> bool:
@@ -49,7 +56,8 @@ class AdminAuth(AuthenticationBackend):
                     request.session.update({
                         "authenticated": True,
                         "user_id": admin_user.id,
-                        "username": admin_user.username
+                        "username": admin_user.username,
+                        "role": getattr(admin_user, "role", "admin"),
                     })
                     return True
         
@@ -66,10 +74,11 @@ class AdminAuth(AuthenticationBackend):
 authentication_backend = AdminAuth(secret_key=settings.SECRET_KEY)
 
 
-class TeamAdmin(ModelView, model=Team):
+class TeamAdmin(RoleProtectedModelView, model=Team):
     name = "Команда"
     name_plural = "Команды"
     icon = "fa-solid fa-people-group"
+    allowed_roles = {"admin", "manager"}
     
     column_list = [Team.id, Team.name, Team.city, Team.players_count]
     column_searchable_list = [Team.name, Team.city]
@@ -86,10 +95,11 @@ class TeamAdmin(ModelView, model=Team):
         Team.tournament_players: "Игроки турниров",
     }
 
-class PlayerAdmin(ModelView, model=Player):
+class PlayerAdmin(RoleProtectedModelView, model=Player):
     name = "Игрок"
     name_plural = "Игроки"
     icon = "fa-solid fa-user"
+    allowed_roles = {"admin", "manager"}
     
     column_list = [Player.id, Player.full_name, Player.position, Player.birth_date, Player.photo_url]
     column_searchable_list = [Player.full_name, Player.position]
@@ -104,10 +114,11 @@ class PlayerAdmin(ModelView, model=Player):
         Player.photo_url: "Ссылка на фото"
     }
 
-class GameAdmin(ModelView, model=Game):
+class GameAdmin(RoleProtectedModelView, model=Game):
     name = "Игра"
     name_plural = "Игры"
     icon = "fa-solid fa-gamepad"
+    allowed_roles = {"admin", "manager"}
 
     column_list = [
         Game.id,
@@ -152,10 +163,11 @@ class GameAdmin(ModelView, model=Game):
         Game.bullet_team: lambda m, c: m.bullet_team.name if m.bullet_team else "-",
     }
 
-class ChampionshipAdmin(ModelView, model=Championship):
+class ChampionshipAdmin(RoleProtectedModelView, model=Championship):
     name = "Чемпионат"
     name_plural = "Чемпионаты"
     icon = "fa-solid fa-trophy"
+    allowed_roles = {"admin", "manager"}
     
     column_list = [
         Championship.id,
@@ -181,10 +193,11 @@ class ChampionshipAdmin(ModelView, model=Championship):
         Championship.location: "Локация(и)",
     }
 
-class TournamentAdmin(ModelView, model=Tournament):
+class TournamentAdmin(RoleProtectedModelView, model=Tournament):
     name = "Турнир"
     name_plural = "Турниры"
     icon = "fa-solid fa-medal"
+    allowed_roles = {"admin", "manager"}
     
     column_list = [
         Tournament.id,
@@ -210,10 +223,11 @@ class TournamentAdmin(ModelView, model=Tournament):
         Tournament.location: "Локация(и)",
     }
 
-class ChampionshipPlayersAdmin(ModelView, model=ChampionshipPlayers):
+class ChampionshipPlayersAdmin(RoleProtectedModelView, model=ChampionshipPlayers):
     name = "Игрок в чемпионате"
     name_plural = "Игроки в чемпионатах"
     icon = "fa-solid fa-link"
+    allowed_roles = {"admin", "manager"}
 
     column_list = [
         ChampionshipPlayers.id,
@@ -257,10 +271,11 @@ class ChampionshipPlayersAdmin(ModelView, model=ChampionshipPlayers):
         ChampionshipPlayers.gaa: "Коэффициент надёжности (КН) вратаря"
     }
 
-class TournamentPlayersAdmin(ModelView, model=TournamentPlayers):
+class TournamentPlayersAdmin(RoleProtectedModelView, model=TournamentPlayers):
     name = "Игрок в турнире"
     name_plural = "Игроки в турнирах"
     icon = "fa-solid fa-link"
+    allowed_roles = {"admin","manager"}
 
     column_list = [
         TournamentPlayers.id,
@@ -306,10 +321,11 @@ class TournamentPlayersAdmin(ModelView, model=TournamentPlayers):
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-class ChampionshipTeamsAdmin(LinkView, model=ChampionshipTeams):
+class ChampionshipTeamsAdmin(RoleProtectedModelView, model=ChampionshipTeams):
     name = "Команда в чемпионате"
     name_plural = "Команды в чемпионатах"
     icon = "fa-solid fa-link"
+    allowed_roles = {"admin"}
 
     column_list = [
         ChampionshipTeams.id,
@@ -362,10 +378,11 @@ class ChampionshipTeamsAdmin(LinkView, model=ChampionshipTeams):
         ChampionshipTeams.extra_points: "Доп. очки"
     }
 
-class TournamentTeamsAdmin(LinkView, model=TournamentTeams):
+class TournamentTeamsAdmin(RoleProtectedModelView, model=TournamentTeams):
     name = "Команда в турнире"
     name_plural = "Команды в турнирах"
     icon = "fa-solid fa-link"
+    allowed_roles = {"admin"}
 
     column_list = [
         TournamentTeams.id,
@@ -418,10 +435,11 @@ class TournamentTeamsAdmin(LinkView, model=TournamentTeams):
         TournamentTeams.extra_points: "Доп. очки"
     }
 
-class ChampionshipGamesAdmin(LinkView, model=ChampionshipGames):
+class ChampionshipGamesAdmin(RoleProtectedModelView, model=ChampionshipGames):
     name = "Игра в чемпионате"
     name_plural = "Игры в чемпионатах"
     icon = "fa-solid fa-link"
+    allowed_roles = {"admin"}
 
     column_list = [
         ChampionshipGames.id,
@@ -430,10 +448,11 @@ class ChampionshipGamesAdmin(LinkView, model=ChampionshipGames):
     ]
     form_columns = [ChampionshipGames.championship, ChampionshipGames.game]
 
-class TournamentGamesAdmin(LinkView, model=TournamentGames):
+class TournamentGamesAdmin(RoleProtectedModelView, model=TournamentGames):
     name = "Игра в турнире"
     name_plural = "Игры в турнирах"
     icon = "fa-solid fa-link"
+    allowed_roles = {"admin"}
 
     column_list = [
         TournamentGames.id,
@@ -443,17 +462,19 @@ class TournamentGamesAdmin(LinkView, model=TournamentGames):
     column_sortable_list = [TournamentGames.id, TournamentGames.tournament]
     form_columns = [TournamentGames.tournament, TournamentGames.game]
 
-class AdminUserAdmin(ModelView, model=AdminUser):
+class AdminUserAdmin(RoleProtectedModelView, model=AdminUser):
     name = "Администратор"
     name_plural = "Администраторы"
     icon = "fa-solid fa-user-shield"
+    allowed_roles = {"admin"}
     
-    column_list = [AdminUser.id, AdminUser.username, AdminUser.is_active]
+    column_list = [AdminUser.id, AdminUser.username, AdminUser.role, AdminUser.is_active]
     column_searchable_list = [AdminUser.username]
-    form_columns = [AdminUser.username, AdminUser.hashed_password, AdminUser.is_active]
+    form_columns = [AdminUser.username, AdminUser.hashed_password, AdminUser.role, AdminUser.is_active]
     column_labels = {
         AdminUser.id: "ID",
         AdminUser.username: "Имя пользователя",
+        AdminUser.role: "Роль",
         AdminUser.hashed_password: "Пароль (будет автоматически захеширован)",
         AdminUser.is_active: "Активен",
     }

@@ -25,7 +25,7 @@ async def seed_data():
     async with session_maker() as session:
         # Очищаем данные (опционально, можно закомментировать)
         await clear_data(session)
-        await add_data(session)
+        # await add_data(session)
 
 async def add_data(session):
     # Создаём команды
@@ -561,32 +561,32 @@ async def clear_data(session: AsyncSession):
     """Очищает все данные (опционально)"""
     from sqlalchemy import delete
     from app.db.models import (
-        ChampionshipTeams,
-        # ChampionshipPlayers,
-        # ChampionshipGames,
-        TournamentTeams,
-        # TournamentPlayers,
-        TournamentGames,
-        Championship,
-        Tournament,
-        Game,
-        Player,
-        Team,
+        # ChampionshipTeams,
+        # # ChampionshipPlayers,
+        # # ChampionshipGames,
+        # TournamentTeams,
+        # # TournamentPlayers,
+        # TournamentGames,
+        # Championship,
+        # Tournament,
+        # Game,
+        # Player,
+        # Team,
         AdminUser
     )
     
     print("Очищаю данные...")
-    await session.execute(delete(ChampionshipTeams))
-    await session.execute(delete(ChampionshipPlayers))
-    await session.execute(delete(ChampionshipGames))
-    await session.execute(delete(TournamentTeams))
-    await session.execute(delete(TournamentPlayers))
-    await session.execute(delete(TournamentGames))
-    await session.execute(delete(Championship))
-    await session.execute(delete(Tournament))
-    await session.execute(delete(Game))
-    await session.execute(delete(Player))
-    await session.execute(delete(Team))
+    # await session.execute(delete(ChampionshipTeams))
+    # await session.execute(delete(ChampionshipPlayers))
+    # await session.execute(delete(ChampionshipGames))
+    # await session.execute(delete(TournamentTeams))
+    # await session.execute(delete(TournamentPlayers))
+    # await session.execute(delete(TournamentGames))
+    # await session.execute(delete(Championship))
+    # await session.execute(delete(Tournament))
+    # await session.execute(delete(Game))
+    # await session.execute(delete(Player))
+    # await session.execute(delete(Team))
     await session.execute(delete(AdminUser))
     await session.commit()
     print("Данные очищены")

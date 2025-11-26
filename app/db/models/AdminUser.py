@@ -10,6 +10,7 @@ class AdminUser(Base):
     username = Column(String, unique=True, nullable=False, index=True)
     hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean, default=True, nullable=False)
+    role = Column(String, nullable=False, default="admin")  # "admin" | "manager"
 
     def __repr__(self):
         return f"AdminUser(id={self.id}, username={self.username})"
