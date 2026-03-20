@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Date, ForeignKey, Time, event, inspect
+from sqlalchemy import Column, Integer, String, Date, ForeignKey, Time, event, inspect, Enum as SAEnum
 from sqlalchemy.orm import relationship, Session
 import asyncio
 import threading
@@ -20,6 +20,22 @@ class Game(Base):
     location = Column(String, nullable=False)
     scan = Column(String, nullable=True)
     video_url = Column(String, nullable=True)
+    # Used by the frontend to render the playoff bracket:
+    # - "matches" participates in table standings
+    # - other values are used only for playoff rendering
+    playoff_stage = Column(
+        SAEnum(
+            "matches",
+            "quarterfinal",
+            "semifinal",
+            "final",
+            name="playoff_stage_enum",
+            native_enum=False,
+        ),
+        nullable=False,
+        default="matches",
+        server_default="matches",
+    )
 
     bullet_win_team = Column(Integer, ForeignKey("teams.id"), nullable=True)
 
@@ -50,7 +66,7 @@ def _after_flush_collect_changed_games(session: Session, flush_context):
         if isinstance(obj, Game):
             state = inspect(obj)
             changed = False
-            for attr_name in ("score_team_a", "score_team_b"):
+            for attr_name in ("score_team_a", "score_team_b", "playoff_stage"):
                 hist = getattr(state.attrs, attr_name).history
                 if hist.has_changes():
                     changed = True

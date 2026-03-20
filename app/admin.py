@@ -129,6 +129,7 @@ class GameAdmin(RoleProtectedModelView, model=Game):
         Game.date,
         Game.time,
         Game.location,
+        Game.playoff_stage,
         Game.scan,
     ]
     column_searchable_list = [Game.date, Game.team_a, Game.team_b, Game.location,]
@@ -143,7 +144,8 @@ class GameAdmin(RoleProtectedModelView, model=Game):
         Game.location,
         Game.bullet_team,
         Game.scan,
-        Game.video_url
+        Game.video_url,
+        Game.playoff_stage,
     ]
     column_labels = {
         Game.id: "ID",
@@ -155,7 +157,8 @@ class GameAdmin(RoleProtectedModelView, model=Game):
         Game.time: "Время игры",
         Game.location: "Локация",
         Game.bullet_team: "Победитель буллитов",
-        Game.scan: "Скан протокола"
+        Game.scan: "Скан протокола",
+        Game.playoff_stage: "Стадия плей-офф",
     }
     column_formatters = {
         Game.team_a: lambda m, c: m.team_a.name if m.team_a else "-",
