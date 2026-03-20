@@ -272,6 +272,7 @@ async def recalculate_tournament_teams_stats(
         .join(TournamentGames, Game.id == TournamentGames.game_id)
         .where(
             TournamentGames.tournament_id == tournament_id,
+            Game.playoff_stage == "matches",
             Game.score_team_a.isnot(None),
             Game.score_team_b.isnot(None),
         )

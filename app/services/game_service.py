@@ -41,19 +41,28 @@ async def update_game(db: AsyncSession, game_id: int, data: GameUpdate) -> Game 
 
     old_a = current_game.score_team_a
     old_b = current_game.score_team_b
+    old_stage = current_game.playoff_stage
 
     new_a = payload.get("score_team_a", old_a)
     new_b = payload.get("score_team_b", old_b)
+    new_stage = payload.get("playoff_stage", old_stage)
 
     # Пересчитываем статистику только если счета действительно изменились
     score_updated = (old_a != new_a) or (old_b != new_b)
+    stage_updated = old_stage != new_stage
     
     await db.execute(update(Game).where(Game.id == game_id).values(**payload))
     result = await db.execute(select(Game).where(Game.id == game_id))
     updated_game = result.scalar_one_or_none()
     
     # Если обновлены результаты, пересчитываем статистику во всех связанных турнирах/чемпионатах
-    if score_updated and updated_game:
+    should_recalculate = (
+        updated_game is not None
+        and (score_updated or stage_updated)
+        and updated_game.score_team_a is not None
+        and updated_game.score_team_b is not None
+    )
+    if should_recalculate:
         # Находим все чемпионаты, где участвует эта игра
         championships_result = await db.execute(
             select(ChampionshipGames.championship_id)
