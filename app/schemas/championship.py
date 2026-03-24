@@ -78,6 +78,7 @@ class ChampionshipPlayerStats(BaseModel):
     assists: int
     penalties: int
     gaa: int | None
+    contract: bool
 
     class Config:
         from_attributes = True
@@ -90,6 +91,10 @@ class ChampionshipPlayerWithStats(PlayerRead):
 
     class Config:
         from_attributes = True
+
+
+class ChampionshipUpdatePlayerContract(BaseModel):
+    contract: bool
 
 
 

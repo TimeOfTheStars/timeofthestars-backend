@@ -235,6 +235,7 @@ async def get_championship_players(db: AsyncSession, championship_id: int) -> Se
                 "assists": cp.assists,
                 "penalties": cp.penalties,
                 "gaa": cp.gaa,
+                "contract": cp.contract,
             }
         })
     return players
@@ -353,6 +354,23 @@ async def recalculate_championship_teams_stats(
     await db.flush()
 
 
+async def update_player_contract(
+    db: AsyncSession, championship_id: int, team_id: int, player_id: int, contract: bool
+) -> ChampionshipPlayers | None:
+    """Обновляет статус контракта для игрока в чемпионате"""
+    result = await db.execute(
+        select(ChampionshipPlayers).where(
+            ChampionshipPlayers.championship_id == championship_id,
+            ChampionshipPlayers.team_id == team_id,
+            ChampionshipPlayers.player_id == player_id,
+        )
+    )
+    player = result.scalar_one_or_none()
+    if player:
+        player.contract = contract
+        await db.flush()
+        await db.refresh(player)
+    return player
 
 
 

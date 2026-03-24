@@ -9,6 +9,7 @@ from .tournament import (
     TournamentAddGame,
     TournamentTeamWithStats,
     TournamentPlayerWithStats,
+    TournamentUpdatePlayerContract,
 )
 from .championship import (
     ChampionshipCreate,
@@ -19,6 +20,7 @@ from .championship import (
     ChampionshipAddGame,
     ChampionshipTeamWithStats,
     ChampionshipPlayerWithStats,
+    ChampionshipUpdatePlayerContract,
 )
 from .game import GameCreate, GameUpdate, GameRead
 
@@ -44,9 +46,11 @@ __all__ = [
     "ChampionshipAddGame",
     "ChampionshipTeamWithStats",
     "ChampionshipPlayerWithStats",
+    "ChampionshipUpdatePlayerContract",
     "GameCreate",
     "GameUpdate",
     "GameRead",
     "TournamentTeamWithStats",
     "TournamentPlayerWithStats",
+    "TournamentUpdatePlayerContract",
 ]

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, ForeignKey, UniqueConstraint
+from sqlalchemy import Column, Integer, ForeignKey, UniqueConstraint, Boolean
 from sqlalchemy.orm import relationship
 from app.db import Base
 
@@ -19,6 +19,7 @@ class TournamentPlayers(Base):
     assists = Column(Integer, default=0)
     penalties = Column(Integer, default=0)
     gaa = Column(Integer, nullable=True, default=None)
+    contract = Column(Boolean, default=False)
 
     tournament = relationship("Tournament", back_populates="tournament_players")
     team = relationship("Team", back_populates="tournament_players")

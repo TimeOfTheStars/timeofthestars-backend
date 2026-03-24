@@ -78,6 +78,7 @@ class TournamentPlayerStats(BaseModel):
     assists: int
     penalties: int
     gaa: int | None
+    contract: bool
 
     class Config:
         from_attributes = True
@@ -90,6 +91,10 @@ class TournamentPlayerWithStats(PlayerRead):
 
     class Config:
         from_attributes = True
+
+
+class TournamentUpdatePlayerContract(BaseModel):
+    contract: bool
 
 
 

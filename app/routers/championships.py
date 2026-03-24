@@ -11,6 +11,7 @@ from app.schemas import (
     ChampionshipAddGame,
     ChampionshipTeamWithStats,
     ChampionshipPlayerWithStats,
+    ChampionshipUpdatePlayerContract,
 )
 from app.schemas.game import GameRead
 from app.services import championship_service
@@ -102,6 +103,23 @@ async def remove_player_from_championship(
     ok = await championship_service.remove_player(db, championship_id, team_id, player_id)
     if not ok:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Link not found")
+    return None
+
+
+@router.patch("/{championship_id}/players/{player_id}/contract", status_code=status.HTTP_204_NO_CONTENT)
+async def update_player_contract_in_championship(
+    championship_id: int,
+    player_id: int,
+    team_id: int,
+    payload: ChampionshipUpdatePlayerContract,
+    db: AsyncSession = Depends(get_db),
+):
+    """Обновить статус контракта для игрока в чемпионате"""
+    player = await championship_service.update_player_contract(
+        db, championship_id, team_id, player_id, payload.contract
+    )
+    if not player:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Player not found in championship")
     return None
 
 

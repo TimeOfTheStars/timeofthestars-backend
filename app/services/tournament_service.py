@@ -233,6 +233,7 @@ async def get_tournament_players(db: AsyncSession, tournament_id: int) -> Sequen
                 "assists": tp.assists,
                 "penalties": tp.penalties,
                 "gaa": tp.gaa,
+                "contract": tp.contract,
             }
         })
     return players
@@ -346,6 +347,25 @@ async def recalculate_tournament_teams_stats(
         # points можно настроить отдельно (например, 3 за победу, 1 за ничью)
         tt.points = wins * 2 + draws * 1 + extra_points * 1
         tt.extra_points = extra_points
+
+
+async def update_player_contract(
+    db: AsyncSession, tournament_id: int, team_id: int, player_id: int, contract: bool
+) -> TournamentPlayers | None:
+    """Обновляет статус контракта для игрока в турнире"""
+    result = await db.execute(
+        select(TournamentPlayers).where(
+            TournamentPlayers.tournament_id == tournament_id,
+            TournamentPlayers.team_id == team_id,
+            TournamentPlayers.player_id == player_id,
+        )
+    )
+    player = result.scalar_one_or_none()
+    if player:
+        player.contract = contract
+        await db.flush()
+        await db.refresh(player)
+    return player
 
 
 

@@ -11,6 +11,7 @@ from app.schemas import (
     TournamentAddGame,
     TournamentTeamWithStats,
     TournamentPlayerWithStats,
+    TournamentUpdatePlayerContract,
 )
 from app.schemas.game import GameRead
 from app.services import tournament_service
@@ -102,6 +103,23 @@ async def remove_player_from_tournament(
     ok = await tournament_service.remove_player(db, tournament_id, team_id, player_id)
     if not ok:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Link not found")
+    return None
+
+
+@router.patch("/{tournament_id}/players/{player_id}/contract", status_code=status.HTTP_204_NO_CONTENT)
+async def update_player_contract_in_tournament(
+    tournament_id: int,
+    player_id: int,
+    team_id: int,
+    payload: TournamentUpdatePlayerContract,
+    db: AsyncSession = Depends(get_db),
+):
+    """Обновить статус контракта для игрока в турнире"""
+    player = await tournament_service.update_player_contract(
+        db, tournament_id, team_id, player_id, payload.contract
+    )
+    if not player:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Player not found in tournament")
     return None
 
 
