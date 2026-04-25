@@ -36,6 +36,9 @@ class SortedRelationshipModelConverter(ModelConverter):
                 for obj in objects.scalars().unique().all()
             ]
 
+        if target_model is Player:
+            return sorted(choices, key=lambda item: int(item[0]))
+
         return sorted(choices, key=lambda item: item[1].lower())
 
 class RoleProtectedModelView(ModelView):
