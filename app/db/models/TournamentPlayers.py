@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, ForeignKey, UniqueConstraint, Boolean
+from sqlalchemy import Column, Integer, ForeignKey, UniqueConstraint, Boolean, func
 from sqlalchemy.orm import relationship
 from app.db import Base
 
@@ -23,7 +23,7 @@ class TournamentPlayers(Base):
 
     tournament = relationship("Tournament", back_populates="tournament_players")
     team = relationship("Team", back_populates="tournament_players")
-    player = relationship("Player", back_populates="tournament_entries")
+    player = relationship("Player", back_populates="tournament_entries", lazy="joined")
 
     def __repr__(self):
         return f"Игрок: {self.id}"

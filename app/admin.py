@@ -1,6 +1,8 @@
 from sqladmin import Admin, ModelView
 from sqladmin.authentication import AuthenticationBackend
+from sqladmin.forms import ModelConverter
 from fastapi import Request
+import logging
 from sqlalchemy.future import select
 
 from app.db.base import engine, session_maker
@@ -21,8 +23,24 @@ from app.db.models import (
     AdminUser,
 )
 
+
+class SortedRelationshipModelConverter(ModelConverter):
+    async def _prepare_select_options(self, prop, session_maker):
+        target_model = prop.mapper.class_
+        stmt = select(target_model)
+
+        async with session_maker() as session:
+            objects = await session.execute(stmt)
+            choices = [
+                (str(self._get_identifier_value(obj)), str(obj))
+                for obj in objects.scalars().unique().all()
+            ]
+
+        return sorted(choices, key=lambda item: item[1].lower())
+
 class RoleProtectedModelView(ModelView):
     allowed_roles = {"admin"}
+    form_converter = SortedRelationshipModelConverter
 
     def _has_access(self, request: Request) -> bool:
         role = request.session.get("role")
@@ -516,7 +534,6 @@ def setup_admin(app):
         
         return admin
     except Exception as e:
-        import logging
         logger = logging.getLogger(__name__)
         logger.error(f"Ошибка при инициализации админ-панели: {e}")
         return None
