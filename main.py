@@ -24,10 +24,10 @@ app = FastAPI(
     """,
     version="1.0.0",
     # ----------------------
-    # Если нужно будет вернуть Swagger разкоментировать
-    docs_url=None,
-    redoc_url=None,
-    openapi_url=None,
+    # Swagger включён
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json",
     # ----------------------
     openapi_extra={
         "components": {
